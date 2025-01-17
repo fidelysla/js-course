@@ -9,6 +9,7 @@
 1.  [Nuevos Tipos y Caracteristicas](07_nuevos_tipos_y_caracteristicas.md)
 1.  [This, Call, Apply y Bind](08_this_call_apply_bind.md)
 1.  [JSON](09_json.md)
+1.  [DOM](10_dom.md)
 
 ## JSON en JavaScript
 

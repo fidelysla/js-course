@@ -15,10 +15,10 @@
 
 > -   [WEB APIs](10_dom.md#web-apis)
 > -   [Introduccion al DOM](10_dom.md#introduccion-al-dom)
-> -   Nodos, Elementos y Selectores
-> -   Atributos y Data-Attributes
-> -   Estilos y Variables CSS
-> -   Clases CSS
+> -   [Nodos, Elementos y Selectores](10_dom.md#nodos-elementos-y-selectores)
+> -   [Atributos y Data-Attributes](10_dom.md#atributos-y-data-attributes)
+> -   [Estilos y Variables CSS](10_dom.md#estilos-y-variables-css)
+> -   [Clases CSS](10_dom.md#clases-css)
 > -   Texto y HTML
 > -   DOM Traversing: Recorriendo el DOM
 > -   Creando Elementos y Fragmentos
@@ -179,4 +179,130 @@ console.log(document.querySelector("#menu li"));
 console.log(document.querySelector("#menu li a"));
 console.log(document.querySelectorAll("#menu li"));
 console.log(document.querySelectorAll("#menu li a"));
+```
+
+### Atributos y Data-Attributes
+
+```
+// Obtener los atributos
+console.log(document.documentElement);
+console.log(document.documentElement.lang);
+console.log(document.documentElement.getAttribute("lang"));
+console.log(document.querySelector(".link-dom"));
+console.log(document.querySelector(".link-dom").href);
+console.log(document.querySelector(".link-dom").getAttribute("href"));
+
+//? Como establecer nuevo valor a los atributos
+document.documentElement.lang = "en"
+console.log(document.documentElement.lang); // 'en'
+document.documentElement.setAttribute("lang", "es-MX")
+console.log(document.documentElement.lang); // es-MX
+
+//? Guardar en valiables los elementos del dom
+
+const $linkDOM = document.querySelector(".link-dom")
+$linkDOM.setAttribute("target", "_black")
+$linkDOM.setAttribute("href", "https://youtube.com/jonmircha")
+$linkDOM.setAttribute("rel", "noopener");
+// console.log($linkDOM.hasAttribute("rel")); // true
+$linkDOM.removeAttribute("rel", "noopener")
+console.log($linkDOM.hasAttribute("rel")); // false
+
+//? DATA ATTRIBUTES
+console.log($linkDOM.getAttribute("data-description")); //Document Object Model
+console.log($linkDOM.dataset); //DOMStringMap {id: '1', description: 'Document Object Model'}
+
+//? Modificar los data attributes
+console.log($linkDOM.dataset.description); // Document Object Model
+
+$linkDOM.setAttribute("data-description", "Modelo de Objeto del Documento")
+console.log($linkDOM.dataset.description); // Modelo ...
+
+$linkDOM.dataset.description = "Suscribete a mi canal y comparte"
+console.log($linkDOM.dataset.description); // Suscribete ...
+
+console.log($linkDOM.hasAttribute("data-id")); //true
+$linkDOM.removeAttribute("data-id");
+console.log($linkDOM.hasAttribute("data-id")); //false
+```
+
+### Estilos y Variables CSS
+
+```
+//Agregamos un atributo style al enlace link-dom
+<a class="link-dom" href="08_dom.html"
+ style="background-color: #F7DF1E; color: #222;" data-id="1"
+ data-description="Document Object Model">DOM</a>
+```
+
+```
+//Ver los atributos de Estilos
+const $linkDOM = document.querySelector(".link-dom")
+console.log($linkDOM.getAttribute("style"));                        //background-color: #F7DF1E; color: #222;
+console.log($linkDOM.style);                                        //CSSStyleDeclaration {0: 'background-color', 1: 'color', ...}
+console.log($linkDOM.style.backgroundColor);                        //rgb (247, 223, 30)
+console.log($linkDOM.style.color);                                  //rgb (34, 34, 34)
+console.log(window.getComputedStyle($linkDOM));                     //CSSStyleDeclaration{...}
+console.log(getComputedStyle($linkDOM).getPropertyValue("color"));  //rgb (34, 34, 34)
+
+//? Establecer valores
+$linkDOM.style.setProperty("text-decoration", "none")
+$linkDOM.style.setProperty("display", "block")
+$linkDOM.style.width = "50%"
+$linkDOM.style.textAlign = "center"
+$linkDOM.style.marginLeft = "auto"
+$linkDOM.style.marginRight = "auto"
+$linkDOM.style.padding = "1rem"
+$linkDOM.style.borderRadius = ".5rem"
+
+console.log($linkDOM.style);
+console.log($linkDOM.getAttribute("style"));
+console.log(getComputedStyle($linkDOM));
+
+//? VARIABLES CSS - CUSTOM PROPERTIES CSS;
+const $html = document.documentElement, $body = document.body;
+
+let varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color");
+let varYellowColor = getComputedStyle($html).getPropertyValue("--yellow-color");
+console.log(varDarkColor, varYellowColor);                          // #222 #F7DF1E
+
+//?Establecer colores al body
+$body.style.backgroundColor = varDarkColor
+$body.style.color = varYellowColor
+
+$html.style.setProperty("--dark-color", "#000")
+varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color")
+$body.style.setProperty("background-color", varDarkColor)
+```
+
+### Clases CSS
+
+```
+<style>
+    :root {
+        --yellow-color: #F7DF1E;
+        --dark-color: #222;
+    }
+    .card {
+        display: inline-block;
+        background-color: var(--dark-color);
+        color: var(--yellow-color);
+    }
+    .card figcaption {
+        padding: 1rem;
+    }
+    /* // Clases auxiliares */
+    .rotate-45 {
+        transform: rotate(45deg);
+    }
+    .rotate-135 {
+        transform: rotate(135deg);
+    }
+    .opacity-80 {
+        opacity: .8;
+    }
+    .sepia {
+        filter: sepia(1);
+    }
+</style>
 ```
