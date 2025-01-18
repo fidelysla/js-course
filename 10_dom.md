@@ -76,11 +76,14 @@
 ### Introduccion al DOM
 
 ```
+<!-- dom.html -->
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css\styles.css">
     <style>
         :root {
         --yellow-color: #F7DF1E;
@@ -202,7 +205,7 @@ console.log(document.documentElement.lang); // es-MX
 
 const $linkDOM = document.querySelector(".link-dom")
 $linkDOM.setAttribute("target", "_black")
-$linkDOM.setAttribute("href", "https://youtube.com/jonmircha")
+$linkDOM.setAttribute("href", "https://youtube.com")
 $linkDOM.setAttribute("rel", "noopener");
 // console.log($linkDOM.hasAttribute("rel")); // true
 $linkDOM.removeAttribute("rel", "noopener")
@@ -229,10 +232,19 @@ console.log($linkDOM.hasAttribute("data-id")); //false
 ### Estilos y Variables CSS
 
 ```
-//Agregamos un atributo style al enlace link-dom
-<a class="link-dom" href="08_dom.html"
- style="background-color: #F7DF1E; color: #222;" data-id="1"
- data-description="Document Object Model">DOM</a>
+<!-- dom.html -->
+<!-- Agregamos un atributo style al enlace link-dom -->
+<a class="link-dom" href="dom.html"
+data-id="1"
+data-description="Document Object Model">DOM</a>
+```
+
+```
+/* css\styles.css */
+.link-dom {
+    color: #ffffff;
+    background-color: #464646;
+}
 ```
 
 ```
@@ -278,6 +290,7 @@ $body.style.setProperty("background-color", varDarkColor)
 ### Clases CSS
 
 ```
+<!-- dom.html -->
 <style>
     :root {
         --yellow-color: #F7DF1E;
@@ -305,4 +318,12 @@ $body.style.setProperty("background-color", varDarkColor)
         filter: sepia(1);
     }
 </style>
+```
+
+```
+// Nos traemos la primera card (tech)
+const $card = document.querySelector(".card")
+console.log($card);           // <figure class="card">…</figure>
+console.log($card.className); //card
+console.log($card.classList); //DOMTokenList ['card', value: 'card']
 ```
