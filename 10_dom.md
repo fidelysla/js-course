@@ -107,7 +107,7 @@
 
     <input type="text" name="nombre" placeholder="Nombre">
 
-    <a class="link-dom" href="08_dom.html" data-id="1"
+    <a class="link-dom" href="dom.html" data-id="1"
     data-description="Document Object Model">DOM</a>
 
     <section class="cards">

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css\styles.css">
+    <style>
+        :root {
+            --yellow-color: #F7DF1E;
+            --dark-color: #222;
+        }
+        .card {
+            display: inline-block;
+            background-color: var(--dark-color);
+            color: var(--yellow-color);
+        }
+        .card figcaption {
+            padding: 1rem;
+        }
+        /* // Clases auxiliares */
+        .rotate-45 {
+            transform: rotate(45deg);
+        }
+        .rotate-135 {
+            transform: rotate(135deg);
+        }
+        .opacity-80 {
+            opacity: .8;
+        }
+        .sepia {
+            filter: sepia(1);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Manejo del DOM</h1>
+
+    <p id="que-es">
+        Lorem ipsum dolor sit amet consectetu adipisicing elit.
+        Nam facilis voluptates optio
+        aliquam laborum doloribus obcaecati porro.
+    </p>
+    <nav id="menu">
+        <ul>
+            <li><a href="#">Sección 1</a></li>
+            <li><a href="#">Sección 2</a></li>
+            <li><a href="#">Sección 3</a></li>
+            <li><a href="#">Sección 4</a></li>
+            <li><a href="#">Sección 5</a></li>
+        </ul>
+    </nav>
+
+    <input type="text" name="nombre" placeholder="Nombre">
+
+    <!-- <a class="link-dom" href="dom.html" data-id="1" data-description="Document Object Model">DOM</a> -->
+
+    <a class="link-dom" href="dom.html" 
+    data-id="1" 
+    data-description="Document Object Model">DOM</a>
+
+    <section class="cards">
+        <figure class="card">
+            <img src="https://picsum.photos/id/0/300/200" alt="Tech">
+            <figcaption>Tech</figcaption>
+        </figure>
+        <figure class="card">
+            <img src="https://picsum.photos/id/237/300/200" alt="Animals">
+            <figcaption>Animals</figcaption>
+        </figure>
+        <figure class="card">
+            <img src="https://picsum.photos/id/129/300/200" alt="People">
+            <figcaption>People</figcaption>
+        </figure>
+        <figure class="card">
+            <img src="https://picsum.photos/id/49/300/200" alt="Architecture">
+            <figcaption>Architecture</figcaption>
+        </figure>
+        <figure class="card">
+            <img src="https://picsum.photos/id/28/300/200" alt="Nature">
+            <figcaption>Nature</figcaption>
+        </figure>
+    </section>
+
+</body>
+
+<script src="js\dom.js"></script>
+
+</html>
