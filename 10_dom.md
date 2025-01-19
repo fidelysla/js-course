@@ -161,7 +161,7 @@ setTimeout(() => {
 document.write("<h1>Hola Mundo</h1>")
 ```
 
-### Nodos, Elementos y Selectores
+### Nodos Elementos y Selectores
 
 ```
 // Metodos que ya no se utiliza y fueron reemplazados por querySelector.
