@@ -34,44 +34,46 @@
 > -   BOM: Métodos
 > -   BOM: Objetos: URL, Historial y Navegador
 
+<hr>
+
 ### WEB APIs
 
-> ¿Qué son las WEB APIs?
->
-> Las Web APIs en JavaScript son un conjunto de interfaces y funcionalidades predefinidas proporcionadas por los navegadores web que permiten interactuar con diferentes servicios, recursos y capacidades del navegador. Estas APIs están diseñadas para facilitar el desarrollo de aplicaciones web dinámicas y permiten acceder a características avanzadas como el almacenamiento local, manipulación del DOM, interacción con el hardware, y más.
->
-> **Principales características de las Web APIs en JavaScript:**
->
-> -   **Integración con el navegador**: Proveen acceso a funcionalidades específicas del entorno del navegador.
-> -   **Interfaz basada en objetos**: Las APIs son objetos que exponen métodos y propiedades para realizar acciones específicas.
-> -   **Asincronía**: Muchas de estas APIs utilizan promesas o callbacks para manejar tareas que pueden tardar un tiempo, como solicitudes HTTP o lectura de archivos.
-> -   **Interacción con servicios web**: Permiten conectarse con servidores externos para enviar o recibir datos.
->
-> **DOM: Document Object Model**
->
-> El DOM es una representación estructurada en forma de árbol que los navegadores crean para interpretar y manipular el contenido HTML de una página web. Cada etiqueta HTML se convierte en un nodo dentro de este árbol, y JavaScript puede acceder a ellos para leer, modificar o eliminar elementos en tiempo real. Por ejemplo, puedes cambiar el texto de un elemento `<p>` usando `document.querySelector('p').textContent = 'Nuevo texto';`. Esto permite construir páginas dinámicas y responder a las acciones del usuario.
->
-> **BOM: Browser Object Model**
->
-> El BOM es un conjunto de objetos que el navegador expone para interactuar con el entorno de la ventana y su contenido. Incluye funciones y propiedades relacionadas con la ventana del navegador (como `window`), la barra de direcciones, historial (`history`), o el temporizador (`setTimeout`). Por ejemplo, puedes redirigir al usuario a otra página con `window.location.href = 'https://example.com';` o abrir una ventana emergente con `window.open()`. Aunque no está estrictamente estandarizado, el BOM es clave para controlar el navegador desde JavaScript.
->
-> **CSSOM: CSS Object Model**
->
-> El CSSOM es similar al DOM, pero específicamente para las hojas de estilo CSS aplicadas en una página. Representa las reglas CSS como un conjunto de objetos que se pueden leer y manipular mediante JavaScript. Esto permite ajustar estilos dinámicamente, como cambiar el color de fondo de un elemento con `document.querySelector('body').style.backgroundColor = 'blue';`. También se utiliza para analizar reglas de estilo con mayor detalle, como acceder a estilos calculados con `window.getComputedStyle(elemento)`.
->
-> **WEB APIs**
->
-> -   Eventos
-> -   Forms
-> -   AJAX - Fetch
-> -   History
-> -   Web Storage
-> -   Geolocation
-> -   Drag & Drop
-> -   Indexed DB
-> -   Canvas
-> -   MatchMedia
-> -   etc..
+**¿Qué son las WEB APIs?**
+
+Las Web APIs en JavaScript son un conjunto de interfaces y funcionalidades predefinidas proporcionadas por los navegadores web que permiten interactuar con diferentes servicios, recursos y capacidades del navegador. Estas APIs están diseñadas para facilitar el desarrollo de aplicaciones web dinámicas y permiten acceder a características avanzadas como el almacenamiento local, manipulación del DOM, interacción con el hardware, y más.
+
+**Principales características de las Web APIs en JavaScript:**
+
+-   **Integración con el navegador**: Proveen acceso a funcionalidades específicas del entorno del navegador.
+-   **Interfaz basada en objetos**: Las APIs son objetos que exponen métodos y propiedades para realizar acciones específicas.
+-   **Asincronía**: Muchas de estas APIs utilizan promesas o callbacks para manejar tareas que pueden tardar un tiempo, como solicitudes HTTP o lectura de archivos.
+-   **Interacción con servicios web**: Permiten conectarse con servidores externos para enviar o recibir datos.
+
+**DOM: Document Object Model**
+
+El DOM es una representación estructurada en forma de árbol que los navegadores crean para interpretar y manipular el contenido HTML de una página web. Cada etiqueta HTML se convierte en un nodo dentro de este árbol, y JavaScript puede acceder a ellos para leer, modificar o eliminar elementos en tiempo real. Por ejemplo, puedes cambiar el texto de un elemento `<p>` usando `document.querySelector('p').textContent = 'Nuevo texto';`. Esto permite construir páginas dinámicas y responder a las acciones del usuario.
+
+**BOM: Browser Object Model**
+
+El BOM es un conjunto de objetos que el navegador expone para interactuar con el entorno de la ventana y su contenido. Incluye funciones y propiedades relacionadas con la ventana del navegador (como `window`), la barra de direcciones, historial (`history`), o el temporizador (`setTimeout`). Por ejemplo, puedes redirigir al usuario a otra página con `window.location.href = 'https://example.com';` o abrir una ventana emergente con `window.open()`. Aunque no está estrictamente estandarizado, el BOM es clave para controlar el navegador desde JavaScript.
+
+**CSSOM: CSS Object Model**
+
+El CSSOM es similar al DOM, pero específicamente para las hojas de estilo CSS aplicadas en una página. Representa las reglas CSS como un conjunto de objetos que se pueden leer y manipular mediante JavaScript. Esto permite ajustar estilos dinámicamente, como cambiar el color de fondo de un elemento con `document.querySelector('body').style.backgroundColor = 'blue';`. También se utiliza para analizar reglas de estilo con mayor detalle, como acceder a estilos calculados con `window.getComputedStyle(elemento)`.
+
+**WEB APIs**
+
+-   Eventos
+-   Forms
+-   AJAX - Fetch
+-   History
+-   Web Storage
+-   Geolocation
+-   Drag & Drop
+-   Indexed DB
+-   Canvas
+-   MatchMedia
+-   etc..
 
 ### Introduccion al DOM
 
