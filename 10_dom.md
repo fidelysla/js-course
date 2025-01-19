@@ -16,19 +16,19 @@
 > -   [WEB APIs](10_dom.md#web-apis)
 > -   [Introduccion al DOM](10_dom.md#introduccion-al-dom)
 > -   [Nodos, Elementos y Selectores](10_dom.md#nodos-elementos-y-selectores)
-> -   [Atributos y Data-Attributes](10_dom.md#atributos-y-data-attributes)
+> -   [Atributos y Data Attributes](10_dom.md#atributos-y-data-attributes)
 > -   [Estilos y Variables CSS](10_dom.md#estilos-y-variables-css)
 > -   [Clases CSS](10_dom.md#clases-css)
 > -   Texto y HTML
 > -   DOM Traversing: Recorriendo el DOM
 > -   Creando Elementos y Fragmentos
 > -   Templates HTML
-> -   Modificando Elementos ( Old Style )
-> -   Modificando Elementos ( Cool Style )
+> -   Modificando Elementos (Old Style)
+> -   Modificando Elementos (Cool Style)
 > -   Manejadores de Eventos
 > -   Eventos con Parámetros y Remover Eventos
-> -   Flujo de Eventos ( Burbuja y Captura )
-> -   stopPropagation & preventDefault
+> -   Flujo de Eventos (Burbuja y Captura)
+> -   stopPropagation and preventDefault
 > -   Delegación de Eventos
 > -   BOM: Propiedades y Eventos
 > -   BOM: Métodos
@@ -186,7 +186,7 @@ console.log(document.querySelectorAll("#menu li"));
 console.log(document.querySelectorAll("#menu li a"));
 ```
 
-### Atributos y Data-Attributes
+### Atributos y Data Attributes
 
 ```
 // Obtener los atributos

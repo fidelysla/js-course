@@ -4,24 +4,26 @@
 1.  [Estructuras Control](02_estructuras_control.md)
 1.  [Programacion Orientada a Objetos](03_poo.md)
 1.  [Objetos y funciones del Lenguaje](04_objetos_y_funciones.md)
-1.  [Ejercicios de Logica de Programación](05_ejercicios_logica.md)
+1.  [Ejercicios de Logica de Programacion](05_ejercicios_logica.md)
 1.  [Programacion Asincrona](06_programacion_asincrona.md)
 1.  [Nuevos Tipos y Caracteristicas](07_nuevos_tipos_y_caracteristicas.md)
 1.  [This, Call, Apply y Bind](08_this_call_apply_bind.md)
 1.  [JSON](09_json.md)
 1.  [DOM](10_dom.md)
 
-## Programación Asíncrona
+## Programación Asincrona
 
-> -   Temporizadores (setTimeout & setInterval)
-> -   Asincronía y el Event Loop
-> -   Callbacks
-> -   Promesas
-> -   Funciones Asíncronas (Async/Await)
-> -   [Recurso Web 1 (jonmircha)](https://jonmircha.com/javascript-asincrono)
-> -   [Recurso Web 2 (loupe)](http://latentflip.com/loupe/)
+> -   [Temporizadores (setTimeout y setInterval)](06_programacion_asincrona.md#temporizadores-settimeout-y-setinterval)
+> -   [Asincronia y Event Loop](06_programacion_asincrona.md#asincronia-y-event-loop)
+> -   [Callbacks](06_programacion_asincrona.md#callbacks)
+> -   [Promesas](06_programacion_asincrona.md#promesas)
+> -   [Funciones Asincronas (Async y Await)](06_programacion_asincrona.md#funciones-asincronas-async-y-await)
 
--   **Temporizadores (setTimeout & setInterval)**
+[JavaScript Asincrono (jonmircha.com)](https://jonmircha.com/javascript-asincrono)
+
+[Loupe (Visualisation)](http://latentflip.com/loupe/)
+
+### **Temporizadores setTimeout y setInterval**
 
 > En JavaScript, los temporizadores se utilizan para ejecutar funciones después de un período de tiempo específico. `setTimeout` se usa para ejecutar una función una sola vez después de un retraso dado en milisegundos.
 > Por ejemplo, `setTimeout(() => console.log("Hola"), 1000)` ejecutará el mensaje después de 1 segundo.
@@ -51,7 +53,7 @@ let temporizador = setInterval(() => {
 console.log("Despues del clearInterval");
 ```
 
--   **Asincronía y el Event Loop**
+### **Asincronia y Event Loop**
 
 > La asincronía en JavaScript permite que el código realice múltiples tareas sin bloquear la ejecución principal. Esto es posible gracias al Event Loop, que gestiona las tareas asincrónicas como temporizadores, solicitudes HTTP y eventos del navegador.
 > El Event Loop monitorea dos partes clave: la pila de llamadas (Call Stack) y la cola de tareas (Task Queue). Cuando una tarea asincrónica termina, su callback se coloca en la cola de tareas y se ejecuta en la pila de llamadas solo si está vacía.
@@ -145,7 +147,7 @@ Uno
 Dos
 ```
 
--   **Callbacks**
+### **Callbacks**
 
 > Una **callback** (llamada de vuelta) es una función que se ejecutará después de que otra lo haga. Es un mecanismo para asegurar que cierto código no se ejecute hasta que otro haya terminado.
 > Una función callback es aquella que es pasada como argumento a otra función para que sea "llamada de nuevo" (call back) en un momento posterior. Una función que acepta otras funciones como argumentos es llamada función de orden-superior (High-Order), y contiene la lógica para determinar cuándo se ejecuta la función callback. Es la combinación de estas dos la que nos permite ampliar nuestra funcionalidad.
@@ -183,7 +185,7 @@ cuadradoCallback(0, (value, result)=>{
 
 ```
 
--   **Promesas**
+### **Promesas**
 
 > Las promesas son un mecanismo más estructurado para manejar tareas asincrónicas. Una promesa representa un valor que puede estar pendiente, cumplido o rechazado. Esto permite manejar el resultado de una tarea de manera más clara que con callbacks.
 
@@ -233,7 +235,7 @@ cuadradoPromise(0)
     .catch(err => console.error(err));
 ```
 
--   **Funciones Asíncronas (Async/Await)**
+### Funciones Asincronas Async y Await
 
 > Async/Await simplifica aún más el manejo de promesas al permitir escribir código asincrónico como si fuera síncrono. Una función marcada con `async` devuelve automáticamente una promesa, y dentro de ella puedes usar `await` para pausar la ejecución hasta que una promesa se resuelva.
 

@@ -13,7 +13,7 @@
 
 ## This, Call, Apply y Bind
 
--   **This**
+### **This**
 
 > En JavaScript, `this` es una palabra clave que hace referencia al contexto de ejecución actual, es decir, a quién pertenece el código que se está ejecutando. Su valor varía dependiendo de cómo y dónde se invoque la función. Por ejemplo, en una función normal, `this` puede referirse al objeto global (`window` en navegadores); en un método de un objeto, `this` apunta al objeto que lo contiene. En funciones flecha, `this` se enlaza al contexto donde la función fue definida, no donde se ejecuta.
 
@@ -82,7 +82,7 @@ let jon = new Persona("Jon")
 jon()
 ```
 
--   **Call y Apply**
+### **Call y Apply**
 
 > El método `call` permite invocar una función con un valor específico para `this` y pasarle argumentos individualmente. Es útil para reutilizar funciones en diferentes contextos.
 > `apply` es similar a `call`, pero en lugar de pasar los argumentos uno por uno, los acepta en forma de un array o un objeto similar a un array. Esto es práctico cuando ya tienes los argumentos agrupados en un arreglo
@@ -111,7 +111,7 @@ saludar.apply(null, ["Adios", "Mircha"])
 saludar.apply(this, ["Adios", "Mircha"])
 ```
 
--   **Bind**
+### **Bind**
 
 > El método `bind` no ejecuta la función de inmediato, sino que crea una nueva función con el valor de this predefinido. Esto es útil cuando necesitas pasar una función como callback manteniendo un contexto específico.
 

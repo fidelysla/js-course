@@ -13,12 +13,12 @@
 
 ## JSON en JavaScript
 
-> JavaScript Object Notation o Notación de Objetos de JavaScript, es un formato ligero de intercambio de datos. Leerlo y escribirlo es simple para humanos, mientras que para las máquinas es fácil de interpretar y generar.
-> Todos los lenguajes de programación lo soportan.
->
-> -   [Introducción a JSON - JSON.org](https://www.json.org/json-es.html)
-> -   [JSON - MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON)
-> -   [Eloquent JavaScript](https://eloquentjavascript.net/)
+JavaScript Object Notation o Notación de Objetos de JavaScript, es un formato ligero de intercambio de datos. Leerlo y escribirlo es simple para humanos, mientras que para las máquinas es fácil de interpretar y generar.
+Todos los lenguajes de programación lo soportan.
+
+-   [Introducción a JSON - JSON.org](https://www.json.org/json-es.html)
+-   [JSON - MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON)
+-   [Eloquent JavaScript](https://eloquentjavascript.net/)
 
 ```
 const json = {

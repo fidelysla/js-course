@@ -4,7 +4,7 @@
 1.  [Estructuras Control](02_estructuras_control.md)
 1.  [Programacion Orientada a Objetos](03_poo.md)
 1.  [Objetos y funciones del Lenguaje](04_objetos_y_funciones.md)
-1.  [Ejercicios de Logica de Programación](05_ejercicios_logica.md)
+1.  [Ejercicios de Logica de Programacion](05_ejercicios_logica.md)
 1.  [Programacion Asincrona](06_programacion_asincrona.md)
 1.  [Nuevos Tipos y Caracteristicas](07_nuevos_tipos_y_caracteristicas.md)
 1.  [This, Call, Apply y Bind](08_this_call_apply_bind.md)
@@ -13,7 +13,16 @@
 
 ## Objetos y Funciones del Lenguaje en JavaScript
 
--   **Objeto Console**
+> -   [Objeto Console](04_objetos_y_funciones.md#objeto-console)
+> -   [Objeto Date](04_objetos_y_funciones.md#objeto-date)
+> -   [Objeto Math](04_objetos_y_funciones.md#objeto-math)
+> -   [Operador de Cortocircuito](04_objetos_y_funciones.md#operador-de-cortocircuito)
+> -   [Alert confirm y prompt](04_objetos_y_funciones.md#alert-confirm-y-prompt)
+> -   [Expresiones Regulares](04_objetos_y_funciones.md#expresiones-regulares)
+> -   [Funciones Anonimas Autoejecutables IIFE](04_objetos_y_funciones.md#funciones-anonimas-autoejecutables-iife)
+> -   [Modulos import y export](04_objetos_y_funciones.md#modulos-import-y-export)
+
+### **Objeto Console**
 
 ```
 console.log(console)
@@ -71,11 +80,13 @@ let x = 3, y = 2, pruebaXY = "Se espera que X sea menor q Y";
 console.assert(x < y, {x, y, pruebaXY})
 ```
 
--   **Objeto Date**
+### **Objeto Date**
+
+El constructor `Date()` crea objetos Date. Cuando se llama como función, devuelve una cadena que representa la hora actual.
+
+[Date() constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/Date)
 
 ```
-// https://developer.mozilla.org/en-US/docs/Web/...
-// JavaScript/Reference/Global_Objects/Date/Date
 console.log(Date());
 
 let fecha = new Date()
@@ -114,7 +125,7 @@ let cumpleF = new Date(1997, 5, 5) // año, mesIndex, dia
 console.log(cumpleF)
 ```
 
--   **Objeto Math**
+### **Objeto Math**
 
 ```
 console.log(Math)
@@ -137,17 +148,17 @@ console.log(Math.random()*100)
 console.log(Math.round(Math.random()*100))
 ```
 
--   **Operador de Cortocircuito**
+### **Operador de Cortocircuito**
+
+**Cortocircuito OR** - cuando el valor de la izquierda
+en la expresión siempre pueda validar a true, es el valor que se
+cargará por defecto
+
+**Cortocircuito AND** - cuando el valor de la izquierda
+en la expresión siempre pueda validar a false, es el valor que se
+cargará por defecto
 
 ```
-// Cortocircuito OR - cuando el valor de la izquierda
-// en la expresión siempre pueda validar a true, es el valor que se
-cargará por defecto
-
-// Cortocircuito AND - cuando el valor de la izquierda
-// en la expresión siempre pueda validar a false, es el valor que se
-cargará por defecto
-
 // Recordar los valores thruty
 
 // OR - ||
@@ -190,7 +201,7 @@ console.log([] && "Valor de la derecha")
 console.log({} && "Valor de la derecha")
 ```
 
--   **alert, confirm y prompt**
+### **Alert confirm y prompt**
 
 ```
 console.log(window)
@@ -212,14 +223,16 @@ console.log(aviso)
 console.log(typeof aviso)
 ```
 
--   **Expresiones Regulares**
+### **Expresiones Regulares**
+
+Son una secuencia de caracteres que forma un patrón de búsqueda, principalmente
+utilizada para la búsqueda de patrones de cadenas de caracteres.
+
+[Expresion Regular - Wikipedia](https://es.wikipedia.org/wiki/Expresion_regular)
+
+[Expresiones Regulares - MDN](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Regular_Expressions)
 
 ```
-// https://es.wikipedia.org/wiki/Expresion_regular
-// https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Regular_Expressions
-// Son una secuencia de caracteres que forma un patrón de búsqueda, principal-
-// mente utilizada para la búsqueda de patrones de cadenas de caracteres.
-
 let cadena = "lorem ipsum dolor sit amet consectetur adipisicing elit.
 Voluptatem fuga cupiditate dolores saepe, praesentium sit eaque
 recusandae id sapiente similique, laudantium voluptatum
@@ -244,7 +257,7 @@ console.log(expReg2.test(cadena))
 console.log(expReg2.exec(cadena))
 ```
 
--   **Funciones Anónimas Autoejecutables - (IIFE)**
+### **Funciones Anonimas Autoejecutables IIFE**
 
 ```
 (function() {
@@ -302,7 +315,7 @@ console.log(expReg2.exec(cadena))
 ((g) => console.log(g))(globalThis);
 ```
 
--   **Módulos ( import / export )**
+### **Modulos import y export**
 
 ```
 <!-- modulos.html -->

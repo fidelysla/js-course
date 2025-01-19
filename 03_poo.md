@@ -11,21 +11,24 @@
 1.  [JSON](09_json.md)
 1.  [DOM](10_dom.md)
 
-## Programación Orientada a Objetos en JavaScript
+## Programacion Orientada a Objetos en JavaScript
 
-> **POO**: JavaScript es un Lenguaje Orientado a Objetos basado en Prototipos.
+> -   [Prototipos](03_poo.md#prototipos)
+> -   [Herencia Prototipica](03_poo.md#herencia-prototipica)
+> -   [Clases y Herencia](03_poo.md#clases-y-herencia)
+> -   [Metodos Estaticos Getters y Setters](03_poo.md#metodos-estaticos-getters-y-setters)
 
-> **PROTOTIPO**: Mecanismo por el cual un Objeto hereda atributos y métodos de un objeto padre.
+**POO**: JavaScript es un Lenguaje Orientado a Objetos basado en Prototipos.
 
-> **CLASE**: Modelo a seguir. (Molde)
->
-> -   _**Objetos**_: Es una instancia de una clase
->
-> -   _**Atributos**_: Propiedades dentro de un Objeto (Variables)
->
-> -   _**Métodos**_: Acciones que un objeto puede hacer (Funciones)
+**PROTOTIPO**: Mecanismo por el cual un Objeto hereda atributos y métodos de un objeto padre.
 
--   **Prototipos**
+**CLASE**: Modelo a seguir. (Molde)
+
+-   _**Objetos**_: Es una instancia de una clase
+-   _**Atributos**_: Propiedades dentro de un Objeto (Variables)
+-   _**Métodos**_: Acciones que un objeto puede hacer (Funciones)
+
+### **Prototipos**
 
 ```
 // Funcion Contructora donde asignamos los métodos al Prototipo,
@@ -48,7 +51,7 @@ const snoopy = new Animal("Snoopy", "Macho")
 const lolaBunny = new Animal("Lola Bunny", "Hembra");
 ```
 
--   **Herencia Prototípica**
+### **Herencia Prototipica**
 
 ```
 function Perro(nombre, genero, tamanio) {
@@ -83,7 +86,7 @@ lolaBunny.sonar();
 lolaBunny.saludar();
 ```
 
--   **Clases y Herencia**
+### **Clases y Herencia**
 
 ```
 class Animal {
@@ -123,7 +126,7 @@ scooby.sonar()
 scooby.ladrar()
 ```
 
--   **Métodos Estáticos, Getters y Setters**
+### **Metodos Estaticos Getters y Setters**
 
 ```
 class Perro extends Animal {

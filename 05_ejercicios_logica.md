@@ -4,28 +4,28 @@
 1.  [Estructuras Control](02_estructuras_control.md)
 1.  [Programacion Orientada a Objetos](03_poo.md)
 1.  [Objetos y funciones del Lenguaje](04_objetos_y_funciones.md)
-1.  [Ejercicios de Logica de Programación](05_ejercicios_logica.md)
+1.  [Ejercicios de Logica de Programacion](05_ejercicios_logica.md)
 1.  [Programacion Asincrona](06_programacion_asincrona.md)
 1.  [Nuevos Tipos y Caracteristicas](07_nuevos_tipos_y_caracteristicas.md)
 1.  [This, Call, Apply y Bind](08_this_call_apply_bind.md)
 1.  [JSON](09_json.md)
 1.  [DOM](10_dom.md)
 
-## Ejercicios de Lógica de Programación
+## Ejercicios de Logica de Programacion
 
-> -   Ejercicios Parte 1
-> -   Ejercicios Parte 2
-> -   Ejercicios Parte 3
-> -   Ejercicios Parte 4
-> -   Ejercicios Parte 5
-> -   Ejercicios Parte 6
-> -   Ejercicios Parte 7
-> -   Ejercicios Parte 8
-> -   Ejercicios Parte 9
+> -   [Ejercicios Parte 1](05_ejercicios_logica.md#ejercicios-parte-1)
+> -   [Ejercicios Parte 2](05_ejercicios_logica.md#ejercicios-parte-2)
+> -   [Ejercicios Parte 3](05_ejercicios_logica.md#ejercicios-parte-3)
+> -   [Ejercicios Parte 4](05_ejercicios_logica.md#ejercicios-parte-4)
+> -   [Ejercicios Parte 5](05_ejercicios_logica.md#ejercicios-parte-5)
+> -   [Ejercicios Parte 6](05_ejercicios_logica.md#ejercicios-parte-6)
+> -   [Ejercicios Parte 7](05_ejercicios_logica.md#ejercicios-parte-7)
+> -   [Ejercicios Parte 8](05_ejercicios_logica.md#ejercicios-parte-8)
+> -   [Ejercicios Parte 9](05_ejercicios_logica.md#ejercicios-parte-9)
 
 <br>
 
--   **Ejercicios Parte 1**
+### **Ejercicios Parte 1**
 
 > 1.  Programa una función que cuente el número de caracteres de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá 10.
 
@@ -96,7 +96,7 @@ multiTexto("Hola", -1)          // El número no puede ser negativo
 multiTexto("Hola Mundo", 3)     // Hola Mundo Hola Mundo Hola Mundo
 ```
 
--   **Ejercicios Parte 2**
+### **Ejercicios Parte 2**
 
 > 5. Programa una función que invierta las palabras de una cadena de texto, <br> pe. miFuncion("Hola Mundo") devolverá "odnuM aloH".
 
@@ -223,7 +223,7 @@ console.log(deletePat(102030405, "0") )
 console.log(deletePat("12030405,", "0") )
 ```
 
--   **Ejercicios Parte 3**
+### **Ejercicios Parte 3**
 
 > 9. Programa una función que obtenga un numero aleatorio entre 501 y 600.
 
@@ -271,7 +271,7 @@ numbBetween("3","3")
 
 ```
 
--   **Ejercicios Parte 4**
+### **Ejercicios Parte 4**
 
 > 12. Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true.
 
@@ -291,7 +291,7 @@ numbBetween("3","3")
 
 ```
 
--   **Ejercicios Parte 5**
+### **Ejercicios Parte 5**
 
 > 15. Programa una función para convertir números de base binaria a decimal y viceversa, pe. miFuncion(100,2) devolverá 4 base 10.
 
@@ -311,7 +311,7 @@ numbBetween("3","3")
 
 ```
 
--   **Ejercicios Parte 6**
+### **Ejercicios Parte 6**
 
 > 18. Programa una función que dada una cadena de texto cuente el número de vocales y consonantes, pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5.
 
@@ -331,7 +331,7 @@ numbBetween("3","3")
 
 ```
 
--   **Ejercicios Parte 7**
+### **Ejercicios Parte 7**
 
 _La expresión regular que uso para el email en este video_ `/[a-z0-9]+(\.[_a-z0-9]+)_@[a-z0-9-]+(\.[a-z0-9-]+)\_(\.[a-z]{2,15})/i`
 
@@ -353,7 +353,7 @@ _La expresión regular que uso para el email en este video_ `/[a-z0-9]+(\.[_a-z0
 
 ```
 
--   **Ejercicios Parte 8**
+### **Ejercicios Parte 8**
 
 > 24. Programa una función que dado un arreglo de números devuelva un objeto con dos arreglos, el primero tendrá los numeros ordenados en forma ascendente y el segundo de forma descendiente, pe. miFuncion([7, 5,7,8,6]) devolverá { asc: [5,6,7,7,8], desc: [8,7,7,6,5] }.
 
@@ -373,7 +373,7 @@ _La expresión regular que uso para el email en este video_ `/[a-z0-9]+(\.[_a-z0
 
 ```
 
--   **Ejercicios Parte 9**
+### **Ejercicios Parte 9**
 
 > 27. Programa una clase llamada Pelicula.
 >

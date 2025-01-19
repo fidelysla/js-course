@@ -11,29 +11,29 @@
 1.  [JSON](09_json.md)
 1.  [DOM](10_dom.md)
 
-## Nuevos Tipos y Características
+## Nuevos Tipos y Caracteristicas
 
-> -   Symbols
-> -   Sets
-> -   Maps
-> -   WeakSets & WeakMaps
-> -   Iterables & Iterators
-> -   Generators
-> -   Proxies
-> -   Propiedades Dinámicas de los Objetos
+> -   [Symbols](07_nuevos_tipos_y_caracteristicas.md#symbols)
+> -   [Sets](07_nuevos_tipos_y_caracteristicas.md#sets)
+> -   [Maps](07_nuevos_tipos_y_caracteristicas.md#maps)
+> -   [WeakSets and WeakMaps](07_nuevos_tipos_y_caracteristicas.md#weaksets-and-weakmaps)
+> -   [Iterables and Iterators](07_nuevos_tipos_y_caracteristicas.md#iterables-and-iterators)
+> -   [Generators](07_nuevos_tipos_y_caracteristicas.md#generators)
+> -   [Proxies](07_nuevos_tipos_y_caracteristicas.md#proxies)
+> -   [Propiedades Dinamicas de los Objetos](07_nuevos_tipos_y_caracteristicas.md#computed-properties)
 
--   **Symbols**
+### **Symbols**
 
 > Un símbolo (Symbol) es un tipo de dato primitivo que representa
 > un identificador único. Se utilizan para crear propiedades de objetos únicas, para
 > nombrar eventos de forma única, y para otros propósitos que requieren identificadores únicos.
-> Los símbolos se crean utilizando la función Symbol() o el método Symbol.for().
+> Los símbolos se crean utilizando la función `Symbol()` o el método `Symbol.for()`.
 >
 > Los símbolos tienen las siguientes características:
 >
 > -   Son únicos: no hay dos símbolos iguales.
 > -   Son inmutables: no se pueden modificar una vez creados.
-> -   No son enumerables: no aparecen en iteraciones con for...in.
+> -   No son enumerables: no aparecen en iteraciones con `for...in`.
 
 ```
 let id = Symbol("id");
@@ -76,7 +76,7 @@ for (let propiedad in persona) {
 console.log(Object.getOwnPropertySymbols(persona))
 ```
 
--   **Sets**
+### **Sets**
 
 ```
 // Estructura similar a un array pero de datos unicos
@@ -131,7 +131,7 @@ set2.clear()
 console.log(set2); // Set(0) {size: 0}
 ```
 
--   **Maps**
+### **Maps**
 
 ```
 // Objetos para almacenar conjunto de valores
@@ -183,16 +183,28 @@ console.log(llavesmapa2);
 console.log(valoresmapa2);
 ```
 
--   **WeakSets & WeakMaps**
+### **WeakSets and WeakMaps**
+
+**¿Qué es un WeakMaps?**
+
+WeakMap es una estructura de datos JavaScript incorporada introducida en ECMAScript 6 (ES6).
+Está destinado a almacenar pares clave-valor donde las claves deben ser objetos y los valores pueden ser arbitrarios.
+
+**¿Qué es un WeakSets?**
+
+WeakSet es otra estructura de datos especializada introducida en ECMAScript 6 (ES6) junto con WeakMap.
+Está diseñado para trabajar con colecciones de objetos.
+
+A diferencia de Set, WeakSet solo permite almacenar objetos y, al igual que WeakMap, contiene referencias débiles a estos objetos. Esto significa que si un objeto almacenado en un WeakSet no tiene otras referencias en ninguna otra parte del programa, puede ser recolectado automáticamente como basura. Esto hace que WeakSet sea particularmente útil en escenarios donde es necesario mantener una colección de objetos sin impedir que se limpien cuando ya no sean necesarios.
+
+-   Solo almacena referencias debiles (es decir, objetos)
+-   Las llaves deben ser debiles
+-   No son elementos iterables
+-   No se puede utilizar el metodo clear() ni size() en ambos casos
+-   Los WeakSets permite add, has, delete
+-   Los WeakMaps permiten set, get, has, delete
 
 ```
-// Solo almacena referencias debiles (es decir, objetos)
-// Las llaves deben ser debiles
-// No son elementos iterables
-// No se puede utilizar el metodo clear() ni size() en ambos casos
-// Los WeakSets permite add, has, delete
-// Los WeakMaps permiten set, get, has, delete
-
 // const ws = new WeakSet([1, 2, 3, 3, 4, 5, true, false, false, {}, {}, "hola", "HOla"])
 // TypeError: Invalid value used in weakset
 
@@ -274,7 +286,7 @@ setTimeout(() => {
 }, 5000);
 ```
 
--   **Iterables & Iterators**
+### **Iterables and Iterators**
 
 ```
 // Tipos de Iterables
@@ -300,7 +312,7 @@ while (!Inext.done) {
 };
 ```
 
--   **Generators**
+### **Generators**
 
 ```
 // Nueva funcion que nos permite trabajar con los iteradores
@@ -354,7 +366,7 @@ for (let y of gen) {
 };
 ```
 
--   **Proxies**
+### **Proxies**
 
 ```
 const persona = {
@@ -398,7 +410,9 @@ console.log(jon);
 console.log(persona);
 ```
 
--   **Propiedades Dinámicas de los Objetos - Computed Properties**
+### **Computed Properties**
+
+Las propiedades calculadas, introducidas en ECMAScript 2015 (ES6), le permiten crear propiedades de objetos dinámicamente usando una expresión entre corchetes (`[]`). En lugar de especificar un nombre de propiedad fijo, puede utilizar una expresión para calcular el nombre de la propiedad en tiempo de ejecución. Esto proporciona flexibilidad para trabajar con propiedades de objetos y permite comportamientos dinámicos.
 
 ```
 // const objUsuarios = {};
