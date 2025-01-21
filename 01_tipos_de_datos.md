@@ -87,6 +87,8 @@ let saludo = new String("Hola Mundo");
 let saludo2 = `Hola, mi nombre es ${nombre} ${apellido}.`
 let lorem = "      lorem ipsum, dolor sit amet      ";
 
+let saludo = "Hola, mi nombre es " + nombre + " " + apellido + "."
+
 console.log(
     nombre,
     apellido,
@@ -98,6 +100,20 @@ console.log(
     lorem.trim(),
     lorem.split(" "),
 );
+```
+
+-   **Template String**
+
+```
+let ul = `
+<ul>
+    <li>Primavera</li>
+    <li>Verano</li>
+    <li>Otoño</li>
+    <li>Invierno</li>
+</ul>
+`
+console.log(ul)
 ```
 
 -   **number**

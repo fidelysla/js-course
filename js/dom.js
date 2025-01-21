@@ -27,7 +27,7 @@
     // hablar()
 }
 
-/* //* Itroduccion DOM */ {
+/* //* Introduccion DOM */ {
 
 // console.log("********** Elementos del Documento **********");
 // console.log(window.document);
@@ -145,7 +145,7 @@
     // console.log($linkDOM.getAttribute("style"));
     // console.log(getComputedStyle($linkDOM));
 
-    //? VARIABLES CSS - CUSTOM PROPERTIES CSS;
+    //?! VARIABLES CSS - CUSTOM PROPERTIES CSS;
     const $html = document.documentElement, $body = document.body;
     
     let varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color");
@@ -153,23 +153,73 @@
     // console.log(varDarkColor, varYellowColor); // #222 #F7DF1E
 
     //?Establecer colores al body
-    // $body.style.backgroundColor = varDarkColor
-    // $body.style.color = varYellowColor
+    $body.style.backgroundColor = varDarkColor
+    $body.style.color = varYellowColor
 
-    // $html.style.setProperty("--dark-color", "#000")
-    // console.log(varDarkColor); //#-222
-    // varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color")
-    // console.log(varDarkColor);
-    // $body.style.setProperty("background-color", varDarkColor)
+    $html.style.setProperty("--dark-color", "#212121")
+    varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color")
+
+    // console.log(varDarkColor); //#-222 - #pink
+
+    $body.style.setProperty("background-color", varDarkColor)
 
 }
-
 
 /* //* DOM: CLases CSS */ {
 
     // Nos traemos la primera card (tech)
     const $card = document.querySelector(".card")
-    console.log($card); // <figure class="card">…</figure>
-    console.log($card.className); //card
-    console.log($card.classList); //DOMTokenList ['card', value: 'card']
+    // console.log($card); // <figure class="card">…</figure>
+
+    // console.log($card.className); //card
+    // console.log($card.classList); //DOMTokenList ['card', value: 'card']
+
+    // console.log($card.classList.contains("rotate-45")); //false
+
+    $card.classList.add("rotate-45")
+    // console.log($card.className); //card rotate-45
+    // console.log($card.classList); //DOMTokenList(2) ['card', 'rotate-45', value: 'card rotate-45']
+
+    $card.classList.remove("rotate-45")
+    // console.log($card.classList.contains("rotate-45")); //false
+    
+    $card.classList.toggle("rotate-45")
+    // console.log($card.classList.contains("rotate-45")); //true
+    
+    $card.classList.replace("rotate-45", "rotate-135");
+    $card.classList.add("opacity-80", "sepia");
+    $card.classList.remove("opacity-80", "sepia");
+    $card.classList.toggle("opacity-80");
+    $card.classList.toggle("sepia");
+
+}
+
+/* //* DOM: Texto y HTML */ {
+
+    const $whatIsDOM = document.getElementById("que-es")
+
+    let text = `
+    <p>
+        El Modelo de Objetos del Documento (<b><i>DOM -
+        Document Object Model</i></b>) es un API para
+        documentos HTML y XML.
+    </p>
+    <p>
+        Éste proveé una representación estructural del
+        documento, permitiendo modificar su contenido y
+        presentación visual mediante código JS.
+    </p>
+    <p>
+        <mark>El DOM no es parte de la especificación de
+        JavaScript, es una API para los navegadores.</mark>
+    </p>
+    `;
+
+    // Para agregar contenido textual
+
+    // $whatIsDOM.innerText = text  // No forma parte del standar
+    // $whatIsDOM.textContent = text   // Cuando necesites insertar solo texto
+    // $whatIsDOM.innerHTML = text     // Cuando necesites insertar solo html
+    $whatIsDOM.outerHTML = text;    // Eliminar el contenedor con id "que-es" por el texto.
+
 }
