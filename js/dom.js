@@ -146,29 +146,30 @@
     // console.log(getComputedStyle($linkDOM));
 
     //?! VARIABLES CSS - CUSTOM PROPERTIES CSS;
-    const $html = document.documentElement, $body = document.body;
+    const $html = document.documentElement
+    const $body = document.body;
     
     let varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color");
     let varYellowColor = getComputedStyle($html).getPropertyValue("--yellow-color");
     // console.log(varDarkColor, varYellowColor); // #222 #F7DF1E
 
     //?Establecer colores al body
-    $body.style.backgroundColor = varDarkColor
-    $body.style.color = varYellowColor
+    // $body.style.backgroundColor = varDarkColor
+    // $body.style.color = varYellowColor
 
-    $html.style.setProperty("--dark-color", "#212121")
-    varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color")
+    // $html.style.setProperty("--dark-color", "#212121")
+    // varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color")
 
-    // console.log(varDarkColor); //#-222 - #pink
+    // console.log(varDarkColor); //#-222 - #-2121
 
-    $body.style.setProperty("background-color", varDarkColor)
+    // $body.style.setProperty("background-color", varDarkColor)
 
 }
 
 /* //* DOM: CLases CSS */ {
 
     // Nos traemos la primera card (tech)
-    const $card = document.querySelector(".card")
+    // const $card = document.querySelector(".card")
     // console.log($card); // <figure class="card">…</figure>
 
     // console.log($card.className); //card
@@ -176,21 +177,21 @@
 
     // console.log($card.classList.contains("rotate-45")); //false
 
-    $card.classList.add("rotate-45")
+    // $card.classList.add("rotate-45")
     // console.log($card.className); //card rotate-45
     // console.log($card.classList); //DOMTokenList(2) ['card', 'rotate-45', value: 'card rotate-45']
 
-    $card.classList.remove("rotate-45")
+    // $card.classList.remove("rotate-45")
     // console.log($card.classList.contains("rotate-45")); //false
     
-    $card.classList.toggle("rotate-45")
+    // $card.classList.toggle("rotate-45")
     // console.log($card.classList.contains("rotate-45")); //true
     
-    $card.classList.replace("rotate-45", "rotate-135");
-    $card.classList.add("opacity-80", "sepia");
-    $card.classList.remove("opacity-80", "sepia");
-    $card.classList.toggle("opacity-80");
-    $card.classList.toggle("sepia");
+    // $card.classList.replace("rotate-45", "rotate-135");
+    // $card.classList.add("opacity-80", "sepia");
+    // $card.classList.remove("opacity-80", "sepia");
+    // $card.classList.toggle("opacity-80");
+    // $card.classList.toggle("sepia");
 
 }
 
@@ -222,4 +223,39 @@
     // $whatIsDOM.innerHTML = text     // Cuando necesites insertar solo html
     $whatIsDOM.outerHTML = text;    // Eliminar el contenedor con id "que-es" por el texto.
 
+}
+
+/* //* DOM Traversing: Recorriendo el DOM */{
+
+    const $cards = document.querySelector(".cards")
+    // console.log($cards)
+    
+    // Referencia asus hijos
+    // console.log($cards.childNodes)
+
+    // console.log($cards.children)
+    // console.log($cards.children[2])
+
+    // console.log($cards.parentElement) // Body
+    // console.log($cards.parentNode)    // Body
+
+    // console.log($cards.firstChild) // #text - textContent "\n        "
+    // console.log($cards.lastChild)
+
+    // console.log($cards.firstElementChild)
+    // console.log($cards.lastElementChild)
+
+    // console.log($cards.previousSibling) // #text
+    // console.log($cards.nextSibling) // #text
+
+    // console.log($cards.previousElementSibling) // <a>
+    // console.log($cards.nextElementSibling) // <script>
+
+    // El padre mas cercano del selector dado
+    // console.log($cards.closest("div")) // null
+    // console.log($cards.children[3].closest("section"))
+}
+
+/* //* DOM: Creando Elementos y Fragmentos */ {
+    
 }

@@ -274,7 +274,8 @@ console.log($linkDOM.getAttribute("style"));
 console.log(getComputedStyle($linkDOM));
 
 //? VARIABLES CSS - CUSTOM PROPERTIES CSS;
-const $html = document.documentElement, $body = document.body;
+const $html = document.documentElement
+const $body = document.body;
 
 let varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color");
 let varYellowColor = getComputedStyle($html).getPropertyValue("--yellow-color");
@@ -284,10 +285,10 @@ console.log(varDarkColor, varYellowColor);                          // #222 #F7D
 $body.style.backgroundColor = varDarkColor
 $body.style.color = varYellowColor
 
-$html.style.setProperty("--dark-color", "#222222")
+$html.style.setProperty("--dark-color", "#212121")
 varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color")
 
-console.log(varDarkColor); //#-222 - #pink
+console.log(varDarkColor); //#-222 - #-2121
 
 $body.style.setProperty("background-color", varDarkColor)
 ```
@@ -395,3 +396,48 @@ let text = `
 // Eliminar el contenedor con id "que-es" por el texto.
 $whatIsDOM.outerHTML = text;
 ```
+
+### DOM Traversing Recorriendo el DOM
+
+```
+<!-- dom.html -->
+<style>
+    ...
+    .cards {
+        border: thin solid var(--dark-color);
+        padding: 1rem;
+    }
+<style>
+```
+
+```
+const $cards = document.querySelector(".cards")
+// console.log($cards)
+
+// Referencia asus hijos
+// console.log($cards.childNodes)
+
+console.log($cards.children)
+console.log($cards.children[2])
+
+// console.log($cards.parentElement) // Body
+// console.log($cards.parentNode)    // Body
+
+// console.log($cards.firstChild) // #text - textContent "\n       "
+// console.log($cards.lastChild)
+
+console.log($cards.firstElementChild)
+console.log($cards.lastElementChild)
+
+// console.log($cards.previousSibling) // #text
+// console.log($cards.nextSibling) // #text
+
+console.log($cards.previousElementSibling) // <a>
+console.log($cards.nextElementSibling) // <script>
+
+// El padre mas cercano del selector dado
+// console.log($cards.closest("div")) // null
+console.log($cards.children[3].closest("section"))
+```
+
+### Creando Elementos y Fragmentos
