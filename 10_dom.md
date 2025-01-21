@@ -19,7 +19,7 @@
 > -   [Atributos y Data Attributes](10_dom.md#atributos-y-data-attributes)
 > -   [Estilos y Variables CSS](10_dom.md#estilos-y-variables-css)
 > -   [Clases CSS](10_dom.md#clases-css)
-> -   Texto y HTML
+> -   [Texto y HTML](10_dom.md#texto-y-html)
 > -   DOM Traversing: Recorriendo el DOM
 > -   Creando Elementos y Fragmentos
 > -   Templates HTML
@@ -353,6 +353,14 @@ $card.classList.toggle("sepia");
 ```
 
 ### Texto y HTML
+
+```
+<p id="que-es">
+    Lorem ipsum dolor sit amet consectetu adipisicing elit.
+    Nam facilis voluptates optio
+    aliquam laborum doloribus obcaecati porro.
+</p>
+```
 
 ```
 const $whatIsDOM = document.getElementById("que-es")
