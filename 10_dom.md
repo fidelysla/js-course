@@ -20,8 +20,8 @@
 > -   [Estilos y Variables CSS](10_dom.md#estilos-y-variables-css)
 > -   [Clases CSS](10_dom.md#clases-css)
 > -   [Texto y HTML](10_dom.md#texto-y-html)
-> -   DOM Traversing: Recorriendo el DOM
-> -   Creando Elementos y Fragmentos
+> -   [Traversing Recorriendo el DOM](10_dom.md#dom-traversing-recorriendo-el-dom)
+> -   [Creando Elementos y Fragmentos](10_dom.md#creando-elementos-y-fragmentos)
 > -   Templates HTML
 > -   Modificando Elementos (Old Style)
 > -   Modificando Elementos (Cool Style)
@@ -441,3 +441,101 @@ console.log($cards.children[3].closest("section"))
 ```
 
 ### Creando Elementos y Fragmentos
+
+> [W3S HTML DOM - Nodes](https://www.w3schools.com/js/js_htmldom_nodes.asp)
+>
+> [Arbol de Nodos](https://sarreplec.caib.es/pluginfile.php/10750/mod_resource/content/2/DWEC06_v1/ArchivosUnidad/Moodle/DWEC06_Contenidos/12_el_rbol_del_dom_y_tipos_de_nodos.html)
+>
+> [MDN - Node](https://developer.mozilla.org/es/docs/Web/API/Node)
+
+```
+// Crear elementos html
+const $figure = document.createElement("figure"),
+    $img = document.createElement("img"),
+    $figcaption = document.createElement("figcaption"),
+    $figcaptionText = document.createTextNode("Animals"),
+    $cards = document.querySelector(".cards"),
+    $figure2 = document.createElement("figure");
+
+$img.setAttribute("src", "https://picsum.photos/id/237/300/200")
+$img.setAttribute("alt", "Animals")
+
+$figure.classList.add("card")
+
+$figcaption.appendChild($figcaptionText)
+
+$figure.appendChild($img)
+$figure.appendChild($figcaption)
+
+$cards.appendChild($figure)
+
+$figure2.innerHTML = `
+<img src="https://picsum.photos/id/129/300/200" alt="People">
+<figcaption>People</figcaption>
+`
+$figure2.classList.add("card");
+$cards.appendChild($figure2)
+```
+
+```
+const estaciones = ["Primavera", "Verano", "Otonio", "Invierno"],
+    $ul = document.createElement("ul");
+
+document.write("<h3>Estaciones del Año</h3>")
+document.body.appendChild($ul)
+
+estaciones.forEach(el => {
+    const $li = document.createElement("li")
+
+    $li.textContent = el
+    $ul.appendChild($li)
+
+    // text = document.createTextNode(el)
+    // $li.appendChild(text)
+    // $ul.appendChild($li)
+});
+```
+
+```
+const continentes = ["África", "América", "Asia",
+                    "Europa", "Oceanía"],
+    $ul2 = document.createElement("ul");
+
+document.write("<h3>Continentes del Mundo</h3>");
+document.body.appendChild($ul2);
+
+$ul2.innerHTML = ``;
+continentes.forEach((el) => $ul2.innerHTML += `<li>${el}</li>`);
+```
+
+```
+// Fragmentos
+const meses = [
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre",
+],
+$ul3 = document.createElement("ul"),
+    $fragment = document.createDocumentFragment();
+
+meses.forEach(el => {
+    const $li = document.createElement("li")
+    $li.textContent = el
+    $fragment.appendChild($li)
+});
+
+document.write("<h3>Meses del Año</h3>")
+$ul3.appendChild($fragment)
+document.body.appendChild($ul3)
+```
+
+### Templates HTML
