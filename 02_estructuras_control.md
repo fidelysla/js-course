@@ -28,14 +28,52 @@
 ```
 Aritmeticos: + - * / % ()
 
+let a = 5 + (5 - 10) * 3
+let modulo = 5 % 2
+
 Relacionales: >, <, >=, <=, ==, ===, !=, !==
 
+// = asignacion de variable
+// == comparacion de valores (mala practica)
+// === comparacion de tipo de dato y de valor (buena practica)
+
+console.log(7 == 7)
+console.log("7" == 7)
+console.log(0 == false)
+
+console.log(8 > 9)
+console.log(9 > 8)
+console.log(8 >= 9)
+
+De Incremento y Decremento: +=, -=, *=, /=
+
+let i = 2
+i = i + 2
+i += 2
+i -= 3
+i *= 3
+i /= 3
+
+Operador Unario: ++, --
+
+i++
+a = i++
+i--
+++i
+b = ++i
+--i
+
 Logicos: ! - Not, || - Or, && - And
+
+console.log((9 === 9) || ("9" === 9))
+console.log((9 === 9) && ("9" === 9))
+console.log((9 === 9) && ("9" === "9"))
 ```
 
 ### **Condicionales**
 
 ```
+// if - else if - else
 let edad = 26
 if (edad >= 18) {
     console.log("Mayor de Edad")
@@ -45,10 +83,12 @@ if (edad >= 18) {
     console.log("*")
 };
 
+// Operador Ternario: (condicion) ? verdaero : falsa
 let eresMayor = (edad >= 18)
     ? "Mayor de Edad"
     : "Menor de Edad";
 
+// SWITCH - CASE
 switch (key) {
 case value:
     console.log("*")
@@ -62,14 +102,17 @@ default:
 ### **Ciclos loops**
 
 ```
+// WHILE
 while (condition) {
     console.log("*")
 };
 
+// DO WHILE
 do {
     console.log("*")
 } while (condition);
 
+// FOR
 for (let index = 0; index < array.length; index++) {
     console.log(array[index])
 };
@@ -86,6 +129,7 @@ for (const i of object=iterable) {
     console.log(i)
 };
 
+// FOREACH
 array = [1,2,3]
 array.forEach((currentValue, index) => {
     console.log(`Indice: ${index} - Valor: ${currentValue}`)
@@ -103,6 +147,16 @@ try {
 } finally {
     console.log("*")
 };
+
+try {
+    let numero = "y";
+    if (isNaN(numero)) {
+        throw new Error("El caractér introducido no es un Número")
+    }
+    console.log(numero*numero)
+} catch (error) {
+    console.log(`Se produjo el siguiente error: ${error}`);
+}
 ```
 
 ### **Break and Continue**
@@ -158,7 +212,7 @@ perro.ladrar();
 ### **Parametros REST y Operador Spread**
 
 ```
-// Parámetros Rest
+// Parametros Rest
 function sumar(a, b, ...c ) {
     let resultado = a + b;
     c.forEach( function(n) {
@@ -166,6 +220,7 @@ function sumar(a, b, ...c ) {
     });
     return resultado
 };
+console.log(sumar(1, 2, 3, 4, 5, 6, 7))
 
 // Sintaxis Spread
 const arr1 = [1, 2, 3, 4, 5], arr2 = [6, 7, 8, 9, 0];
@@ -175,28 +230,34 @@ const arr3 = [...arr1, ...arr2];
 ### **Arrow Functions**
 
 ```
-const saludar = () => {
-    console.log(`Hola`)
-};
-
+const saludar = () => { console.log(`Hola`) };
 const saludar2 = nombre => console.log(`Hola ${nombre}`);
-
 const sumar = (a, b) => a + b;
 
 const perro = {
     nombre: "Kenai";
-
     ladrar: function() {
         console.log(this) // {nombre: 'Kenai', ladrar: ƒ}
     };
-
     ladrar: () => {
         console.log(`${this}`) // [object Window]
     };
-
     ladrar() {
         console.log(this)
     };
 };
 perro.ladrar();
+
+const funcionDeVariasLineas = () => {
+    console.log("Uno");
+    console.log("Dos");
+    console.log("Tres");
+};
+funcionDeVariasLineas();
+
+const numeros = [1, 2, 3, 4, 5]
+numeros.forEach((el, index) => console.log(
+    `${el} esta en la posición ${index}.`
+    ));
+
 ```

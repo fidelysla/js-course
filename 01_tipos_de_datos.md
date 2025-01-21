@@ -13,7 +13,70 @@
 
 ## Tipos de Datos en JavaScript
 
-### Primitivos
+### Variables y Constantes
+
+Los tipos de datos en JavaScript representan categorías de información que se almacenan en variables y constantes, y se utilizan para manipular y procesar datos de manera efectiva.
+
+**VARIABLES**
+
+```
+{
+var musica = "Pop 1"
+let musica = "Pop 1"
+console.log(musica)
+}
+console.log(musica)
+```
+
+-   **Variables Glabales**: Las variables globales son variables que se definen fuera de cualquier función o bloque de código. Estas variables están disponibles en todo el ámbito del programa y pueden ser accedidas desde cualquier parte del código.
+
+```
+var hola = "Hola Mundo"
+```
+
+-   **Variables de Bloque**: Las variables de bloque son variables que se definen dentro de un bloque de código, como un condicional, un bucle o una función. Estas variables solo están disponibles dentro del bloque donde se definen y no se pueden acceder desde fuera del bloque.
+
+```
+let hello = "Hello World"
+```
+
+> Es importante destacar que en JavaScript, el ámbito de una variable es determinado por su declaración. Si una variable es declarada con `var`, `let` o `const` dentro de un bloque, su ámbito es el bloque donde se declara. Si una variable es declarada con `var` fuera de cualquier bloque, su ámbito es global.
+
+**CONSTANTES**
+
+Las constantes en JavaScript son variables que poseen una naturaleza inmutable, es decir, una vez que se les asigna un valor, no pueden ser reasignadas ni modificadas. Esta característica las hace ideales para representar valores que permanecen invariables durante la ejecución del programa, lo que contribuye a mantener la consistencia y la seguridad en el código.
+
+En JavaScript, las constantes se declaran utilizando la palabra clave `const`, lo que les confiere su naturaleza inmutable y les permite ser utilizadas de manera eficaz en la programación.
+
+```
+const PI = 3.1416
+try {
+  PI = 2.71;
+} catch (error) {
+  console.error(error); // TypeError: Assignment to constant variable.
+}
+console.log(PI)
+```
+
+Aunque las constantes en JavaScript están diseñadas para ser inmutables, es importante destacar que pueden experimentar cambios en su valor si se utilizan como objetos o arrays. Esto se debe a que los objetos y arrays en JavaScript son objetos dinámicos que pueden ser modificados después de su creación.
+
+```
+const objeto = {
+nombre: "Jon",
+edad: 35
+}
+const colores = ["blanco", "negro"]
+
+objeto.correo = "jon@hotmail.com"
+colores.push("verde")
+
+console.log(objeto)
+console.log(colores)
+```
+
+<hr>
+
+### Tipos de Datos Primitivos
 
 -   **string**
 
@@ -58,6 +121,8 @@ console.log(c + parseFloat(d));
 
 -   **boolean**
 
+[Truthy](https://developer.mozilla.org/en-US/docs/Glossary/Truthy)
+
 ```
 let verdadero = true;
 let falso = false;
@@ -86,7 +151,7 @@ let noEsUnNumero = "hola" * 3.7;
 console.log(noEsUnNumero);
 ```
 
-### **Compuestos**:
+### Tipos de Datos Compuestos:
 
 _Se accede a la referencia del valor_.
 
