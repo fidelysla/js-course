@@ -93,13 +93,16 @@ El CSSOM es similar al DOM, pero específicamente para las hojas de estilo CSS a
         }
     </style>
 </head>
+
 <body>
-    <h3>Manejo del DOM</h3>
+    <h1>Manejo del DOM</h1>
+
     <p id="que-es">
         Lorem ipsum dolor sit amet consectetu adipisicing elit.
         Nam facilis voluptates optio
         aliquam laborum doloribus obcaecati porro.
     </p>
+
     <nav id="menu">
         <ul>
             <li><a href="#">Sección 1</a></li>
@@ -235,7 +238,6 @@ console.log($linkDOM.hasAttribute("data-id")); //false
 
 ```
 <!-- dom.html -->
-<!-- Agregamos un atributo style al enlace link-dom -->
 <a class="link-dom" href="dom.html"
 data-id="1"
 data-description="Document Object Model">DOM</a>
@@ -539,3 +541,54 @@ document.body.appendChild($ul3)
 ```
 
 ### Templates HTML
+
+```
+<!-- dom.html -->
+<template id="template card">
+    <figure class="card">
+        <img>
+        <figcaption></figcaption>
+    </figure>
+</template>
+```
+
+```
+const $cards = document.querySelector(".cards"),
+    $template = document.getElementById("template-card").content,
+    $fragment = document.createDocumentFragment(),
+    cardContent = [
+        {
+            title: "Tecnología",
+            img: "https://picsum.photos/id/119/300/200"
+        },
+        {
+            title: "Animales",
+            img: "https://picsum.photos/id/169/300/200"
+        },
+        {
+            title: "Arquitectura",
+            img: "https://picsum.photos/id/238/300/200"
+        },
+        {
+            title: "Gente",
+            img: "https://picsum.photos/id/177/300/200"
+        },
+        {
+            title: "Naturaleza",
+            img: "https://picsum.photos/id/15/300/200"
+        },
+    ];
+
+cardContent.forEach(el => {
+    $template.querySelector("img").setAttribute("src", el.img)
+    $template.querySelector("img").setAttribute("alt", el.title)
+    $template.querySelector("figcaption").textContent = el.title
+
+    // Nodo clonado del template
+    let $clone = document.importNode($template, true);
+
+    $fragment.appendChild($clone);
+});
+
+$cards.appendChild($fragment)
+```
