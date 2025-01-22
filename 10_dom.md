@@ -22,9 +22,9 @@
 > -   [Texto y HTML](10_dom.md#texto-y-html)
 > -   [Traversing Recorriendo el DOM](10_dom.md#dom-traversing-recorriendo-el-dom)
 > -   [Creando Elementos y Fragmentos](10_dom.md#creando-elementos-y-fragmentos)
-> -   Templates HTML
-> -   Modificando Elementos (Old Style)
-> -   Modificando Elementos (Cool Style)
+> -   [Templates HTML](10_dom.md#templates-html)
+> -   [Modificando Elementos (Old Style)](10_dom.md#modificando-elementos-old-style)
+> -   [Modificando Elementos (Cool Style)](10_dom.md#modificando-elementos-cool-style)
 > -   Manejadores de Eventos
 > -   Eventos con Parámetros y Remover Eventos
 > -   Flujo de Eventos (Burbuja y Captura)
@@ -128,12 +128,12 @@ El CSSOM es similar al DOM, pero específicamente para las hojas de estilo CSS a
             <figcaption>Animals</figcaption>
         </figure>
         <figure class="card">
-            <img src="https://picsum.photos/id/129/300/200" alt="People">
-            <figcaption>People</figcaption>
-        </figure>
-        <figure class="card">
             <img src="https://picsum.photos/id/49/300/200" alt="Architecture">
             <figcaption>Architecture</figcaption>
+        </figure>
+        <figure class="card">
+            <img src="https://picsum.photos/id/129/300/200" alt="People">
+            <figcaption>People</figcaption>
         </figure>
         <figure class="card">
             <img src="https://picsum.photos/id/28/300/200" alt="Nature">
@@ -544,7 +544,7 @@ document.body.appendChild($ul3)
 
 ```
 <!-- dom.html -->
-<template id="template card">
+<template id="template-card">
     <figure class="card">
         <img>
         <figcaption></figcaption>
@@ -591,4 +591,85 @@ cardContent.forEach(el => {
 });
 
 $cards.appendChild($fragment)
+```
+
+### Modificando Elementos Old Style
+
+```
+const $cards = document.querySelector(".cards"),
+    $newCard = document.createElement("figure"),
+    $cloneCards = $cards.cloneNode(true);
+
+$newCard.innerHTML = `
+<img src="https://picsum.photos/seed/any-seed/300/200" alt="Any">
+<figcaption>Any</figcaption>
+`
+$newCard.classList.add("card");
+
+// $cards.replaceChild($newCard, $cards.children[2])
+// $cards.insertBefore($newCard, $cards.firstElementChild)
+// $cards.removeChild($cards.lastElementChild)
+// document.body.appendChild($cloneCards)
+```
+
+### Modificando Elementos Cool Style
+
+> `.insertAdjacent...(position, ...)`
+>
+> -   [`.insertAdjacentElement(position, HTMLElement)`](https://developer.mozilla.org/es/docs/Web/API/Element/insertAdjacentElement)
+> -   [`.insertAdjacentHTML(position, html-text)`](https://developer.mozilla.org/es/docs/Web/API/Element/insertAdjacentHTML)
+> -   [`.insertAdjacentText(position, text-string)`](https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentText)
+>
+> Posiciones (`position`):
+>
+> -   _`"beforebegin"`_ (como hermano anterior)
+> -   _`"afterbegin"`_ (como primer hijo)
+> -   _`"beforeend"`_ (como ultimo hijo)
+> -   _`"afterend"`_ (como hermano siguiente)
+
+> -   _`Element.prepend()`_ (Primer hijo)
+> -   _`Element.before()`_ (Hermano anterior)
+> -   _`Element.append()`_ (Ultimo Hijo)
+> -   _`Element.after()`_ (Hermano Siguiente)
+
+```
+/*
+.insertAdjacent...
+    .insertAdjacentElement(position, HTMLElement)
+    .insertAdjacentHTML(position, `<p>html</p>`)
+    .insertAdjacentText(position, text)
+
+posiciones:
+    beforebegin (hermano anterior)
+    afterbegin (primer hijo)
+    beforeend (ultimo hijo)
+    afterend  (hermano siguiente)
+*/
+
+const $cards = document.querySelector(".cards"),
+    $newCard = document.createElement("figure")
+
+// $newCard.innerHTML = `
+// <img src="https://picsum.photos/seed/any-seed/300/200" alt="Any">
+// <figcaption>Any</figcaption>
+// `
+
+let $contentCard = `
+<img src="https://picsum.photos/seed/any-seed/300/200" alt="Any">
+<figcaption></figcaption>
+`
+$newCard.classList.add("card");
+
+$newCard.insertAdjacentHTML("beforeend", $contentCard)
+$newCard.querySelector("figcaption").insertAdjacentText("afterbegin", "Any")
+
+// $cards.insertAdjacentElement("beforebegin", $newCard)
+// $cards.insertAdjacentElement("afterbegin", $newCard)
+// $cards.insertAdjacentElement("beforeend", $newCard)
+// $cards.insertAdjacentElement("afterend", $newCard)
+
+// $cards.prepend($newCard)    // Primer hijo
+// $cards.before($newCard)     // Hermano anterior
+// $cards.append($newCard)     // Ultimo Hijo
+// $cards.after($newCard)      // Hermano Siguiente
 ```
