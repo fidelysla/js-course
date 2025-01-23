@@ -25,7 +25,7 @@
 > -   [Templates HTML](10_dom.md#templates-html)
 > -   [Modificando Elementos (Old Style)](10_dom.md#modificando-elementos-old-style)
 > -   [Modificando Elementos (Cool Style)](10_dom.md#modificando-elementos-cool-style)
-> -   Manejadores de Eventos
+> -   [Manejadores de Eventos](10_dom.md#manejadores-de-eventos)
 > -   Eventos con Parámetros y Remover Eventos
 > -   Flujo de Eventos (Burbuja y Captura)
 > -   stopPropagation and preventDefault
@@ -632,22 +632,9 @@ $newCard.classList.add("card");
 > -   _`Element.append()`_ (Ultimo Hijo)
 > -   _`Element.after()`_ (Hermano Siguiente)
 
-```
-/*
-.insertAdjacent...
-    .insertAdjacentElement(position, HTMLElement)
-    .insertAdjacentHTML(position, `<p>html</p>`)
-    .insertAdjacentText(position, text)
-
-posiciones:
-    beforebegin (hermano anterior)
-    afterbegin (primer hijo)
-    beforeend (ultimo hijo)
-    afterend  (hermano siguiente)
-*/
-
-const $cards = document.querySelector(".cards"),
-    $newCard = document.createElement("figure")
+```javascript
+const $cards = document.querySelector('.cards'),
+    $newCard = document.createElement('figure');
 
 // $newCard.innerHTML = `
 // <img src="https://picsum.photos/seed/any-seed/300/200" alt="Any">
@@ -657,19 +644,114 @@ const $cards = document.querySelector(".cards"),
 let $contentCard = `
 <img src="https://picsum.photos/seed/any-seed/300/200" alt="Any">
 <figcaption></figcaption>
-`
-$newCard.classList.add("card");
+`;
 
-$newCard.insertAdjacentHTML("beforeend", $contentCard)
-$newCard.querySelector("figcaption").insertAdjacentText("afterbegin", "Any")
+$newCard.classList.add('card');
 
-// $cards.insertAdjacentElement("beforebegin", $newCard)
+$newCard.insertAdjacentHTML('beforeend', $contentCard);
+$newCard
+    .querySelector('figcaption')
+    .insertAdjacentText('afterbegin', 'Any');
+
+$cards.insertAdjacentElement('beforebegin', $newCard);
 // $cards.insertAdjacentElement("afterbegin", $newCard)
 // $cards.insertAdjacentElement("beforeend", $newCard)
 // $cards.insertAdjacentElement("afterend", $newCard)
 
-// $cards.prepend($newCard)    // Primer hijo
-// $cards.before($newCard)     // Hermano anterior
-// $cards.append($newCard)     // Ultimo Hijo
-// $cards.after($newCard)      // Hermano Siguiente
+$cards.prepend($newCard); // Primer hijo
+// $cards.before($newCard);  // Hermano anterior
+// $cards.append($newCard);  // Ultimo Hijo
+// $cards.after($newCard);   // Hermano Siguiente
 ```
+
+### Manejadores de Eventos
+
+**Los Eventos**
+
+Son un mecanismo fundamental para controlar las acciones del usuario y definir comportamientos del documento. Estos eventos pueden ocurrir en momentos específicos o cuando se cumplen ciertas condiciones. Las funciones asociadas a estos eventos se conocen como Manejadores de Eventos (Event Handlers), Observadores o Escuchadores.
+
+Existen tres formas de definir eventos en JavaScript:
+
+**1. Manejador de Eventos como atributo del HTML**
+
+La función `holaMundo` se convierte en un Manejador de Eventos cuando se utiliza como atributo del HTML. Cuando una función se ejecuta en un evento, se puede acceder al objeto `event` para obtener información sobre el evento que se desencadenó.
+
+```javascript
+function holaMundo() {
+    alert('Hola Mundo');
+    console.log(event);
+}
+```
+
+En este ejemplo, el objeto `event` tiene una propiedad `type` que indica el tipo de evento que se desencadenó, y una propiedad `target` que referencia al elemento que originó el evento. Algunos eventos, como `onclick`, tienen funciones asociadas que se pueden utilizar para manejar el evento.
+
+**2. Manejador de Eventos Semántico**
+
+Se le dice manejador semántico que va teniendo una coherencia en la manera como la vamos definiendo. Un manejador semántico se define igualando el evento semántico al nombre de la función, sin incluir paréntesis. Esto se debe a que, si se incluyen paréntesis, la función se ejecutará inmediatamente al cargar el navegador.
+
+**3. Manejador de Eventos Multiple**
+
+El método `addEventListener()` ofrece el enfoque más flexible para manejar eventos. Le permite adjuntar múltiples controladores de eventos a un solo elemento, lo que no es posible con los manejadores semánticos.
+
+_Beneficios clave_:
+
+-   Puede adjuntar múltiples funciones al mismo evento.
+-   No reemplaza los controladores de eventos anteriores
+-   Más flexible y recomendado en el desarrollo moderno de JavaScript.
+
+<br>
+
+```html
+<!-- dom.html -->
+<h3>Eventos en JavaScript</h3>
+<h4>Manejadores de Eventos</h4>
+
+<button onclick="holaMundo()">Evento con atributo HTML</button>
+<button id="evento-semantico">Evento con manejador semantico</button>
+<button id="evento-multiple">Evento con manejador multiple</button>
+```
+
+```javascript
+// MANEJADOR COMO ATRIBUTO DEL HTML
+function holaMundo() {
+    alert('Hola Mundo');
+    console.log(event);
+}
+
+// MANEJADOR SEMÁNTICO
+const $eventoSemantico = document.getElementById('evento-semantico');
+
+// La función se ejecutará inmediatamente y el objeto `event` no estará definido.
+$eventoSemantico.onclick = holaMundo;
+
+// Otra manera de definir un evento semántico es utilizando una función anónima o una arrow function.
+$eventoSemantico.onclick = function (e) {
+    alert(`Hola Mundo Manejador de Evento Semántico`);
+    console.log(e);
+    console.log(event);
+};
+
+// COMO MANEJADOR MÚLTIPLE
+const $eventoMultiple = document.getElementById('evento-multiple');
+
+$eventoMultiple.addEventListener('click', holaMundo);
+$eventoMultiple.addEventListener('click', (e) => {
+    alert('Hola Mundo Manejador de Eventos Multiple');
+    console.log(e);
+    console.log(e.type);
+    console.log(e.target);
+    console.log(event);
+});
+```
+
+**_Observaciones sobre Manejadores de Eventos_**
+
+Es importante destacar que cuando se menciona a un Manejador de Eventos, se hace referencia a la función que se ejecuta en respuesta a un evento específico. Una función puede ser utilizada para desencadenar eventos en diferentes elementos del Document Object Model (DOM).
+
+Sin embargo, los eventos semánticos presentan una limitación significativa. Al agregar un evento semántico a un elemento del DOM, se está en realidad agregando un método a su prototipo de eventos. Esto significa que una vez que se define un evento semántico, solo puede estar asociado con una función específica.
+
+Además, es importante tener en cuenta que toda función que se convierte en un Manejador de Eventos no puede recibir parámetros adicionales al evento en sí. El único parámetro que puede recibir es el evento en sí, que se puede obtener utilizando la palabra reservada `event` o abreviando como `e`.
+
+En **resumen**, los eventos semánticos tienen una limitación importante que los hace menos flexibles que los eventos múltiples. Por lo tanto, es recomendable utilizar eventos múltiples para manejar múltiples funciones en respuesta a un solo evento.
+
+###

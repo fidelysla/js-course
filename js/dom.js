@@ -265,87 +265,87 @@
     // https://developer.mozilla.org/es/docs/Web/API/Node
 
     // Crear elementos html
-    const $figure = document.createElement("figure"),
-        $img = document.createElement("img"),
-        $figcaption = document.createElement("figcaption"),
-        $figcaptionText = document.createTextNode("Animals"),
-        $cards = document.querySelector(".cards"),
-        $figure2 = document.createElement("figure");
+//     const $figure = document.createElement("figure"),
+//         $img = document.createElement("img"),
+//         $figcaption = document.createElement("figcaption"),
+//         $figcaptionText = document.createTextNode("Animals"),
+//         $cards = document.querySelector(".cards"),
+//         $figure2 = document.createElement("figure");
     
-    $img.setAttribute("src", "https://picsum.photos/id/237/300/200")
-    $img.setAttribute("alt", "Animals")
+//     $img.setAttribute("src", "https://picsum.photos/id/237/300/200")
+//     $img.setAttribute("alt", "Animals")
     
-    $figure.classList.add("card")
+//     $figure.classList.add("card")
 
-    $figcaption.appendChild($figcaptionText)
+//     $figcaption.appendChild($figcaptionText)
     
-    $figure.appendChild($img)
-    $figure.appendChild($figcaption)
+//     $figure.appendChild($img)
+//     $figure.appendChild($figcaption)
     
-    $cards.appendChild($figure)
+//     $cards.appendChild($figure)
 
-    $figure2.innerHTML = `
-    <img src="https://picsum.photos/id/129/300/200" alt="People">
-    <figcaption>People</figcaption>
-`
-    $figure2.classList.add("card");
-    $cards.appendChild($figure2)
+//     $figure2.innerHTML = `
+//     <img src="https://picsum.photos/id/129/300/200" alt="People">
+//     <figcaption>People</figcaption>
+// `
+//     $figure2.classList.add("card");
+//     $cards.appendChild($figure2)
 
 
-    const estaciones = ["Primavera", "Verano", "Otonio", "Invierno"],
-        $ul = document.createElement("ul");
+//     const estaciones = ["Primavera", "Verano", "Otonio", "Invierno"],
+//         $ul = document.createElement("ul");
     
-    document.write("<h3>Estaciones del Año</h3>")
-    document.body.appendChild($ul)
+//     document.write("<h3>Estaciones del Año</h3>")
+//     document.body.appendChild($ul)
 
-    estaciones.forEach(el => {
-        const $li = document.createElement("li")
+//     estaciones.forEach(el => {
+//         const $li = document.createElement("li")
     
-        $li.textContent = el
-        $ul.appendChild($li)
+//         $li.textContent = el
+//         $ul.appendChild($li)
 
-        // text = document.createTextNode(el)
-        // $li.appendChild(text)
-        // $ul.appendChild($li)
-    });
+//         // text = document.createTextNode(el)
+//         // $li.appendChild(text)
+//         // $ul.appendChild($li)
+//     });
 
 
-    const continentes = ["África", "América", "Asia", "Europa", "Oceanía"],
-        $ul2 = document.createElement("ul");
+    // const continentes = ["África", "América", "Asia", "Europa", "Oceanía"],
+    //     $ul2 = document.createElement("ul");
 
-    document.write("<h3>Continentes del Mundo</h3>");
-    document.body.appendChild($ul2);
+    // document.write("<h3>Continentes del Mundo</h3>");
+    // document.body.appendChild($ul2);
 
-    $ul2.innerHTML = ``;
-    continentes.forEach((el) => $ul2.innerHTML += `<li>${el}</li>`);
+    // $ul2.innerHTML = ``;
+    // continentes.forEach((el) => $ul2.innerHTML += `<li>${el}</li>`);
 
     // Fragmentos
-    const meses = [
-        "Enero",
-        "Febrero",
-        "Marzo",
-        "Abril",
-        "Mayo",
-        "Junio",
-        "Julio",
-        "Agosto",
-        "Septiembre",
-        "Octubre",
-        "Noviembre",
-        "Diciembre",
-    ],
-    $ul3 = document.createElement("ul"),
-        $fragment = document.createDocumentFragment();
+    // const meses = [
+    //     "Enero",
+    //     "Febrero",
+    //     "Marzo",
+    //     "Abril",
+    //     "Mayo",
+    //     "Junio",
+    //     "Julio",
+    //     "Agosto",
+    //     "Septiembre",
+    //     "Octubre",
+    //     "Noviembre",
+    //     "Diciembre",
+    // ],
+    // $ul3 = document.createElement("ul"),
+    //     $fragment = document.createDocumentFragment();
     
-    meses.forEach(el => {
-        const $li = document.createElement("li")
-        $li.textContent = el
-        $fragment.appendChild($li)
-    });
+    // meses.forEach(el => {
+    //     const $li = document.createElement("li")
+    //     $li.textContent = el
+    //     $fragment.appendChild($li)
+    // });
 
-    document.write("<h3>Meses del Año</h3>")
-    $ul3.appendChild($fragment)
-    document.body.appendChild($ul3)
+    // document.write("<h3>Meses del Año</h3>")
+    // $ul3.appendChild($fragment)
+    // document.body.appendChild($ul3)
 }
 
 /*//* DOM: Templates HTML */ {
@@ -451,5 +451,49 @@
     // $cards.before($newCard)     // Hermano anterior
     // $cards.append($newCard)     // Ultimo Hijo
     // $cards.after($newCard)      // Hermano Siguiente
+
+}
+
+/* //* DOM: Manejadores de Eventos */ {
+
+    // https://developer.mozilla.org/en-US/docs/Web/Events
+
+    /**
+    * 📝 Los Eventos
+
+    👉 Es aquel mecanismo que tenemos en JS para poder controlar las acciones del usuario y definir ciertos comportamientos del documento q sucedan en cierto momento o cuando se cumplan algunas condiciones.
+
+    👉 Ahora, las funciones q se ejecutan en un Evento es lo q se conoce como el Event Handler o traducido Manejadores de Eventos, o tmb Observadores o Escuchadores.
+    
+    👉 Hay 3 maneras de definir los Eventos en JS : 
+    */
+
+    // MANEJADOR COMO ATRIBUTO DEL HTML
+    function holaMundo() {
+        alert("Hola Mundo")
+        console.log(event)
+    };
+
+    // MANEJADOR SEMÁNTICO
+    const $eventoSemantico = document.getElementById("evento-semantico");
+    
+    $eventoSemantico.onclick = holaMundo
+    $eventoSemantico.onclick = function (e) {
+        alert(`Hola Mundo Manejador de Evento Semántico`)
+        console.log(e);
+        console.log(event);
+    };
+
+    // COMO MANEJADOR MÚLTIPLE
+    const $eventoMultiple = document.getElementById("evento-multiple")
+
+    $eventoMultiple.addEventListener("click", holaMundo)
+    $eventoMultiple.addEventListener("click", (e) => {
+        alert("Hola Mundo Manejador de Eventos Multiple")
+        console.log(e);
+        console.log(e.type);
+        console.log(e.target);
+        console.log(event);
+    });
 
 }
