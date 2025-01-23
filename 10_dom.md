@@ -144,7 +144,7 @@ El CSSOM es similar al DOM, pero específicamente para las hojas de estilo CSS a
 </html>
 ```
 
-```
+```javascript
 // Elementos del Documento
 console.log(document);
 console.log(document.head);
@@ -161,89 +161,99 @@ console.log(document.scripts);
 setTimeout(() => {
     console.log(document.getSelection().toString());
 }, 3000);
-document.write("<h1>Hola Mundo</h1>")
+document.write('<h1>Hola Mundo</h1>');
 ```
 
 ### Nodos Elementos y Selectores
 
-```
-// Metodos que ya no se utiliza y fueron reemplazados por querySelector.
+```javascript
+// Metodos que ya no se utiliza y fueron reemplazados
+// por querySelector.
 // Pero este ultimo es mas lento que getElementsById
-console.log(document.getElementsByTagName("li"));
-console.log(document.getElementsByClassName("card"));
-console.log(document.getElementsByName("nombre"));
-console.log(document.getElementById("menu"));
+console.log(document.getElementsByTagName('li'));
+console.log(document.getElementsByClassName('card'));
+console.log(document.getElementsByName('nombre'));
+console.log(document.getElementById('menu'));
 
-console.log(document.querySelector("#menu"));
-console.log(document.querySelector("a")); //me trae el primer enlace
-console.log(document.querySelectorAll("a")); //me trae todos los enlaces
-console.log(document.querySelectorAll("a").length);
-document.querySelectorAll("a").forEach(el => {console.log(el)});
+console.log(document.querySelector('#menu'));
+console.log(document.querySelector('a')); // trae el primer enlace
+console.log(document.querySelectorAll('a')); // trae todos los enlaces
+console.log(document.querySelectorAll('a').length);
+document.querySelectorAll('a').forEach((el) => {
+    console.log(el);
+});
 
-console.log(document.querySelector(".card"));
-console.log(document.querySelectorAll(".card"));
-console.log(document.querySelectorAll(".card")[2]);
-console.log(document.querySelector("#menu li"));
-console.log(document.querySelector("#menu li a"));
-console.log(document.querySelectorAll("#menu li"));
-console.log(document.querySelectorAll("#menu li a"));
+console.log(document.querySelector('.card'));
+console.log(document.querySelectorAll('.card'));
+console.log(document.querySelectorAll('.card')[2]);
+console.log(document.querySelector('#menu li'));
+console.log(document.querySelector('#menu li a'));
+console.log(document.querySelectorAll('#menu li'));
+console.log(document.querySelectorAll('#menu li a'));
 ```
 
 ### Atributos y Data Attributes
 
-```
+```javascript
 // Obtener los atributos
 console.log(document.documentElement);
 console.log(document.documentElement.lang);
-console.log(document.documentElement.getAttribute("lang"));
-console.log(document.querySelector(".link-dom"));
-console.log(document.querySelector(".link-dom").href);
-console.log(document.querySelector(".link-dom").getAttribute("href"));
+console.log(document.documentElement.getAttribute('lang'));
+console.log(document.querySelector('.link-dom'));
+console.log(document.querySelector('.link-dom').href);
+console.log(document.querySelector('.link-dom').getAttribute('href'));
 
 //? Como establecer nuevo valor a los atributos
-document.documentElement.lang = "en"
+document.documentElement.lang = 'en';
 console.log(document.documentElement.lang); // 'en'
-document.documentElement.setAttribute("lang", "es-MX")
+document.documentElement.setAttribute('lang', 'es-MX');
 console.log(document.documentElement.lang); // es-MX
 
 //? Guardar en valiables los elementos del dom
 
-const $linkDOM = document.querySelector(".link-dom")
-$linkDOM.setAttribute("target", "_black")
-$linkDOM.setAttribute("href", "https://youtube.com")
-$linkDOM.setAttribute("rel", "noopener");
+const $linkDOM = document.querySelector('.link-dom');
+$linkDOM.setAttribute('target', '_black');
+$linkDOM.setAttribute('href', 'https://youtube.com');
+$linkDOM.setAttribute('rel', 'noopener');
 // console.log($linkDOM.hasAttribute("rel")); // true
-$linkDOM.removeAttribute("rel", "noopener")
-console.log($linkDOM.hasAttribute("rel")); // false
+$linkDOM.removeAttribute('rel', 'noopener');
+console.log($linkDOM.hasAttribute('rel')); // false
 
 //? DATA ATTRIBUTES
-console.log($linkDOM.getAttribute("data-description")); //Document Object Model
+console.log($linkDOM.getAttribute('data-description')); //Document Object Model
 console.log($linkDOM.dataset); //DOMStringMap {id: '1', description: 'Document Object Model'}
 
 //? Modificar los data attributes
 console.log($linkDOM.dataset.description); // Document Object Model
 
-$linkDOM.setAttribute("data-description", "Modelo de Objeto del Documento")
+$linkDOM.setAttribute(
+    'data-description',
+    'Modelo de Objeto del Documento'
+);
 console.log($linkDOM.dataset.description); // Modelo ...
 
-$linkDOM.dataset.description = "Suscribete a mi canal y comparte"
+$linkDOM.dataset.description = 'Suscribete a mi canal y comparte';
 console.log($linkDOM.dataset.description); // Suscribete ...
 
-console.log($linkDOM.hasAttribute("data-id")); //true
-$linkDOM.removeAttribute("data-id");
-console.log($linkDOM.hasAttribute("data-id")); //false
+console.log($linkDOM.hasAttribute('data-id')); //true
+$linkDOM.removeAttribute('data-id');
+console.log($linkDOM.hasAttribute('data-id')); //false
 ```
 
 ### Estilos y Variables CSS
 
-```
+```html
 <!-- dom.html -->
-<a class="link-dom" href="dom.html"
-data-id="1"
-data-description="Document Object Model">DOM</a>
+<a
+    class="link-dom"
+    href="dom.html"
+    data-id="1"
+    data-description="Document Object Model"
+    >DOM</a
+>
 ```
 
-```
+```css
 /* css\styles.css */
 .link-dom {
     color: #ffffff;
@@ -251,57 +261,59 @@ data-description="Document Object Model">DOM</a>
 }
 ```
 
-```
+```javascript
 //Ver los atributos de Estilos
-const $linkDOM = document.querySelector(".link-dom")
-console.log($linkDOM.getAttribute("style"));                        //background-color: #F7DF1E; color: #222;
-console.log($linkDOM.style);                                        //CSSStyleDeclaration {0: 'background-color', 1: 'color', ...}
-console.log($linkDOM.style.backgroundColor);                        //rgb (247, 223, 30)
-console.log($linkDOM.style.color);                                  //rgb (34, 34, 34)
-console.log(window.getComputedStyle($linkDOM));                     //CSSStyleDeclaration{...}
-console.log(getComputedStyle($linkDOM).getPropertyValue("color"));  //rgb (34, 34, 34)
+const $linkDOM = document.querySelector('.link-dom');
+console.log($linkDOM.getAttribute('style')); //background-color: #F7DF1E; color: #222;
+console.log($linkDOM.style); //CSSStyleDeclaration {0: 'background-color', 1: 'color', ...}
+console.log($linkDOM.style.backgroundColor); //rgb (247, 223, 30)
+console.log($linkDOM.style.color); //rgb (34, 34, 34)
+console.log(window.getComputedStyle($linkDOM)); //CSSStyleDeclaration{...}
+console.log(getComputedStyle($linkDOM).getPropertyValue('color')); //rgb (34, 34, 34)
 
 //? Establecer valores
-$linkDOM.style.setProperty("text-decoration", "none")
-$linkDOM.style.setProperty("display", "block")
-$linkDOM.style.width = "50%"
-$linkDOM.style.textAlign = "center"
-$linkDOM.style.marginLeft = "auto"
-$linkDOM.style.marginRight = "auto"
-$linkDOM.style.padding = "1rem"
-$linkDOM.style.borderRadius = ".5rem"
+$linkDOM.style.setProperty('text-decoration', 'none');
+$linkDOM.style.setProperty('display', 'block');
+$linkDOM.style.width = '50%';
+$linkDOM.style.textAlign = 'center';
+$linkDOM.style.marginLeft = 'auto';
+$linkDOM.style.marginRight = 'auto';
+$linkDOM.style.padding = '1rem';
+$linkDOM.style.borderRadius = '.5rem';
 
 console.log($linkDOM.style);
-console.log($linkDOM.getAttribute("style"));
+console.log($linkDOM.getAttribute('style'));
 console.log(getComputedStyle($linkDOM));
 
 //? VARIABLES CSS - CUSTOM PROPERTIES CSS;
-const $html = document.documentElement
+const $html = document.documentElement;
 const $body = document.body;
 
-let varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color");
-let varYellowColor = getComputedStyle($html).getPropertyValue("--yellow-color");
-console.log(varDarkColor, varYellowColor);                          // #222 #F7DF1E
+let varDarkColor =
+    getComputedStyle($html).getPropertyValue('--dark-color');
+let varYellowColor =
+    getComputedStyle($html).getPropertyValue('--yellow-color');
+console.log(varDarkColor, varYellowColor); // #222 #F7DF1E
 
 //?Establecer colores al body
-$body.style.backgroundColor = varDarkColor
-$body.style.color = varYellowColor
+$body.style.backgroundColor = varDarkColor;
+$body.style.color = varYellowColor;
 
-$html.style.setProperty("--dark-color", "#212121")
-varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color")
+$html.style.setProperty('--dark-color', '#212121');
+varDarkColor = getComputedStyle($html).getPropertyValue('--dark-color');
 
 console.log(varDarkColor); //#-222 - #-2121
 
-$body.style.setProperty("background-color", varDarkColor)
+$body.style.setProperty('background-color', varDarkColor);
 ```
 
 ### Clases CSS
 
-```
+```html
 <!-- dom.html -->
 <style>
     :root {
-        --yellow-color: #F7DF1E;
+        --yellow-color: #f7df1e;
         --dark-color: #222;
     }
     .card {
@@ -320,7 +332,7 @@ $body.style.setProperty("background-color", varDarkColor)
         transform: rotate(135deg);
     }
     .opacity-80 {
-        opacity: .8;
+        opacity: 0.8;
     }
     .sepia {
         filter: sepia(1);
@@ -328,45 +340,44 @@ $body.style.setProperty("background-color", varDarkColor)
 </style>
 ```
 
-```
+```javascript
 // Nos traemos la primera card (tech)
-const $card = document.querySelector(".card")
-console.log($card);           // <figure class="card">…</figure>
+const $card = document.querySelector('.card');
+console.log($card); // <figure class="card">…</figure>
 
 console.log($card.className); //card
 console.log($card.classList); //DOMTokenList ['card', value: 'card']
 
-console.log($card.classList.contains("rotate-45")); //false
+console.log($card.classList.contains('rotate-45')); //false
 
-$card.classList.add("rotate-45")
+$card.classList.add('rotate-45');
 console.log($card.className); //card rotate-45
 console.log($card.classList); //DOMTokenList(2) ['card', 'rotate-45', value: 'card rotate-45']
 
-$card.classList.remove("rotate-45")
-console.log($card.classList.contains("rotate-45")); //false
+$card.classList.remove('rotate-45');
+console.log($card.classList.contains('rotate-45')); //false
 
-$card.classList.toggle("rotate-45")
-console.log($card.classList.contains("rotate-45")); //true
+$card.classList.toggle('rotate-45');
+console.log($card.classList.contains('rotate-45')); //true
 
-$card.classList.replace("rotate-45", "rotate-135");
-$card.classList.add("opacity-80", "sepia");
-$card.classList.remove("opacity-80", "sepia");
-$card.classList.toggle("opacity-80");
-$card.classList.toggle("sepia");
+$card.classList.replace('rotate-45', 'rotate-135');
+$card.classList.add('opacity-80', 'sepia');
+$card.classList.remove('opacity-80', 'sepia');
+$card.classList.toggle('opacity-80');
+$card.classList.toggle('sepia');
 ```
 
 ### Texto y HTML
 
-```
+```html
 <p id="que-es">
-    Lorem ipsum dolor sit amet consectetu adipisicing elit.
-    Nam facilis voluptates optio
-    aliquam laborum doloribus obcaecati porro.
+    Lorem ipsum dolor sit amet consectetu adipisicing elit. Nam facilis
+    voluptates optio aliquam laborum doloribus obcaecati porro.
 </p>
 ```
 
-```
-const $whatIsDOM = document.getElementById("que-es")
+```javascript
+const $whatIsDOM = document.getElementById('que-es');
 
 let text = `
 <p>
@@ -385,15 +396,15 @@ let text = `
 </p>
 `;
 
-// Para agregar contenido textual
+// Para agregar contenido textual:
 
-// $whatIsDOM.innerText = text // No forma parte del standar
+$whatIsDOM.innerText = text; // No forma parte del standar
 
 // Cuando necesites insertar solo texto
-// $whatIsDOM.textContent = text
+$whatIsDOM.textContent = text;
 
 // Cuando necesites insertar solo html
-// $whatIsDOM.innerHTML = text
+$whatIsDOM.innerHTML = text;
 
 // Eliminar el contenedor con id "que-es" por el texto.
 $whatIsDOM.outerHTML = text;
@@ -401,45 +412,44 @@ $whatIsDOM.outerHTML = text;
 
 ### DOM Traversing Recorriendo el DOM
 
-```
+```html
 <!-- dom.html -->
 <style>
-    ...
     .cards {
         border: thin solid var(--dark-color);
         padding: 1rem;
     }
-<style>
+</style>
 ```
 
-```
-const $cards = document.querySelector(".cards")
+```javascript
+const $cards = document.querySelector('.cards');
 // console.log($cards)
 
 // Referencia asus hijos
 // console.log($cards.childNodes)
 
-console.log($cards.children)
-console.log($cards.children[2])
+console.log($cards.children);
+console.log($cards.children[2]);
 
 // console.log($cards.parentElement) // Body
 // console.log($cards.parentNode)    // Body
 
-// console.log($cards.firstChild) // #text - textContent "\n       "
+// console.log($cards.firstChild) // #text - textContent "\n     "
 // console.log($cards.lastChild)
 
-console.log($cards.firstElementChild)
-console.log($cards.lastElementChild)
+console.log($cards.firstElementChild);
+console.log($cards.lastElementChild);
 
 // console.log($cards.previousSibling) // #text
 // console.log($cards.nextSibling) // #text
 
-console.log($cards.previousElementSibling) // <a>
-console.log($cards.nextElementSibling) // <script>
+console.log($cards.previousElementSibling); // <a>
+console.log($cards.nextElementSibling); // <script>
 
 // El padre mas cercano del selector dado
 // console.log($cards.closest("div")) // null
-console.log($cards.children[3].closest("section"))
+console.log($cards.children[3].closest('section'));
 ```
 
 ### Creando Elementos y Fragmentos
@@ -450,47 +460,47 @@ console.log($cards.children[3].closest("section"))
 >
 > [MDN - Node](https://developer.mozilla.org/es/docs/Web/API/Node)
 
-```
+```javascript
 // Crear elementos html
-const $figure = document.createElement("figure"),
-    $img = document.createElement("img"),
-    $figcaption = document.createElement("figcaption"),
-    $figcaptionText = document.createTextNode("Animals"),
-    $cards = document.querySelector(".cards"),
-    $figure2 = document.createElement("figure");
+const $figure = document.createElement('figure'),
+    $img = document.createElement('img'),
+    $figcaption = document.createElement('figcaption'),
+    $figcaptionText = document.createTextNode('Animals'),
+    $cards = document.querySelector('.cards'),
+    $figure2 = document.createElement('figure');
 
-$img.setAttribute("src", "https://picsum.photos/id/237/300/200")
-$img.setAttribute("alt", "Animals")
+$img.setAttribute('src', 'https://picsum.photos/id/237/300/200');
+$img.setAttribute('alt', 'Animals');
 
-$figure.classList.add("card")
+$figure.classList.add('card');
 
-$figcaption.appendChild($figcaptionText)
+$figcaption.appendChild($figcaptionText);
 
-$figure.appendChild($img)
-$figure.appendChild($figcaption)
+$figure.appendChild($img);
+$figure.appendChild($figcaption);
 
-$cards.appendChild($figure)
+$cards.appendChild($figure);
 
 $figure2.innerHTML = `
 <img src="https://picsum.photos/id/129/300/200" alt="People">
 <figcaption>People</figcaption>
-`
-$figure2.classList.add("card");
-$cards.appendChild($figure2)
+`;
+$figure2.classList.add('card');
+$cards.appendChild($figure2);
 ```
 
-```
-const estaciones = ["Primavera", "Verano", "Otonio", "Invierno"],
-    $ul = document.createElement("ul");
+```javascript
+const estaciones = ['Primavera', 'Verano', 'Otonio', 'Invierno'],
+    $ul = document.createElement('ul');
 
-document.write("<h3>Estaciones del Año</h3>")
-document.body.appendChild($ul)
+document.write('<h3>Estaciones del Año</h3>');
+document.body.appendChild($ul);
 
-estaciones.forEach(el => {
-    const $li = document.createElement("li")
+estaciones.forEach((el) => {
+    const $li = document.createElement('li');
 
-    $li.textContent = el
-    $ul.appendChild($li)
+    $li.textContent = el;
+    $ul.appendChild($li);
 
     // text = document.createTextNode(el)
     // $li.appendChild(text)
@@ -498,91 +508,90 @@ estaciones.forEach(el => {
 });
 ```
 
-```
-const continentes = ["África", "América", "Asia",
-                    "Europa", "Oceanía"],
-    $ul2 = document.createElement("ul");
+```javascript
+const continentes = ['África', 'América', 'Asia', 'Europa', 'Oceanía'],
+    $ul2 = document.createElement('ul');
 
-document.write("<h3>Continentes del Mundo</h3>");
+document.write('<h3>Continentes del Mundo</h3>');
 document.body.appendChild($ul2);
 
 $ul2.innerHTML = ``;
-continentes.forEach((el) => $ul2.innerHTML += `<li>${el}</li>`);
+continentes.forEach((el) => ($ul2.innerHTML += `<li>${el}</li>`));
 ```
 
-```
+```javascript
 // Fragmentos
 const meses = [
-    "Enero",
-    "Febrero",
-    "Marzo",
-    "Abril",
-    "Mayo",
-    "Junio",
-    "Julio",
-    "Agosto",
-    "Septiembre",
-    "Octubre",
-    "Noviembre",
-    "Diciembre",
-],
-$ul3 = document.createElement("ul"),
+        'Enero',
+        'Febrero',
+        'Marzo',
+        'Abril',
+        'Mayo',
+        'Junio',
+        'Julio',
+        'Agosto',
+        'Septiembre',
+        'Octubre',
+        'Noviembre',
+        'Diciembre',
+    ],
+    $ul3 = document.createElement('ul'),
     $fragment = document.createDocumentFragment();
 
-meses.forEach(el => {
-    const $li = document.createElement("li")
-    $li.textContent = el
-    $fragment.appendChild($li)
+meses.forEach((el) => {
+    const $li = document.createElement('li');
+    $li.textContent = el;
+    $fragment.appendChild($li);
 });
 
-document.write("<h3>Meses del Año</h3>")
-$ul3.appendChild($fragment)
-document.body.appendChild($ul3)
+document.write('<h3>Meses del Año</h3>');
+$ul3.appendChild($fragment);
+document.body.appendChild($ul3);
 ```
 
 ### Templates HTML
 
-```
+```html
 <!-- dom.html -->
 <template id="template-card">
     <figure class="card">
-        <img>
+        <img />
         <figcaption></figcaption>
     </figure>
 </template>
 ```
 
-```
-const $cards = document.querySelector(".cards"),
-    $template = document.getElementById("template-card").content,
+```javascript
+const $cards = document.querySelector('.cards'),
+    $template = document.getElementById('template-card').content,
     $fragment = document.createDocumentFragment(),
     cardContent = [
         {
-            title: "Tecnología",
-            img: "https://picsum.photos/id/119/300/200"
+            title: 'Tecnología',
+            img: 'https://picsum.photos/id/119/300/200',
         },
         {
-            title: "Animales",
-            img: "https://picsum.photos/id/169/300/200"
+            title: 'Animales',
+            img: 'https://picsum.photos/id/169/300/200',
         },
         {
-            title: "Arquitectura",
-            img: "https://picsum.photos/id/238/300/200"
+            title: 'Arquitectura',
+            img: 'https://picsum.photos/id/238/300/200',
         },
         {
-            title: "Gente",
-            img: "https://picsum.photos/id/177/300/200"
+            title: 'Gente',
+            img: 'https://picsum.photos/id/177/300/200',
         },
         {
-            title: "Naturaleza",
-            img: "https://picsum.photos/id/15/300/200"
+            title: 'Naturaleza',
+            img: 'https://picsum.photos/id/15/300/200',
         },
     ];
 
-cardContent.forEach(el => {
-    $template.querySelector("img").setAttribute("src", el.img)
-    $template.querySelector("img").setAttribute("alt", el.title)
-    $template.querySelector("figcaption").textContent = el.title
+cardContent.forEach((el) => {
+    $template.querySelector('img').setAttribute('src', el.img);
+    $template.querySelector('img').setAttribute('alt', el.title);
+    $template.querySelector('figcaption').textContent = el.title;
 
     // Nodo clonado del template
     let $clone = document.importNode($template, true);
@@ -590,26 +599,26 @@ cardContent.forEach(el => {
     $fragment.appendChild($clone);
 });
 
-$cards.appendChild($fragment)
+$cards.appendChild($fragment);
 ```
 
 ### Modificando Elementos Old Style
 
-```
-const $cards = document.querySelector(".cards"),
-    $newCard = document.createElement("figure"),
+```javascript
+const $cards = document.querySelector('.cards'),
+    $newCard = document.createElement('figure'),
     $cloneCards = $cards.cloneNode(true);
 
 $newCard.innerHTML = `
 <img src="https://picsum.photos/seed/any-seed/300/200" alt="Any">
 <figcaption>Any</figcaption>
-`
-$newCard.classList.add("card");
+`;
+$newCard.classList.add('card');
 
-// $cards.replaceChild($newCard, $cards.children[2])
-// $cards.insertBefore($newCard, $cards.firstElementChild)
-// $cards.removeChild($cards.lastElementChild)
-// document.body.appendChild($cloneCards)
+$cards.replaceChild($newCard, $cards.children[2]);
+$cards.insertBefore($newCard, $cards.firstElementChild);
+$cards.removeChild($cards.lastElementChild);
+document.body.appendChild($cloneCards);
 ```
 
 ### Modificando Elementos Cool Style
@@ -639,7 +648,7 @@ const $cards = document.querySelector('.cards'),
 // $newCard.innerHTML = `
 // <img src="https://picsum.photos/seed/any-seed/300/200" alt="Any">
 // <figcaption>Any</figcaption>
-// `
+// `;
 
 let $contentCard = `
 <img src="https://picsum.photos/seed/any-seed/300/200" alt="Any">
@@ -654,19 +663,19 @@ $newCard
     .insertAdjacentText('afterbegin', 'Any');
 
 $cards.insertAdjacentElement('beforebegin', $newCard);
-// $cards.insertAdjacentElement("afterbegin", $newCard)
-// $cards.insertAdjacentElement("beforeend", $newCard)
-// $cards.insertAdjacentElement("afterend", $newCard)
+// $cards.insertAdjacentElement('afterbegin', $newCard);
+// $cards.insertAdjacentElement('beforeend', $newCard);
+// $cards.insertAdjacentElement('afterend', $newCard);
 
 $cards.prepend($newCard); // Primer hijo
-// $cards.before($newCard);  // Hermano anterior
-// $cards.append($newCard);  // Ultimo Hijo
-// $cards.after($newCard);   // Hermano Siguiente
+// $cards.before($newCard); // Hermano anterior
+// $cards.append($newCard); // Ultimo Hijo
+// $cards.after($newCard); // Hermano Siguiente
 ```
 
 ### Manejadores de Eventos
 
-**Los Eventos**
+**¿Qué son los Eventos?**
 
 Son un mecanismo fundamental para controlar las acciones del usuario y definir comportamientos del documento. Estos eventos pueden ocurrir en momentos específicos o cuando se cumplen ciertas condiciones. Las funciones asociadas a estos eventos se conocen como Manejadores de Eventos (Event Handlers), Observadores o Escuchadores.
 
