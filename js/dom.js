@@ -489,11 +489,39 @@
 
     $eventoMultiple.addEventListener("click", holaMundo)
     $eventoMultiple.addEventListener("click", (e) => {
-        alert("Hola Mundo Manejador de Eventos Multiple")
-        console.log(e);
-        console.log(e.type);
-        console.log(e.target);
+        alert("Hola Mundo Manejador de Eventos Multiple");
+        // console.log(e);
+        // console.log(e.type);
+        // console.log(e.target);
+        // console.log(event);
+    });
+}
+
+/*//* DOM: Eventos con Parámetros y Remover Eventos */ {
+
+    // Para ejecutar una función con parametros en evento, lo envuelves en una Arrow Function.
+
+    function saludar(nombre="Desconocid@") {
+        alert(`Hola ${nombre}`);
         console.log(event);
+    };
+
+    const $eventoMultiple = document.getElementById("evento-multiple"),
+        $eventoRemover = document.getElementById('evento-remover')
+
+    $eventoMultiple.addEventListener("click", () => {
+        saludar() // Hola Desconocid@
+        saludar("Pepito") // Hola Pepito
     });
 
+    // Eliminar Eventos
+
+    const removerDobleClick = (e) => {
+        alert(`Removiendo el evento de tipo ${e.type}`);
+        console.log(e);
+        $eventoRemover.removeEventListener("dblclick", removerDobleClick);
+        $eventoRemover.disabled = true;
+    }
+
+    $eventoRemover.addEventListener("dblclick", removerDobleClick)
 }

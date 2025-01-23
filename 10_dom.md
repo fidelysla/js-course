@@ -26,7 +26,7 @@
 > -   [Modificando Elementos (Old Style)](10_dom.md#modificando-elementos-old-style)
 > -   [Modificando Elementos (Cool Style)](10_dom.md#modificando-elementos-cool-style)
 > -   [Manejadores de Eventos](10_dom.md#manejadores-de-eventos)
-> -   Eventos con Parámetros y Remover Eventos
+> -   [Eventos con Parametros y Remover Eventos](10_dom.md#eventos-con-parametros-y-remover-eventos)
 > -   Flujo de Eventos (Burbuja y Captura)
 > -   stopPropagation and preventDefault
 > -   Delegación de Eventos
@@ -77,70 +77,88 @@ El CSSOM es similar al DOM, pero específicamente para las hojas de estilo CSS a
 
 ### Introduccion al DOM
 
-```
+```html
 <!-- dom.html -->
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fundamentos JavaScript</title>
-    <link rel="stylesheet" href="css\styles.css">
-    <style>
-        :root {
-        --yellow-color: #F7DF1E;
-        --dark-color: #222;
-        }
-    </style>
-</head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        />
+        <title>Fundamentos JavaScript</title>
+        <link rel="stylesheet" href="css\styles.css" />
+        <style>
+            :root {
+                --yellow-color: #f7df1e;
+                --dark-color: #222;
+            }
+        </style>
+    </head>
 
-<body>
-    <h1>Manejo del DOM</h1>
+    <body>
+        <h1>Manejo del DOM</h1>
+        <p id="que-es">
+            Lorem ipsum dolor sit amet consectetu adipisicing elit. Nam
+            facilis voluptates optio aliquam laborum doloribus obcaecati
+            porro.
+        </p>
+        <nav id="menu">
+            <ul>
+                <li><a href="#">Sección 1</a></li>
+                <li><a href="#">Sección 2</a></li>
+                <li><a href="#">Sección 3</a></li>
+                <li><a href="#">Sección 4</a></li>
+                <li><a href="#">Sección 5</a></li>
+            </ul>
+        </nav>
 
-    <p id="que-es">
-        Lorem ipsum dolor sit amet consectetu adipisicing elit.
-        Nam facilis voluptates optio
-        aliquam laborum doloribus obcaecati porro.
-    </p>
+        <input type="text" name="nombre" placeholder="Nombre" />
 
-    <nav id="menu">
-        <ul>
-            <li><a href="#">Sección 1</a></li>
-            <li><a href="#">Sección 2</a></li>
-            <li><a href="#">Sección 3</a></li>
-            <li><a href="#">Sección 4</a></li>
-            <li><a href="#">Sección 5</a></li>
-        </ul>
-    </nav>
+        <a
+            class="link-dom"
+            href="dom.html"
+            data-id="1"
+            data-description="Document Object Model"
+            >DOM</a
+        >
 
-    <input type="text" name="nombre" placeholder="Nombre">
-
-    <a class="link-dom" href="dom.html" data-id="1"
-    data-description="Document Object Model">DOM</a>
-
-    <section class="cards">
-        <figure class="card">
-            <img src="https://picsum.photos/id/0/300/200" alt="Tech">
-            <figcaption>Tech</figcaption>
-        </figure>
-        <figure class="card">
-            <img src="https://picsum.photos/id/237/300/200" alt="Animals">
-            <figcaption>Animals</figcaption>
-        </figure>
-        <figure class="card">
-            <img src="https://picsum.photos/id/49/300/200" alt="Architecture">
-            <figcaption>Architecture</figcaption>
-        </figure>
-        <figure class="card">
-            <img src="https://picsum.photos/id/129/300/200" alt="People">
-            <figcaption>People</figcaption>
-        </figure>
-        <figure class="card">
-            <img src="https://picsum.photos/id/28/300/200" alt="Nature">
-            <figcaption>Nature</figcaption>
-        </figure>
-    </section>
-</body>
+        <section class="cards">
+            <figure class="card">
+                <img src="https://picsum.photos/id/0/300/200" alt="Tech" />
+                <figcaption>Tech</figcaption>
+            </figure>
+            <figure class="card">
+                <img
+                    src="https://picsum.photos/id/237/300/200"
+                    alt="Animals"
+                />
+                <figcaption>Animals</figcaption>
+            </figure>
+            <figure class="card">
+                <img
+                    src="https://picsum.photos/id/49/300/200"
+                    alt="Architecture"
+                />
+                <figcaption>Architecture</figcaption>
+            </figure>
+            <figure class="card">
+                <img
+                    src="https://picsum.photos/id/129/300/200"
+                    alt="People"
+                />
+                <figcaption>People</figcaption>
+            </figure>
+            <figure class="card">
+                <img
+                    src="https://picsum.photos/id/28/300/200"
+                    alt="Nature"
+                />
+                <figcaption>Nature</figcaption>
+            </figure>
+        </section>
+    </body>
 </html>
 ```
 
@@ -762,5 +780,41 @@ Sin embargo, los eventos semánticos presentan una limitación significativa. Al
 Además, es importante tener en cuenta que toda función que se convierte en un Manejador de Eventos no puede recibir parámetros adicionales al evento en sí. El único parámetro que puede recibir es el evento en sí, que se puede obtener utilizando la palabra reservada `event` o abreviando como `e`.
 
 En **resumen**, los eventos semánticos tienen una limitación importante que los hace menos flexibles que los eventos múltiples. Por lo tanto, es recomendable utilizar eventos múltiples para manejar múltiples funciones en respuesta a un solo evento.
+
+### Eventos con Parametros y Remover Eventos
+
+```html
+<button id="evento-remover">
+    Removiendo eventos con manejador multiples
+</button>
+```
+
+```javascript
+// Para ejecutar una función con parametros en evento,
+// lo envuelves en una Arrow Function.
+
+function saludar(nombre = 'Desconocid@') {
+    alert(`Hola ${nombre}`);
+    console.log(event);
+}
+
+const $eventoMultiple = document.getElementById('evento-multiple'),
+    $eventoRemover = document.getElementById('evento-remover');
+
+$eventoMultiple.addEventListener('click', () => {
+    saludar(); // Hola Desconocid@
+    saludar('Pepito'); // Hola Pepito
+});
+
+// Eliminar Eventos
+const removerDobleClick = (e) => {
+    alert(`Removiendo el evento de tipo ${e.type}`);
+    console.log(e);
+    $eventoRemover.removeEventListener('dblclick', removerDobleClick);
+    $eventoRemover.disabled = true;
+};
+
+$eventoRemover.addEventListener('dblclick', removerDobleClick);
+```
 
 ###
