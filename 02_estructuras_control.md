@@ -25,135 +25,133 @@
 
 ### **Tipos de Operadores**
 
-```
-Aritmeticos: + - * / % ()
+```javascript
+// Aritmeticos: + - * / % ()
 
-let a = 5 + (5 - 10) * 3
-let modulo = 5 % 2
+let a = 5 + (5 - 10) * 3;
+let modulo = 5 % 2;
 
-Relacionales: >, <, >=, <=, ==, ===, !=, !==
+// Relacionales: >, <, >=, <=, ==, ===, !=, !==
 
 // = asignacion de variable
 // == comparacion de valores (mala practica)
 // === comparacion de tipo de dato y de valor (buena practica)
 
-console.log(7 == 7)
-console.log("7" == 7)
-console.log(0 == false)
+console.log(7 == 7);
+console.log('7' == 7);
+console.log(0 == false);
 
-console.log(8 > 9)
-console.log(9 > 8)
-console.log(8 >= 9)
+console.log(8 > 9);
+console.log(9 > 8);
+console.log(8 >= 9);
 
-De Incremento y Decremento: +=, -=, *=, /=
+// De Incremento y Decremento: +=, -=, *=, /=
 
-let i = 2
-i = i + 2
-i += 2
-i -= 3
-i *= 3
-i /= 3
+let i = 2;
+i = i + 2;
+i += 2;
+i -= 3;
+i *= 3;
+i /= 3;
 
-Operador Unario: ++, --
+// Operador Unario: ++, --
 
-i++
-a = i++
-i--
-++i
-b = ++i
---i
+i++;
+a = i++;
+i--;
+++i;
+b = ++i;
+--i;
 
-Logicos: ! - Not, || - Or, && - And
+// Logicos: ! - Not, || - Or, && - And
 
-console.log((9 === 9) || ("9" === 9))
-console.log((9 === 9) && ("9" === 9))
-console.log((9 === 9) && ("9" === "9"))
+console.log(9 === 9 || '9' === 9);
+console.log(9 === 9 && '9' === 9);
+console.log(9 === 9 && '9' === '9');
 ```
 
 ### **Condicionales**
 
-```
+```javascript
 // if - else if - else
-let edad = 26
+let edad = 26;
 if (edad >= 18) {
-    console.log("Mayor de Edad")
+    console.log('Mayor de Edad');
 } else if (edad <= 17) {
-    console.log("Menor de Edad")
+    console.log('Menor de Edad');
 } else {
-    console.log("*")
-};
+    console.log('*');
+}
 
 // Operador Ternario: (condicion) ? verdaero : falsa
-let eresMayor = (edad >= 18)
-    ? "Mayor de Edad"
-    : "Menor de Edad";
+let eresMayor = edad >= 18 ? 'Mayor de Edad' : 'Menor de Edad';
 
 // SWITCH - CASE
 switch (key) {
-case value:
-    console.log("*")
-    break;
-default:
-    console.log("*")
-    break;
-};
+    case value:
+        console.log('*');
+        break;
+    default:
+        console.log('*');
+        break;
+}
 ```
 
 ### **Ciclos loops**
 
-```
+```javascript
 // WHILE
 while (condition) {
-    console.log("*")
-};
+    console.log('*');
+}
 
 // DO WHILE
 do {
-    console.log("*")
+    console.log('*');
 } while (condition);
 
 // FOR
 for (let index = 0; index < array.length; index++) {
-    console.log(array[index])
-};
+    console.log(array[index]);
+}
 
 // FOR IN
 let triangle = { a: 1, b: 2, c: 3 };
-for (const key in object=triangle) {
-    console.log(`Key: ${key}, Value: ${objeto[key]}`)
-};
+for (const key in (object = triangle)) {
+    console.log(`Key: ${key}, Value: ${objeto[key]}`);
+}
 
 // FOR OF
 let iterable = [10, 20, 30];
-for (const i of object=iterable) {
-    console.log(i)
-};
+for (const i of (object = iterable)) {
+    console.log(i);
+}
 
 // FOREACH
-array = [1,2,3]
+array = [1, 2, 3];
 array.forEach((currentValue, index) => {
-    console.log(`Indice: ${index} - Valor: ${currentValue}`)
+    console.log(`Indice: ${index} - Valor: ${currentValue}`);
 });
 ```
 
 ### **Manejo de Errores**
 
-```
+```javascript
 try {
     noExiste;
-    console.log("*")
+    console.log('*');
 } catch (error) {
-    console.log(error)
+    console.log(error);
 } finally {
-    console.log("*")
-};
+    console.log('*');
+}
 
 try {
-    let numero = "y";
+    let numero = 'y';
     if (isNaN(numero)) {
-        throw new Error("El caractér introducido no es un Número")
+        throw new Error('El caractér introducido no es un Número');
     }
-    console.log(numero*numero)
+    console.log(numero * numero);
 } catch (error) {
     console.log(`Se produjo el siguiente error: ${error}`);
 }
@@ -161,48 +159,49 @@ try {
 
 ### **Break and Continue**
 
-```
-const numeros = [1,2,3,4,5,6,7,8,9,0]
+```javascript
+const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
-for (let index=0; index < numeros.length; index++) {
+for (let index = 0; index < numeros.length; index++) {
     if (index === 5) {
         break;
-    };
+    }
     console.log(numeros[index]);
-};
+}
 
-for (let index=0; index < numeros.length; index++) {
+for (let index = 0; index < numeros.length; index++) {
     if (index === 5) {
         continue;
     }
     console.log(numeros[index]);
-};
+}
 ```
 
 ### **Destructuracion**
 
-```
+```javascript
 const persona = {
-nombre: "Jon",
-apellido: "Gomez",
-edad: 26,
+    nombre: 'Jon',
+    apellido: 'Gomez',
+    edad: 26,
 };
 
-let {nombre, edad, apellido} = persona;
+let { nombre, edad, apellido } = persona;
 ```
 
 ### **Objetos Literales**
 
-```
-let nombre = "kEnAi", edad = 7;
+```javascript
+let nombre = 'kEnAi',
+    edad = 7;
 
 const perro = {
     nombre,
     edad,
-    raza: "Callejero",
-    ladrar: function() {
-        console.log("guauu guauu!!")
-    }
+    raza: 'Callejero',
+    ladrar: function () {
+        console.log('guauu guauu!!');
+    },
 };
 
 console.log(perro);
@@ -211,25 +210,26 @@ perro.ladrar();
 
 ### **Parametros REST y Operador Spread**
 
-```
+```javascript
 // Parametros Rest
-function sumar(a, b, ...c ) {
+function sumar(a, b, ...c) {
     let resultado = a + b;
-    c.forEach( function(n) {
-        resultado += n
+    c.forEach(function (n) {
+        resultado += n;
     });
-    return resultado
-};
-console.log(sumar(1, 2, 3, 4, 5, 6, 7))
+    return resultado;
+}
+console.log(sumar(1, 2, 3, 4, 5, 6, 7));
 
 // Sintaxis Spread
-const arr1 = [1, 2, 3, 4, 5], arr2 = [6, 7, 8, 9, 0];
+const arr1 = [1, 2, 3, 4, 5],
+    arr2 = [6, 7, 8, 9, 0];
 const arr3 = [...arr1, ...arr2];
 ```
 
 ### **Arrow Functions**
 
-```
+```javascript
 const saludar = () => { console.log(`Hola`) };
 const saludar2 = nombre => console.log(`Hola ${nombre}`);
 const sumar = (a, b) => a + b;

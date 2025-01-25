@@ -80,14 +80,14 @@ console.log(colores)
 
 -   **string**
 
-```
-let nombre = "Jon";
-let apellido = "Gomez";
-let saludo = new String("Hola Mundo");
-let saludo2 = `Hola, mi nombre es ${nombre} ${apellido}.`
-let lorem = "      lorem ipsum, dolor sit amet      ";
+```javascript
+let nombre = 'Jon';
+let apellido = 'Gomez';
+let saludo = new String('Hola Mundo');
+let saludo2 = `Hola, mi nombre es ${nombre} ${apellido}.`;
+let lorem = '      lorem ipsum, dolor sit amet      ';
 
-let saludo = "Hola, mi nombre es " + nombre + " " + apellido + "."
+let saludo = 'Hola, mi nombre es ' + nombre + ' ' + apellido + '.';
 
 console.log(
     nombre,
@@ -96,15 +96,15 @@ console.log(
     saludo2,
     nombre.toUpperCase(),
     apellido.toLowerCase(),
-    lorem.includes("sit"),
+    lorem.includes('sit'),
     lorem.trim(),
-    lorem.split(" "),
+    lorem.split(' ')
 );
 ```
 
 -   **Template String**
 
-```
+```javascript
 let ul = `
 <ul>
     <li>Primavera</li>
@@ -112,17 +112,17 @@ let ul = `
     <li>Otoño</li>
     <li>Invierno</li>
 </ul>
-`
-console.log(ul)
+`;
+console.log(ul);
 ```
 
 -   **number**
 
-```
-let a = 2
-let b = new Number(1)
-let c = 7.19
-let d = "5.6"
+```javascript
+let a = 2;
+let b = new Number(1);
+let c = 7.19;
+let d = '5.6';
 
 console.log(a, b);
 console.log(c.toFixed(5));
@@ -139,7 +139,7 @@ console.log(c + parseFloat(d));
 
 [Truthy](https://developer.mozilla.org/en-US/docs/Glossary/Truthy)
 
-```
+```javascript
 let verdadero = true;
 let falso = false;
 let v = Boolean(true);
@@ -148,22 +148,22 @@ let f = Boolean(false);
 
 -   **null**
 
-```
+```javascript
 let nulo = null;
 console.log(nulo);
 ```
 
 -   **undefined**
 
-```
+```javascript
 let indefinida;
 console.log(indefinida);
 ```
 
 -   **NaN**
 
-```
-let noEsUnNumero = "hola" * 3.7;
+```javascript
+let noEsUnNumero = 'hola' * 3.7;
 console.log(noEsUnNumero);
 ```
 
@@ -173,77 +173,76 @@ _Se accede a la referencia del valor_.
 
 -   **function(){}**
 
-```
+```javascript
 function nameFunction(params) {
-    console.log("One");
+    console.log('One');
     return 19;
-    console.log("Two")
-    return "Text";
-};
+    console.log('Two');
+    return 'Text';
+}
 
 const funcionExpresada = function () {
-    console.log("Esto es una función expresada, es decir,
-    una función que se le ha asignado como valor a una variable,
-    si invocamos esta función antes de su definición,
-    JS nos dirá: 'Cannot access 'funcionExpresada' before initialization' ");
+    console.log(
+        "Esto es una función expresada, es decir, una función que se le ha asignado como valor a una variable, si invocamos esta función antes de su definición, JS nos dirá: 'Cannot access 'funcionExpresada' before initialization' "
+    );
 };
 ```
 
 -   **array = []**
 
-```
+```javascript
 const a = [];
-const b = [1, true, "Hola", ["A", "B", "C", [1,2,3]]];
+const b = [1, true, 'Hola', ['A', 'B', 'C', [1, 2, 3]]];
 
-console.log(a)
-console.log(b)
-console.log(b.length)
-console.log(b[2])
-console.log(b[0])
-console.log(b[3])
-console.log(b[3][2])
+console.log(a);
+console.log(b);
+console.log(b.length);
+console.log(b[2]);
+console.log(b[0]);
+console.log(b[3]);
+console.log(b[3][2]);
 
-const colores = ["rojo", "verde", "azul"]
+const colores = ['rojo', 'verde', 'azul'];
 
-colores.push("negro")
-colores.pop()
+colores.push('negro');
+colores.pop();
 ```
 
 -   **object = {}**
 
-```
+```javascript
 const fidel = {
-    nombre: "Jon",
-    apellido: "Gomez",
+    nombre: 'fidel',
+    apellido: 'Gomez',
     edad: 30,
-    pasatiempo: ["correr", "ejercicios", "estudiar"],
+    pasatiempo: ['correr', 'ejercicios', 'estudiar'],
     soltero: false,
     contacto: {
-        email: "jon@hotmail.com",
-        movil: "237126413"
+        email: 'jon@hotmail.com',
+        movil: '937126413',
     },
-    saludar: function() {
+    saludar: function () {
         console.log(`Hola :>`);
     },
-    decirMiNombre: function() {
-        console.log(`Hola me llamo ${this.nombre} ${this.apellido} y
-        tengo ${this.edad} años y te puedes contactar conmigo a
-        traves de mi correo: "${this.contacto.email}", Adios.`);
+    decirMiNombre: function () {
+        console.log(
+            `Hola me llamo ${this.nombre} ${this.apellido} y tengo ${this.edad} años y te puedes contactar conmigo a traves de mi correo: "${this.contacto.email}", Adios.`
+        );
     },
 };
 
-console.log(fidel)
-console.log(fidel["nombre"])
-console.log(fidel.apellido)
-console.log(fidel.pasatiempo)
-console.log(fidel.contacto.movil)
+console.log(fidel);
+console.log(fidel['nombre']);
+console.log(fidel.apellido);
+console.log(fidel.pasatiempo);
+console.log(fidel.contacto.movil);
 fidel.saludar();
-fidel.decirMiNombre()
+fidel.decirMiNombre();
 
-console.log(Object.keys(fidel))
-console.log(Object.values(fidel))
-console.log(fidel.hasOwnProperty("nombre"))
-console.log(fidel.hasOwnProperty("nacimiento"))
+console.log(Object.keys(fidel));
+console.log(Object.values(fidel));
+console.log(fidel.hasOwnProperty('nombre'));
+console.log(fidel.hasOwnProperty('nacimiento'));
 ```
 
 -   **class{}**

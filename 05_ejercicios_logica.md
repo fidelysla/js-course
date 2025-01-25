@@ -29,234 +29,236 @@
 
 > 1.  Programa una función que cuente el número de caracteres de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá 10.
 
-```
-const contarCadena = (input = "") =>
-    (!input)
-    ? console.warn("Cadena vacia")
-    : console.info(`La cadena tiene ${input.length} caracteres`)
+```javascript
+const contarCadena = (input = '') =>
+    !input
+        ? console.warn('Cadena vacia')
+        : console.info(`La cadena tiene ${input.length} caracteres`);
 
-contarCadena()                  // Cadena vacia
-contarCadena("Hola Mundo")      // La cadena tiene 10 caracteres
+contarCadena(); // Cadena vacia
+contarCadena('Hola Mundo'); // La cadena tiene 10 caracteres
 ```
 
 > 2. Programa una función que te devuelva el texto recortado según el número de caracteres indicados, pe. miFuncion("Hola Mundo", 4) devolverá "Hola".
 
-```
-const recortarCadena = (cadena = "", numero= undefined) =>
-    (!cadena)
-    ? console.warn("Cadena vacia")
-    : (numero === undefined || isNaN(numero) )
-    ? console.warn("No ingresaste la longitud para recortar texto")
-    : console.info(`La cadena queda asi: ${cadena.toString().slice(0, numero)}`)
+```javascript
+const recortarCadena = (cadena = '', numero = undefined) =>
+    !cadena
+        ? console.warn('Cadena vacia')
+        : numero === undefined || isNaN(numero)
+        ? console.warn('No ingresaste la longitud para recortar texto')
+        : console.info(
+              `La cadena queda asi: ${cadena.toString().slice(0, numero)}`
+          );
 
-recortarCadena(222,"2")         // La cadena queda asi: 22
-recortarCadena("Hola Mundo", 4) // La cadena queda asi: Hola
-recortarCadena("Hola Mundo")    // No ingresaste la longitud para recortar texto
-recortarCadena("", 4)           // Cadena vacia
+recortarCadena(222, '2'); // La cadena queda asi: 22
+recortarCadena('Hola Mundo', 4); // La cadena queda asi: Hola
+recortarCadena('Hola Mundo'); // No ingresaste la longitud para recortar texto
+recortarCadena('', 4); // Cadena vacia
 ```
 
 > 3. Programa una función que dada una String te devuelva un Array de textos separados por cierto caracter, pe. miFuncion('hola que tal', ' ') devolverá ['hola', 'que', 'tal'].
 
-```
-const separarTexto = (texto= "", sep= undefined ) =>
-    (!texto)
-    ? console.warn("La cadena esta vacia")
-    : (sep === undefined)
-    ? console.warn("Ingresa un separador valido")
-    : console.log(texto.toString().split(sep))
+```javascript
+const separarTexto = (texto = '', sep = undefined) =>
+    !texto
+        ? console.warn('La cadena esta vacia')
+        : sep === undefined
+        ? console.warn('Ingresa un separador valido')
+        : console.log(texto.toString().split(sep));
 
-separarTexto("Ene,Feb,Mar,Abr", ",")  // ['Ene', 'Feb', 'Mar', 'Abr']
-separarTexto("", " ")                 // La cadena esta vacia
-separarTexto("hola que tal")          // Ingresa un separador valido
-separarTexto([1234,5678], ",")        // ['1234', '5678']
-separarTexto("hola que tal", " ")     // ['hola', 'que', 'tal']
-separarTexto(1234, "")                // ['1', '2', '3', '4']
-separarTexto(12345, "3")              // ['12', '45']
+separarTexto('Ene,Feb,Mar,Abr', ','); // ['Ene', 'Feb', 'Mar', 'Abr']
+separarTexto('', ' '); // La cadena esta vacia
+separarTexto('hola que tal'); // Ingresa un separador valido
+separarTexto([1234, 5678], ','); // ['1234', '5678']
+separarTexto('hola que tal', ' '); // ['hola', 'que', 'tal']
+separarTexto(1234, ''); // ['1', '2', '3', '4']
+separarTexto(12345, '3'); // ['12', '45']
 ```
 
 > 4. Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) devolverá Hola Mundo Hola Mundo Hola Mundo.
 
-```
-const multiTexto = (texto="", each=undefined) =>
-    (!texto)
-    ? console.warn("La cadena esta vacia")
-    : (each === undefined || typeof each !== "number")
-    ? console.warn("Defina un número valido de veces que se repita")
-    : (each === 0)
-    ? console.error("El número no puede ser 0")
-    : (Math.sign(each) === -1)
-    ? console.error("El número no puede ser negativo")
-    : console.info(`${texto+" "}`.repeat(each))
+```javascript
+const multiTexto = (texto = '', each = undefined) =>
+    !texto
+        ? console.warn('La cadena esta vacia')
+        : each === undefined || typeof each !== 'number'
+        ? console.warn('Defina un número valido de veces que se repita')
+        : each === 0
+        ? console.error('El número no puede ser 0')
+        : Math.sign(each) === -1
+        ? console.error('El número no puede ser negativo')
+        : console.info(`${texto + ' '}`.repeat(each));
 
-multiTexto("")                  // La cadena esta vacia
-multiTexto(" ")                 // Defina un número valido de veces que se repita
-multiTexto("Hola Mundo", 0)     // El número no puede ser 0
-multiTexto("Hola Mundo", "a")   // Defina un número valido de veces que se repita
-multiTexto("Hola", -1)          // El número no puede ser negativo
-multiTexto("Hola Mundo", 3)     // Hola Mundo Hola Mundo Hola Mundo
+multiTexto(''); // La cadena esta vacia
+multiTexto(' '); // Defina un número valido de veces que se repita
+multiTexto('Hola Mundo', 0); // El número no puede ser 0
+multiTexto('Hola Mundo', 'a'); // Defina un número valido de veces que se repita
+multiTexto('Hola', -1); // El número no puede ser negativo
+multiTexto('Hola Mundo', 3); // Hola Mundo Hola Mundo Hola Mundo
 ```
 
 ### **Ejercicios Parte 2**
 
 > 5. Programa una función que invierta las palabras de una cadena de texto, <br> pe. miFuncion("Hola Mundo") devolverá "odnuM aloH".
 
-```
-const invertir = (texto="") => {
+```javascript
+const invertir = (texto = '') => {
     const fun = (text) => {
-        let invertido = ""
-        for (let i = text.length-1; i >= 0; i--) {
-            invertido += text[i]
-        };
-        return invertido
+        let invertido = '';
+        for (let i = text.length - 1; i >= 0; i--) {
+            invertido += text[i];
+        }
+        return invertido;
     };
 
-    (!texto)
-        ? console.warn("Cadena vacia")
-        : (typeof texto === "number")
+    !texto
+        ? console.warn('Cadena vacia')
+        : typeof texto === 'number'
         ? console.log(fun(texto.toString()))
-        : console.log(fun(texto))
+        : console.log(fun(texto));
 };
 
-invertir("")                // Cadena vacia
-invertir("Hola Mundo")      // odnuM aloH
-invertir("Hola Pedrito")    // otirdeP aloH
-invertir("¿Por qué?")       // ?éuq roP¿
-invertir(12345)             // 54321
-invertir(12345-123)         // 22221
+invertir(''); // Cadena vacia
+invertir('Hola Mundo'); // odnuM aloH
+invertir('Hola Pedrito'); // otirdeP aloH
+invertir('¿Por qué?'); // ?éuq roP¿
+invertir(12345); // 54321
+invertir(12345 - 123); // 22221
 ```
 
 > 6. Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2.
 
-```
-const countW = (parr = "", word = undefined) => {
+```javascript
+const countW = (parr = '', word = undefined) => {
     //Function
     const find = (text, re) => {
-        const r = new RegExp(re, "gi");
+        const r = new RegExp(re, 'gi');
         try {
             return text.match(r).length;
         } catch (error) {
-            return "No se encontro la palabra"
-        };
+            return 'No se encontro la palabra';
+        }
     };
 
     // Control
-    (!parr)
-        ? console.warn("Cadena vacia")
-        : (word === undefined || word === "")
-            ? console.warn("Ingresa la palabra a contar.")
-            : (typeof parr === "number" || typeof parr === "object")
-                ? console.log(find(parr.toString(), word))
-                : console.log(find(parr, word));
+    !parr
+        ? console.warn('Cadena vacia')
+        : word === undefined || word === ''
+        ? console.warn('Ingresa la palabra a contar.')
+        : typeof parr === 'number' || typeof parr === 'object'
+        ? console.log(find(parr.toString(), word))
+        : console.log(find(parr, word));
 };
 
-countW()                                    // Cadena vacia
-countW(32345, 3)                            // 2
-countW(["82345","5678"], "8")               // 2
-countW(["82345","56558"], "5")              // 4
-countW("IS This is a string.", "is")        // 3
-countW("", "")                              // Cadena vacia
-countW("Hola", "")                          // Ingresa la palabra a contar.
-countW("Hola", " ")                         // No se encontro la palabra
-countW(" ", " ")                            // 1
-countW("hola mundo adios mundo", "mundo")   // 2
+countW(); // Cadena vacia
+countW(32345, 3); // 2
+countW(['82345', '5678'], '8'); // 2
+countW(['82345', '56558'], '5'); // 4
+countW('IS This is a string.', 'is'); // 3
+countW('', ''); // Cadena vacia
+countW('Hola', ''); // Ingresa la palabra a contar.
+countW('Hola', ' '); // No se encontro la palabra
+countW(' ', ' '); // 1
+countW('hola mundo adios mundo', 'mundo'); // 2
 ```
 
 > 7.  Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true.
 
-```
+```javascript
 const palindromo = (w) => {
     // Funcion para invertir la palabra y unirla
-    let word = w.toLowerCase()
+    let word = w.toLowerCase();
     const invertAndJoin = (word) => {
-        let invertido = "" // palabra invetida
+        let invertido = ''; // palabra invetida
         for (let i = word.length - 1; i >= 0; i--) {
-            invertido += word[i]
-        };
-        let abc = invertido.split("") // hacer un array
-        let x = []
+            invertido += word[i];
+        }
+        let abc = invertido.split(''); // hacer un array
+        let x = [];
         for (const i of abc) {
-            if (i !== " ") {
-                x.push(i)
-            };
-        };
-        return x.join("")
+            if (i !== ' ') {
+                x.push(i);
+            }
+        }
+        return x.join('');
     };
 
     // Funcion para unir la palabra original
     const joinWord = (word) => {
-        let abc = word.split("") // hacer un array
-        let z = []
+        let abc = word.split(''); // hacer un array
+        let z = [];
         for (const i of abc) {
-            if (i !== " ") {
-                z.push(i)
-            };
-        };
-        return z.join("")
+            if (i !== ' ') {
+                z.push(i);
+            }
+        }
+        return z.join('');
     };
-    return ( invertAndJoin(word) === joinWord(word) )
+    return invertAndJoin(word) === joinWord(word);
 };
 
-console.log(palindromo("Salas"))
-console.log(palindromo("anilina"))
-console.log(palindromo("reconocer"))
-console.log(palindromo("dabale arroz a la zorra el abad"))
-console.log(palindromo("anita lava la tina"))
+console.log(palindromo('Salas'));
+console.log(palindromo('anilina'));
+console.log(palindromo('reconocer'));
+console.log(palindromo('dabale arroz a la zorra el abad'));
+console.log(palindromo('anita lava la tina'));
 ```
 
 > 8.  Programa una función que elimine cierto patrón de caracteres de un texto dado,<br> pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá "1, 2, 3, 4 y 5.
 
-```
-const deletePat = (texto = "", pattern = "") =>
-    (!texto)
-    ? "Cadena vacia"
-    : (!pattern)
-        ? "Ingresa el patrón a eliminar."
-        : (typeof texto === "number")
-            ? texto.toString()
-            : texto.replace(new RegExp(pattern, "gi"), "");
+```javascript
+const deletePat = (texto = '', pattern = '') =>
+    !texto
+        ? 'Cadena vacia'
+        : !pattern
+        ? 'Ingresa el patrón a eliminar.'
+        : typeof texto === 'number'
+        ? texto.toString()
+        : texto.replace(new RegExp(pattern, 'gi'), '');
 
-console.log(deletePat("", " ") )
-console.log(deletePat(" ", "") )
-console.log(deletePat("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") )
-console.log(deletePat("102030405", 0) )
-console.log(deletePat(102030405, "0") )
-console.log(deletePat("12030405,", "0") )
+console.log(deletePat('', ' '));
+console.log(deletePat(' ', ''));
+console.log(deletePat('xyz1, xyz2, xyz3, xyz4 y xyz5', 'xyz'));
+console.log(deletePat('102030405', 0));
+console.log(deletePat(102030405, '0'));
+console.log(deletePat('12030405,', '0'));
 ```
 
 ### **Ejercicios Parte 3**
 
 > 9. Programa una función que obtenga un numero aleatorio entre 501 y 600.
 
-```
-const numbBetween = (minor=0, mayor=0) => {
+```javascript
+const numbBetween = (minor = 0, mayor = 0) => {
     if (isNaN(minor) || isNaN(mayor)) {
-        re = "Ingresa números válidos"
+        re = 'Ingresa números válidos';
     } else {
-        minor = Math.abs(minor)
-        mayor = Math.abs(mayor)
+        minor = Math.abs(minor);
+        mayor = Math.abs(mayor);
 
         if (mayor < minor) {
-            re = Math.round(Math.random() * (minor - mayor) + mayor)
+            re = Math.round(Math.random() * (minor - mayor) + mayor);
         } else if (mayor > minor) {
-            re = Math.round(Math.random() * (mayor - minor) + minor)
+            re = Math.round(Math.random() * (mayor - minor) + minor);
         } else if (mayor === minor) {
-            re = Math.round(Math.random() * mayor)
-        };
-    };
-    console.log(re)
+            re = Math.round(Math.random() * mayor);
+        }
+    }
+    console.log(re);
 };
 
-numbBetween()
-numbBetween(0)
-numbBetween(2)
-numbBetween(1,1)
-numbBetween(1,5.5)
-numbBetween("501","600")
-numbBetween(10,20)
-numbBetween("a", "b")
-numbBetween(-3,-3)
-numbBetween("3", "1")
-numbBetween("3","3")
+numbBetween();
+numbBetween(0);
+numbBetween(2);
+numbBetween(1, 1);
+numbBetween(1, 5.5);
+numbBetween('501', '600');
+numbBetween(10, 20);
+numbBetween('a', 'b');
+numbBetween(-3, -3);
+numbBetween('3', '1');
+numbBetween('3', '3');
 ```
 
 > 10. Programa una función que reciba un número y evalúe si es capicúa o no (que se lee igual en un sentido que en otro), pe. miFuncion(2002) devolverá true.
