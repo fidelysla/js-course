@@ -348,7 +348,7 @@
     // document.body.appendChild($ul3)
 }
 
-/*//* DOM: Templates HTML */ {
+/* //* DOM: Templates HTML */ {
 
     // const $cards = document.querySelector(".cards"),
     //     $template = document.getElementById("template-card").content,
@@ -497,10 +497,10 @@
     });
 }
 
-/*//* DOM: Eventos con Parámetros y Remover Eventos */ {
+/* //* DOM: Eventos con Parametros y Remover Eventos */ {
 
     // Para ejecutar una función con parametros en evento, lo envuelves en una Arrow Function.
-
+    /*
     function saludar(nombre="Desconocid@") {
         alert(`Hola ${nombre}`);
         console.log(event);
@@ -524,4 +524,36 @@
     }
 
     $eventoRemover.addEventListener("dblclick", removerDobleClick)
+    */
+}
+
+/* //* DOM: Flujo de Eventos Burbuja y Captura */ {
+
+    const $divsEventos = document.querySelectorAll('.eventos-flujo div')
+    // console.log($divsEventos);
+    
+    function flujoEventos(e) {
+        console.log(
+            `Hola te saluda ${this.className}, el click lo origino ${e.target.className}`
+        );
+    }
+
+    $divsEventos.forEach(div => {
+        // FASE DE BURBUJA - INTERNO A EXTERNO
+        // div.addEventListener('click', flujoEventos)
+        // div.addEventListener('click', flujoEventos, false)
+
+        // FASE DE CAPTURA - EXTERNO A INTERNO
+        // div.addEventListener('click', flujoEventos, true)
+        div.addEventListener('click', flujoEventos, {
+            capture: true,
+            once: true, // Se ejecuta una sola vez
+        })
+    })
+}
+
+/* //* DOM: stopPropagation & preventDefault */ {
+
+    
+
 }

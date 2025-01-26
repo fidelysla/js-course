@@ -27,8 +27,8 @@
 > -   [Modificando Elementos (Cool Style)](10_dom.md#modificando-elementos-cool-style)
 > -   [Manejadores de Eventos](10_dom.md#manejadores-de-eventos)
 > -   [Eventos con Parametros y Remover Eventos](10_dom.md#eventos-con-parametros-y-remover-eventos)
-> -   Flujo de Eventos (Burbuja y Captura)
-> -   stopPropagation and preventDefault
+> -   [Flujo de Eventos Burbuja y Captura](10_dom.md#flujo-de-eventos-burbuja-y-captura)
+> -   [DOM stopPropagation and preventDefault](10_dom.md#dom-stoppropagation-and-preventdefault)
 > -   Delegación de Eventos
 > -   BOM: Propiedades y Eventos
 > -   BOM: Métodos
@@ -817,4 +817,91 @@ const removerDobleClick = (e) => {
 $eventoRemover.addEventListener('dblclick', removerDobleClick);
 ```
 
-###
+### Flujo de Eventos Burbuja y Captura
+
+En el DOM, cuando interactuamos con un elemento de la página (como hacer clic en un botón o mover el mouse sobre un párrafo), se desencadenan eventos. Los eventos son señales que indican que algo ocurrió en el navegador, como un clic, un desplazamiento o un cambio de valor en un campo de texto.
+
+Ahora, cuando un evento ocurre en un elemento del DOM, este puede propagarse a través de dos fases principales: captura y burbuja.
+
+**🔍 Flujo de eventos en el DOM**
+
+El flujo de eventos consta de tres etapas:
+
+-   **Fase de Captura**: El evento se propaga desde el nodo raíz del DOM (el `document`) hacia abajo, pasando por cada uno de los elementos padres hasta llegar al objetivo del evento.
+
+-   **Fase de Objetivo**: El evento llega al elemento en el que se originó.
+
+-   **Fase de Burbuja**: Después de llegar al objetivo, el evento "burbujea" de regreso, propagándose hacia arriba por la jerarquía del DOM hasta el nodo raíz.
+
+**✨ Fase de Captura**
+
+En la fase de captura, el navegador detecta el evento en los elementos más externos del DOM y lo "captura", dirigiéndolo hacia el elemento objetivo. Es como si el evento descendiera a través de la jerarquía de elementos.
+
+-   Por ejemplo, si tienes un botón dentro de un div, y haces clic en el botón, el evento primero pasa por el `document`, luego por el `body`, después por el `div`, y finalmente llega al botón.
+
+**✨ Fase de Burbuja**
+
+En la fase de burbuja, ocurre lo contrario: después de que el evento alcanza el objetivo, comienza a regresar hacia los elementos padres, moviéndose desde el elemento objetivo hacia el nodo raíz. Es como si el evento subiera por la jerarquía.
+
+-   Siguiendo el mismo ejemplo, después de hacer clic en el botón, el evento se propaga de regreso desde el botón hacia el div, luego al `body` y finalmente al `document`.
+
+<br>
+
+```html
+<!-- dom.html -->
+<h4>Flujo de Eventos</h4>
+<section class="eventos-flujo">
+    <div class="uno">
+        1
+        <div class="dos">
+            2
+            <div class="tres">3</div>
+        </div>
+    </div>
+</section>
+<div class="uno">Hola</div>
+```
+
+```css
+.eventos-flujo div {
+    padding: 4rem;
+    font-size: 2rem;
+    text-align: center;
+}
+.uno {
+    background-color: yellow;
+}
+.dos {
+    background-color: gold;
+}
+.tres {
+    background-color: lightyellow;
+}
+```
+
+```javascript
+const $divsEventos = document.querySelectorAll('.eventos-flujo div');
+// console.log($divsEventos);
+
+function flujoEventos(e) {
+    console.log(
+        `Hola te saluda ${this.className}, el click 
+        lo origino ${e.target.className}`
+    );
+}
+
+$divsEventos.forEach((div) => {
+    // FASE DE BURBUJA - INTERNO A EXTERNO
+    div.addEventListener('click', flujoEventos);
+    div.addEventListener('click', flujoEventos, false);
+
+    // FASE DE CAPTURA - EXTERNO A INTERNO
+    div.addEventListener('click', flujoEventos, true);
+    div.addEventListener('click', flujoEventos, {
+        capture: true,
+        once: true, // Se ejecuta una sola vez
+    });
+});
+```
+
+### DOM stopPropagation and preventDefault
