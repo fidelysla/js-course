@@ -75,6 +75,8 @@ El CSSOM es similar al DOM, pero específicamente para las hojas de estilo CSS a
 -   MatchMedia
 -   etc..
 
+<hr>
+
 ### Introduccion al DOM
 
 ```html
@@ -182,6 +184,8 @@ setTimeout(() => {
 document.write('<h1>Hola Mundo</h1>');
 ```
 
+<hr>
+
 ### Nodos Elementos y Selectores
 
 ```javascript
@@ -209,6 +213,8 @@ console.log(document.querySelector('#menu li a'));
 console.log(document.querySelectorAll('#menu li'));
 console.log(document.querySelectorAll('#menu li a'));
 ```
+
+<hr>
 
 ### Atributos y Data Attributes
 
@@ -257,6 +263,8 @@ console.log($linkDOM.hasAttribute('data-id')); //true
 $linkDOM.removeAttribute('data-id');
 console.log($linkDOM.hasAttribute('data-id')); //false
 ```
+
+<hr>
 
 ### Estilos y Variables CSS
 
@@ -325,6 +333,8 @@ console.log(varDarkColor); //#-222 - #-2121
 $body.style.setProperty('background-color', varDarkColor);
 ```
 
+<hr>
+
 ### Clases CSS
 
 ```html
@@ -385,6 +395,8 @@ $card.classList.toggle('opacity-80');
 $card.classList.toggle('sepia');
 ```
 
+<hr>
+
 ### Texto y HTML
 
 ```html
@@ -428,6 +440,8 @@ $whatIsDOM.innerHTML = text;
 $whatIsDOM.outerHTML = text;
 ```
 
+<hr>
+
 ### DOM Traversing Recorriendo el DOM
 
 ```html
@@ -469,6 +483,8 @@ console.log($cards.nextElementSibling); // <script>
 // console.log($cards.closest("div")) // null
 console.log($cards.children[3].closest('section'));
 ```
+
+<hr>
 
 ### Creando Elementos y Fragmentos
 
@@ -567,6 +583,8 @@ $ul3.appendChild($fragment);
 document.body.appendChild($ul3);
 ```
 
+<hr>
+
 ### Templates HTML
 
 ```html
@@ -620,6 +638,8 @@ cardContent.forEach((el) => {
 $cards.appendChild($fragment);
 ```
 
+<hr>
+
 ### Modificando Elementos Old Style
 
 ```javascript
@@ -638,6 +658,8 @@ $cards.insertBefore($newCard, $cards.firstElementChild);
 $cards.removeChild($cards.lastElementChild);
 document.body.appendChild($cloneCards);
 ```
+
+<hr>
 
 ### Modificando Elementos Cool Style
 
@@ -690,6 +712,8 @@ $cards.prepend($newCard); // Primer hijo
 // $cards.append($newCard); // Ultimo Hijo
 // $cards.after($newCard); // Hermano Siguiente
 ```
+
+<hr>
 
 ### Manejadores de Eventos
 
@@ -781,6 +805,8 @@ Además, es importante tener en cuenta que toda función que se convierte en un 
 
 En **resumen**, los eventos semánticos tienen una limitación importante que los hace menos flexibles que los eventos múltiples. Por lo tanto, es recomendable utilizar eventos múltiples para manejar múltiples funciones en respuesta a un solo evento.
 
+<hr>
+
 ### Eventos con Parametros y Remover Eventos
 
 ```html
@@ -816,6 +842,8 @@ const removerDobleClick = (e) => {
 
 $eventoRemover.addEventListener('dblclick', removerDobleClick);
 ```
+
+<hr>
 
 ### Flujo de Eventos Burbuja y Captura
 
@@ -903,5 +931,7 @@ $divsEventos.forEach((div) => {
     });
 });
 ```
+
+<hr>
 
 ### DOM stopPropagation and preventDefault
