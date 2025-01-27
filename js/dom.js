@@ -529,6 +529,7 @@
 
 /* //* DOM: Flujo de Eventos Burbuja y Captura */ {
 
+    /*
     const $divsEventos = document.querySelectorAll('.eventos-flujo div')
     // console.log($divsEventos);
     
@@ -540,20 +541,87 @@
 
     $divsEventos.forEach(div => {
         // FASE DE BURBUJA - INTERNO A EXTERNO
-        // div.addEventListener('click', flujoEventos)
-        // div.addEventListener('click', flujoEventos, false)
+        div.addEventListener('click', flujoEventos)
+        div.addEventListener('click', flujoEventos, false)
 
         // FASE DE CAPTURA - EXTERNO A INTERNO
-        // div.addEventListener('click', flujoEventos, true)
+        div.addEventListener('click', flujoEventos, true)
         div.addEventListener('click', flujoEventos, {
-            capture: true,
+            capture: false,
             once: true, // Se ejecuta una sola vez
         })
     })
+    */
 }
 
 /* //* DOM: stopPropagation & preventDefault */ {
 
+    /*
+
+    const $divsEventos = document.querySelectorAll('.eventos-flujo div')
     
+    function flujoEventos(e) {
+        console.log(
+            `Hola te saluda ${this.className}, el click lo origino ${e.target.className}`
+        );
+        
+        e.stopPropagation();
+    };
+
+    $divsEventos.forEach(div => {
+        div.addEventListener('click', flujoEventos)
+        // div.addEventListener('click', flujoEventos, false)
+        // div.addEventListener('click', flujoEventos, true)
+    });
+    
+    const $linkEventos = document.querySelector(".eventos-flujo a")
+
+    $linkEventos.addEventListener("click", (e) => {
+        alert("Hola soy jonM.com")
+        e.preventDefault()
+        e.stopPropagation();
+    });
+    
+    */
+}
+
+/*//* DOM: Delegación de Eventos */ {
+
+    /*
+    // const $divsEventos = document.querySelectorAll('.eventos-flujo div'),
+    //     $linkEventos = document.querySelector(".eventos-flujo a")
+
+    function flujoEventos(e) {
+        console.log(
+            `Hola te saluda ${this}, el click lo origino ${e.target.className}`
+        );
+        
+        // e.stopPropagation();
+    };
+
+    document.addEventListener("click", (e) => {
+        console.log("Click en", e.target);
+
+        if (e.target.matches(".eventos-flujo div")) {
+            flujoEventos(e)
+        }
+
+        if (e.target.matches(".eventos-flujo a")) {
+            alert("Hola soy jonM.com")
+            e.preventDefault()
+        }
+    })
+
+    // $divsEventos.forEach(div => {
+    //     div.addEventListener('click', flujoEventos)
+    // });
+
+    // $linkEventos.addEventListener("click", (e) => {
+    //     alert("Hola soy jonM.com")
+    //     e.preventDefault()
+    //     e.stopPropagation();
+    // });
+    */
 
 }
+

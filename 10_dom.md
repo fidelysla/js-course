@@ -29,7 +29,7 @@
 > -   [Eventos con Parametros y Remover Eventos](10_dom.md#eventos-con-parametros-y-remover-eventos)
 > -   [Flujo de Eventos Burbuja y Captura](10_dom.md#flujo-de-eventos-burbuja-y-captura)
 > -   [DOM stopPropagation and preventDefault](10_dom.md#dom-stoppropagation-and-preventdefault)
-> -   Delegación de Eventos
+> -   [DOM Delegación de Eventos](10_dom.md#dom-delegación-de-eventos)
 > -   BOM: Propiedades y Eventos
 > -   BOM: Métodos
 > -   BOM: Objetos: URL, Historial y Navegador
@@ -875,7 +875,7 @@ En la fase de burbuja, ocurre lo contrario: después de que el evento alcanza el
 
 <br>
 
-```html
+```HTML
 <!-- dom.html -->
 <h4>Flujo de Eventos</h4>
 <section class="eventos-flujo">
@@ -883,11 +883,12 @@ En la fase de burbuja, ocurre lo contrario: después de que el evento alcanza el
         1
         <div class="dos">
             2
-            <div class="tres">3</div>
+            <div class="tres">
+                3
+            </div>
         </div>
     </div>
 </section>
-<div class="uno">Hola</div>
 ```
 
 ```css
@@ -935,3 +936,97 @@ $divsEventos.forEach((div) => {
 <hr>
 
 ### DOM stopPropagation and preventDefault
+
+```HTML
+<section class="eventos-flujo">
+    <div class="uno">
+        1
+        <div class="dos">
+            2
+            <div class="tres">
+                3
+                <a href="https://jonmircha.com"
+                target="_blank" rel="noopener">jonmircha.com</a>
+            </div>
+        </div>
+    </div>
+</section>
+```
+
+```JavaScript
+const $divsEventos = document.querySelectorAll('.eventos-flujo div')
+
+function flujoEventos(e) {
+    console.log(
+        `Hola te saluda ${this.className}, el click lo
+        origino ${e.target.className}`
+    );
+
+    e.stopPropagation();
+};
+
+$divsEventos.forEach(div => {
+    div.addEventListener('click', flujoEventos)
+    // div.addEventListener('click', flujoEventos, false)
+    // div.addEventListener('click', flujoEventos, true)
+});
+
+const $linkEventos = document.querySelector(".eventos-flujo a")
+
+$linkEventos.addEventListener("click", (e) => {
+    alert("Hola estas por entrar a un enlace externo o no")
+    e.preventDefault()
+    e.stopPropagation();
+});
+```
+
+<hr>
+
+### DOM Delegación de Eventos
+
+```JavaScript
+// const $divsEventos = document.querySelectorAll('.eventos-flujo div'),
+//     $linkEventos = document.querySelector(".eventos-flujo a")
+
+function flujoEventos(e) {
+    console.log(
+        `Hola te saluda ${this}, el click lo origino ${e.target.className}`
+    );
+    // e.stopPropagation();
+};
+
+document.addEventListener("click", (e) => {
+    console.log("Click en", e.target);
+
+    if (e.target.matches(".eventos-flujo div")) {
+        flujoEventos(e)
+    }
+
+    if (e.target.matches(".eventos-flujo a")) {
+        alert("Hola soy jonM.com")
+        e.preventDefault()
+    }
+});
+
+// $divsEventos.forEach(div => {
+//     div.addEventListener('click', flujoEventos)
+// });
+
+// $linkEventos.addEventListener("click", (e) => {
+//     alert("Hola soy jonM.com")
+//     e.preventDefault()
+//     e.stopPropagation();
+// });
+```
+
+<hr>
+
+### BOM Propiedades y Eventos
+
+### BOM Métodos
+
+### BOM Objetos URL Historial y Navegador
+
+### Recursos Adicionales
+
+-   [DOM - JonMircha](https://jonmircha.com/dom)
