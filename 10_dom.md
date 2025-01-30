@@ -30,9 +30,10 @@
 > -   [Flujo de Eventos Burbuja y Captura](10_dom.md#flujo-de-eventos-burbuja-y-captura)
 > -   [DOM stopPropagation and preventDefault](10_dom.md#dom-stoppropagation-and-preventdefault)
 > -   [DOM Delegación de Eventos](10_dom.md#dom-delegación-de-eventos)
-> -   BOM: Propiedades y Eventos
-> -   BOM: Métodos
-> -   BOM: Objetos: URL, Historial y Navegador
+> -   [BOM: Propiedades y Eventos](10_dom.md#bom-propiedades-y-eventos)
+> -   [BOM: Métodos](10_dom.md#bom-metodos)
+> -   [BOM: Objetos: URL, Historial y Navegador](10_dom.md#bom-objetos-url-historial-y-navegador)
+> -   [Recursos Adicionales](10_dom.md#recursos-adicionales)
 
 <hr>
 
@@ -1023,9 +1024,123 @@ document.addEventListener("click", (e) => {
 
 ### BOM Propiedades y Eventos
 
-### BOM Métodos
+```HTML
+<h3 style="width: 2000px;">Manejo del BOM</h3>
+```
+
+```JavaScript
+window.addEventListener("resize", (e) => {
+    console.clear();
+    console.log("********** Evento Resize **********");
+    console.log(window.innerWidth);
+    console.log(window.innerHeight);
+    console.log(window.outerWidth);
+    console.log(window.outerHeight);
+    console.log(e);
+})
+
+window.addEventListener("scroll", (e) => {
+    console.clear();
+    console.log("********** Evento Scroll **********");
+    console.log(window.scrollX);
+    console.log(window.scrollY);
+    console.log(e);
+});
+
+window.addEventListener("load", (e) => {
+    console.clear()
+    console.log("********** Evento Load **********");
+    console.log(window.screenX);
+    console.log(window.screenY);
+    console.log(e);
+});
+
+document.addEventListener("DOMContentLoaded", (e) => {
+    console.log("******* Evento DOMContentLoaded *******");
+    console.log(window.screenX);
+    console.log(window.screenY);
+    console.log(e);
+});
+```
+
+<hr>
+
+### BOM Metodos
+
+```HTML
+<h3 style="width: 2000px;">Manejo del BOM</h3>
+<button id="abrir-ventana">Abrir Ventana</button>
+<br><br>
+<button id="cerrar-ventana">Cerrar Ventana</button>
+<br><br>
+<button id="imprimir-ventana">Imprimir Ventana</button>
+<br><br>
+```
+
+```JavaScript
+const $btnAbrir = document.getElementById("abrir-ventana"),
+    $btnCerrar = document.getElementById("cerrar-ventana"),
+    $btnImprimir = document.getElementById("imprimir-ventana")
+
+let ventana;
+
+$btnAbrir.addEventListener("click", (e) => {
+    ventana = window.open("https://jonmircha.com")
+    // open("https://jonmircha.com")
+})
+
+$btnCerrar.addEventListener("click", (e) => {
+    // window.close();
+    ventana.close()
+})
+
+$btnImprimir.addEventListener("click", (e) => {
+    window.print();
+})
+```
+
+<hr>
 
 ### BOM Objetos URL Historial y Navegador
+
+```JavaScript
+console.log(window.location);
+console.log("******** Objeto URL (Location) ********");
+console.log(location.origin); // 127.0.0.1:5500
+console.log(location.protocol); // http:
+console.log(location.host);     // 127.0.0.1:5500
+console.log(location.hostname); // 127.0.0.1
+console.log(location.port);     // 5500
+console.log(location.href);     // http://127.0.0.1:5500/dom.html
+console.log(location.hash);     // [url]#...
+console.log(location.search);   // [url]?...=...
+
+console.log(location.pathname); // dom.html
+// location.reload() (reload infinito)
+```
+
+```JavaScript
+console.log("******** Objeto Historial (history) ********");
+console.log(window.history);
+console.log(history.length);
+console.log(history.back(4));
+console.log(history.forward(3));
+console.log(history.go(-1));
+```
+
+```JavaScript
+console.log("******** Objeto Navegador (navigator) ********");
+console.log(navigator);
+console.log(navigator.connection);
+console.log(navigator.geolocation);
+console.log(navigator.mediaDevices);
+console.log(navigator.mimeTypes); // deprecated.
+console.log(navigator.onLine);
+console.log(navigator.serviceWorker);
+console.log(navigator.storage);
+console.log(navigator.usb);
+console.log(navigator.userAgent);
+```
 
 ### Recursos Adicionales
 

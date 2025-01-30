@@ -585,7 +585,7 @@
     */
 }
 
-/*//* DOM: Delegación de Eventos */ {
+/* //* DOM: Delegación de Eventos */ {
 
     /*
     // const $divsEventos = document.querySelectorAll('.eventos-flujo div'),
@@ -625,3 +625,105 @@
 
 }
 
+/* //* BOM: Propiedades y Eventos */ {
+
+    /*
+    window.addEventListener("resize", (e) => {
+        // console.clear();
+        console.log("********** Evento Resize **********");
+        console.log(window.innerWidth);
+        console.log(window.innerHeight);
+        // console.log(window.outerWidth);
+        // console.log(window.outerHeight);
+        // console.log(e);
+    })
+
+    window.addEventListener("scroll", (e) => {
+        console.clear();
+        console.log("********** Evento Scroll **********");
+        console.log(window.scrollX);
+        console.log(window.scrollY);
+        console.log(e);
+    });
+    
+    window.addEventListener("load", (e) => {
+        // console.clear()
+        console.log("********** Evento Load **********");
+        console.log(window.screenX);
+        console.log(window.screenY);
+        console.log(e);
+    });
+    
+    document.addEventListener("DOMContentLoaded", (e) => {
+        console.log("********** Evento DOMContentLoaded **********");
+        console.log(window.screenX);
+        console.log(window.screenY);
+        console.log(e);
+    });
+    */
+
+}
+
+/* //* BOM: Metodos */ {
+
+    const $btnAbrir = document.getElementById("abrir-ventana"),
+        $btnCerrar = document.getElementById("cerrar-ventana"),
+        $btnImprimir = document.getElementById("imprimir-ventana")
+
+    let ventana;
+
+    $btnAbrir.addEventListener("click", (e) => {
+        ventana = window.open("https://jonmircha.com")
+        // open("https://jonmircha.com")
+    })
+
+    $btnCerrar.addEventListener("click", (e) => {
+        // window.close();
+        ventana.close()
+    })
+    $btnImprimir.addEventListener("click", (e) => {
+        window.print();
+    })
+}
+
+/* //* BOM: Objetos: URL Historial y Navegador */ {
+
+    /*
+    console.log(window.location);
+    console.log("******** Objeto URL (Location) ********");
+    console.log(location.origin); // 127.0.0.1:5500
+    console.log(location.protocol); // http:
+    console.log(location.host);     // 127.0.0.1:5500
+    console.log(location.hostname); // 127.0.0.1
+    console.log(location.port);     // 5500
+    console.log(location.href);     // http://127.0.0.1:5500/dom.html
+    console.log(location.hash);     // [url]#...
+    console.log(location.search);   // [url]?...=...
+    
+    console.log(location.pathname); // dom.html
+    // location.reload() (reload infinito)
+    */
+    
+    /*
+    console.log("******** Objeto Historial (history) ********");
+    console.log(window.history);
+    console.log(history.length);
+    console.log(history.back(4));
+    console.log(history.forward(3));
+    console.log(history.go(-1));
+    */
+    
+    /*
+    console.log("******** Objeto Navegador (navigator) ********");
+    console.log(navigator);
+    console.log(navigator.connection);
+    console.log(navigator.geolocation);
+    console.log(navigator.mediaDevices);
+    console.log(navigator.mimeTypes); // deprecated.
+    console.log(navigator.onLine);
+    console.log(navigator.serviceWorker);
+    console.log(navigator.storage);
+    console.log(navigator.usb);
+    console.log(navigator.userAgent);
+    */
+}
