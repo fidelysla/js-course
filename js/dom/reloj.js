@@ -24,15 +24,17 @@ export function digitalClock(clock, btnPlay, btnStop) {
     })
 }
 
-export function alarm(sound, btnPlay, btnStop) {
+export function alarm(alarm, sound, btnPlay, btnStop) {
 
     let alarmTempo;
     const $alarm = d.createElement("audio")
     $alarm.src = sound
-
+    
     d.addEventListener("click", e => {
         if (e.target.matches(btnPlay)) {
             alarmTempo = setTimeout(() => {
+                d.querySelector(alarm).appendChild($alarm)
+                $alarm.controls = true
                 $alarm.play();
             }, 500);
             e.target.disabled = true
@@ -41,8 +43,10 @@ export function alarm(sound, btnPlay, btnStop) {
         if (e.target.matches(btnStop)) {
             clearTimeout(alarmTempo)
             $alarm.pause();
+            $alarm.controls = false
             $alarm.currentTime = 0;
             d.querySelector(btnPlay).disabled = false;
+            $alarm.remove()
         }
     })
 }
