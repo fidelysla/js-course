@@ -15,7 +15,6 @@ d.addEventListener("DOMContentLoaded", e => {
     alarm("#alarm", "/assets/alarma.mp3", "#activar-alarma", "#desactivar-alarma");
     // countdown("countdown", "Feb 06, 2025 12:00:00", "Feliz Cumpleaños, Gael 🎂");
     scrollTopButton(".scroll-top-btn");
-    darkTheme(".dark-theme-btn", "dark-mode")
 })
 
 d.addEventListener("keydown", (e) => {
@@ -23,3 +22,5 @@ d.addEventListener("keydown", (e) => {
     shortcuts(e)
     // moveBall(e, ".ball", ".stage")
 })
+
+darkTheme(".dark-theme-btn", "dark-mode")
