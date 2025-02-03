@@ -8,7 +8,7 @@ export default function responsiveMedia(id, mq, mobileContent, desktopContent) {
 
     let breakpoint = w.matchMedia(mq);
 
-    console.log(breakpoint);
+    // console.log(breakpoint);
     
     const responsive = e => {
         if (e.matches) {
@@ -18,7 +18,7 @@ export default function responsiveMedia(id, mq, mobileContent, desktopContent) {
             d.getElementById(id).innerHTML = mobileContent;
             // console.log("1024", e.matches);
         }
-        console.log(e.matches);
+        // console.log(e.matches);
     };
     
     // breakpoint.addListener(responsive) // addListener (deprecated)
