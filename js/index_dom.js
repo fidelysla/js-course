@@ -1,5 +1,6 @@
 import scrollTopButton from './dom/boton_scroll.js';
 import countdown from './dom/cuenta_regresiva.js';
+import userDeviceInfo from './dom/deteccion_dispositivo.js';
 import hamburgerMenu from './dom/menu_hamburguesa.js';
 import responsiveMedia from './dom/objeto_responsive.js';
 import responsiveTester from './dom/prueba_responsive.js';
@@ -35,7 +36,9 @@ d.addEventListener('DOMContentLoaded', (e) => {
     //     'Contenido Escritorio'
     // );
 
-    responsiveTester("responsive-tester")
+    // responsiveTester("responsive-tester")
+
+    userDeviceInfo("user-device")
 });
 
 d.addEventListener('keydown', (e) => {
