@@ -9,12 +9,12 @@ export default function networkStatus() {
         const $div = d.createElement("div")
 
         if (n.onLine) {
-            console.log("Conexión Reestablecidad");
+            // console.log("Conexión Reestablecidad");
             $div.textContent = "Conexión Reestablecidad";
             $div.classList.add("online");
             $div.classList.remove("offline")
         } else {
-            console.log("Conexión Perdida");
+            // console.log("Conexión Perdida");
             $div.textContent = "Conexión Perdida";
             $div.classList.add("offline");
             $div.classList.remove("online")
