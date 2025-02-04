@@ -7,7 +7,7 @@ const d = document,
     
     
     export default function userDeviceInfo(id) {
-    console.log(n);
+    // console.log(n);
         
     const $id = d.getElementById(id),
         isMobile = {
@@ -47,7 +47,7 @@ const d = document,
 
     
     // console.log(isMobile.android());
-    console.log(isDesktop.windows());
+    // console.log(isDesktop.windows());
     
     $id.innerHTML = `
     <ul>
