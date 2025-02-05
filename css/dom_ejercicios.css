@@ -261,3 +261,8 @@ img {
     opacity: 0;
     order: 1;
 }
+
+.winner {
+
+    color: aqua;
+}
