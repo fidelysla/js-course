@@ -41,6 +41,7 @@ img {
     padding: 1rem;
     background-color: var(--main-color);
     color: var(--second-color);
+    z-index: 800;
 }
 
 .header h1 {
@@ -228,4 +229,35 @@ img {
 
 .offline {
     background-color: #b71c1c;
+}
+
+/* **** SearchFilters ****** */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.card {
+    background-color: var(--second-color);
+    color: var(--main-color);
+    transition: all 0.3s ease-out;
+    /* width: 200px; */
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+.card figcaption {
+    padding: 1rem;
+    background-color: darkolivegreen;
+}
+
+.filter {
+    /* display: none; */
+    visibility: hidden;
+    opacity: 0;
+    order: 1;
 }

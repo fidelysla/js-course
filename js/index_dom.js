@@ -3,6 +3,7 @@ import countdown from './dom/cuenta_regresiva.js';
 import userDeviceInfo from './dom/deteccion_dispositivo.js';
 import networkStatus from './dom/deteccion_red.js';
 import webCam from './dom/deteccion_webcam.js';
+import searchFilters from './dom/filtro_busquedas.js';
 import getGeolocation from './dom/geolocalizacion.js';
 import hamburgerMenu from './dom/menu_hamburguesa.js';
 import responsiveMedia from './dom/objeto_responsive.js';
@@ -15,7 +16,7 @@ const d = document;
 
 d.addEventListener('DOMContentLoaded', (e) => {
     
-    console.clear();
+    // console.clear();
 
     hamburgerMenu('.panel-btn', '.panel', '.menu a');
     
@@ -54,12 +55,14 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
     // webCam("webcam");
 
-    getGeolocation("geolocation")
+    // getGeolocation("geolocation")
+
+    searchFilters(".card-filter", ".card")
 
 });
 
 d.addEventListener('keydown', (e) => {
-    console.clear();
+    // console.clear();
     shortcuts(e);
     // moveBall(e, ".ball", ".stage")
 });
