@@ -1,4 +1,5 @@
 import scrollTopButton from './dom/boton_scroll.js';
+import slider from './dom/carrusel.js';
 import countdown from './dom/cuenta_regresiva.js';
 import userDeviceInfo from './dom/deteccion_dispositivo.js';
 import networkStatus from './dom/deteccion_red.js';
@@ -16,22 +17,21 @@ import darkTheme from './dom/tema_oscuro.js';
 const d = document;
 
 d.addEventListener('DOMContentLoaded', (e) => {
-    
     // console.clear();
 
     hamburgerMenu('.panel-btn', '.panel', '.menu a');
-    
+
     digitalClock('#reloj', '#activar-reloj', '#desactivar-reloj');
-    
+
     alarm(
         '#alarm',
         '/assets/alarma.mp3',
         '#activar-alarma',
         '#desactivar-alarma'
     );
-    
+
     // countdown("countdown", "Feb 06, 2025 12:00:00", "Feliz Cumpleaños, Gael 🎂");
-    
+
     scrollTopButton('.scroll-top-btn');
 
     responsiveMedia(
@@ -48,9 +48,9 @@ d.addEventListener('DOMContentLoaded', (e) => {
     //     'Contenido Escritorio'
     // );
 
-    responsiveTester("responsive-tester")
+    responsiveTester('responsive-tester');
 
-    userDeviceInfo("user-device")
+    userDeviceInfo('user-device');
 
     // networkStatus();
 
@@ -58,10 +58,11 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
     // getGeolocation("geolocation")
 
-    searchFilters(".card-filter", ".card")
+    searchFilters('.card-filter', '.card');
 
-    draw("#winner-btn", ".player")
+    draw('#winner-btn', '.player');
 
+    slider();
 });
 
 d.addEventListener('keydown', (e) => {
