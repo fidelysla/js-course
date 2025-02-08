@@ -10,6 +10,7 @@ import hamburgerMenu from './dom/menu_hamburguesa.js';
 import responsiveMedia from './dom/objeto_responsive.js';
 import responsiveTester from './dom/prueba_responsive.js';
 import { digitalClock, alarm } from './dom/reloj.js';
+import scrollSpy from './dom/scroll_espia.js';
 import draw from './dom/sorteo.js';
 import { moveBall, shortcuts } from './dom/teclado.js';
 import darkTheme from './dom/tema_oscuro.js';
@@ -30,7 +31,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
         '#desactivar-alarma'
     );
 
-    // countdown("countdown", "Feb 06, 2025 12:00:00", "Feliz Cumpleaños, Gael 🎂");
+    // countdown("countdown", "Jun 05, 2025 12:00:00", "Feliz Cumpleaños, Carlos");
 
     scrollTopButton('.scroll-top-btn');
 
@@ -62,7 +63,9 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
     draw('#winner-btn', '.player');
 
-    slider();
+    // slider();
+
+    scrollSpy();
 });
 
 d.addEventListener('keydown', (e) => {
