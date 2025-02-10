@@ -10,7 +10,7 @@ export default function scrollSpy() {
         // console.log("entries", entries);
 
         entries.forEach((entry) => {
-            console.log("entry", entry);
+            // console.log("entry", entry);
             const id = entry.target.getAttribute("id")
             // console.log(id);
             

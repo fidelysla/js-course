@@ -53,5 +53,5 @@ export default function slider() {
 
     })
 
-    startInterval("next")
+    // startInterval("next")
 }
