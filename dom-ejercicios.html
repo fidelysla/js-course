@@ -32,7 +32,7 @@
             <a href="#seccion11" data-scroll-spy>Sorteo Digital</a>
             <a href="#seccion12" data-scroll-spy>Responsive Slider</a>
             <a href="#seccion13" data-scroll-spy>Video Inteligente</a>
-            <a href="#seccion14" data-scroll-spy>Sección 14</a>
+            <a href="#seccion14" data-scroll-spy>Validaciones de Formulario</a>
             <a href="#seccion15" data-scroll-spy>Sección 15</a>
             <a href="#seccion16" data-scroll-spy>Sección 16</a>
         </nav>
@@ -172,7 +172,30 @@
             <video src="assets/video/MEDIA3.mp4" muted data-smart-video></video>
         </section>
         <section id="seccion14" class="section" data-scroll-spy>
-            <h2></h2>
+            <h2>Validaciones de Formulario</h2>
+
+            <form class="contact-form">
+
+                <legend>Envianos tus comentarios</legend>
+
+                <input type="text" name="name" placeholder="Escribe tu nombre" title="Nombre sólo acepta letras y espaciones en blanco" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" required>
+                
+                <input type="email" name="email" placeholder="Escribe tu email" title="Email incorrecto" pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" required>
+                
+                <input type="text" name="subject" placeholder="Asunto a tratar" title="El Asunto es requerido" required>
+                
+                <textarea name="comments" cols="50" rows="5" placeholder="Escribe tus comentarios" title="Tu comentario no debe exceder los 255 caracteres" data-pattern="^.{1,255}$" required></textarea>
+                
+                <input type="submit" value="Enviar">
+                
+                <div class="contact-form-loader none">
+                    <img src="assets/loader.svg" alt="Cargando" width="50px" height="50px">
+                </div>
+                <div class="contact-form-response none">
+                    <p>Los datos han sido envianos</p>
+                </div>
+            </form>
+            
         </section>
         <section id="seccion15" class="section" data-scroll-spy>
             <h2></h2>
