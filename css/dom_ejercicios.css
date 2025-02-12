@@ -252,7 +252,7 @@ img {
 
 .card figcaption {
     padding: 1rem;
-    background-color: darkolivegreen;
+    /* background-color: darkolivegreen; */
 }
 
 .filter {
@@ -442,6 +442,10 @@ img {
 
 .contact-form *::placeholder {
     color: #222;
+}
+
+.contact-form > [required] {
+    background-color: #fbfbfb;
 }
 
 .contact-form > [required]:valid {
