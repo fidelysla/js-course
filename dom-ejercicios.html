@@ -179,12 +179,10 @@
                 <legend>Envianos tus comentarios</legend>
 
                 <input type="text" name="name" placeholder="Escribe tu nombre" title="Nombre sólo acepta letras y espaciones en blanco" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" required>
-                
-                <input type="email" name="email" placeholder="Escribe tu email" title="Email incorrecto" pattern="^[a-zA-Z0-9\-.+_]+(?:\.[a-zA-Z0-9\-.+_]+)*@[a-zA-Z0-9\-.]+(?:\.[a-zA-Z0-9\-.]+)*\.[a-zA-Z]{2,15}$"  required>
 
                 <!-- <input type="email" name="email" placeholder="Escribe tu email" title="Email incorrecto" pattern="^[a-zA-Z0-9\-.+_]+@[a-zA-Z0-9\-]+\.[a-zA-Z]{2,15}$"  required> -->
 
-                <!-- <input type="email" name="email" placeholder="Escribe tu email" title="Email incorrecto" pattern="^[a-zA-Z0-9\-.+_]+@[a-zA-Z0-9\-.]+\.[a-zA-Z]{2,15}$"  required> -->
+                <input type="email" name="email" placeholder="Escribe tu email" title="Escribe un email válido" pattern="^(?!.*\.\.)[a-zA-Z0-9][a-zA-Z0-9\-._+]+[a-zA-Z0-9]+@[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*(?:\.[a-zA-Z0-9\-]+(?:-[a-zA-Z0-9]+)*)*\.[a-zA-Z]{2,15}$"  required>
                 
                 <input type="text" name="subject" placeholder="Asunto a tratar" title="El Asunto es requerido" required>
                 
