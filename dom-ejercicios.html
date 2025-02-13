@@ -33,8 +33,7 @@
             <a href="#seccion12" data-scroll-spy>Responsive Slider</a>
             <a href="#seccion13" data-scroll-spy>Video Inteligente</a>
             <a href="#seccion14" data-scroll-spy>Validaciones de Formulario</a>
-            <a href="#seccion15" data-scroll-spy>Sección 15</a>
-            <a href="#seccion16" data-scroll-spy>Sección 16</a>
+            <a href="#seccion15" data-scroll-spy>Narrador</a>
         </nav>
     </aside>
     <main>
@@ -168,7 +167,6 @@
             <h2>Video Inteligente</h2>
             <video src="assets/video/MEDIA2.mp4" controls data-smart-video></video>
             <br><br><br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br><br><br>
             <video src="assets/video/MEDIA3.mp4" muted data-smart-video></video>
         </section>
         <section id="seccion14" class="section" data-scroll-spy>
@@ -200,7 +198,16 @@
             
         </section>
         <section id="seccion15" class="section" data-scroll-spy>
-            <h2></h2>
+            <h2>Narrador</h2>
+            <select title="Selecciona un narrador" id="speech-select">
+                <option value="">--- Elige una voz ---</option>
+            </select>
+            <br>
+            <br>
+            <textarea id="speech-text" cols="50" rows="5" placeholder="Ingresa un texto para leerlo"></textarea>
+            <br>
+            <br>
+            <button id="speech-btn">Leer Texto</button>
         </section>
     </main>
     <button class="scroll-top-btn hidden">⬆️</button>
