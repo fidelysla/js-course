@@ -25,33 +25,36 @@
 
 ### **Temporizadores setTimeout y setInterval**
 
-> En JavaScript, los temporizadores se utilizan para ejecutar funciones después de un período de tiempo específico. `setTimeout` se usa para ejecutar una función una sola vez después de un retraso dado en milisegundos.
-> Por ejemplo, `setTimeout(() => console.log("Hola"), 1000)` ejecutará el mensaje después de 1 segundo.
-> Por otro lado, `setInterval` ejecuta una función repetidamente a intervalos específicos. Por ejemplo, `setInterval(() => console.log("Hola"), 1000)` imprimirá "Hola" cada segundo hasta que se detenga con clearInterval.
+> En JavaScript, los temporizadores se utilizan para ejecutar funciones después de un período de tiempo específico.
+>
+> -   `setTimeout` Se usa para ejecutar una función una sola vez después de un retraso dado en milisegundos.
+>     Por ejemplo, `setTimeout(() => console.log("Hola"), 1000)` ejecutará el mensaje después de 1 segundo.
+>
+> -   `setInterval` Ejecuta una función repetidamente a intervalos específicos. Por ejemplo, `setInterval(() => console.log("Hola"), 1000)` imprimirá "Hola" cada segundo hasta que se detenga con clearInterval.
 
-```javascript
-// **SetTimeOut**
-
+```Javascript
+// ### SETTIMEOUT ###
 let temporizador1 = setTimeout(() => {
     console.log('Ejecutando un setTimeout, esto se ejecuta una sóla vez.');
-}, 2000);
+}, 3000);
 
-// clearTimeout(temporizador)
+clearTimeout(temporizador1)
 console.log('Despues del clearTimeout');
 
-// **SetInterval**
+
+// ### SETINTERVAL ###
 setInterval(() => {
     console.log(
         'Ejecutando un setInterval, esto se ejecuta indefinidamente cada cierto intervalo de tiempo'
     );
 }, 1000);
 
-let temporizador = setInterval(() => {
+let temporizador2 = setInterval(() => {
     console.clear();
     console.log(new Date().toLocaleTimeString());
 }, 1000);
 
-// clearInterval(temporizador);
+clearInterval(temporizador2);
 console.log('Despues del clearInterval');
 ```
 
@@ -61,25 +64,25 @@ console.log('Despues del clearInterval');
 > El Event Loop monitorea dos partes clave: la pila de llamadas (Call Stack) y la cola de tareas (Task Queue). Cuando una tarea asincrónica termina, su callback se coloca en la cola de tareas y se ejecuta en la pila de llamadas solo si está vacía.
 > Esto asegura que JavaScript permanezca eficiente y no se detenga esperando operaciones lentas como leer un archivo o cargar datos de un servidor.
 >
-> **Procesamiento Single thread y Multi thread.**
+> **1. Procesamiento Single thread y Multi thread.**
 >
 > Un hilo la unidad básica de ejecución de un proceso, cada que abres un programa como el
 > navegador o tu editor de código, se levanta un proceso en tu computadora e internamente
 > este puede tener uno o varios hilos (threads) ejecutándose para que el proceso funcione.
 >
-> **Operaciones de CPU y Operaciones de I/O (Entrada y Salida).**
+> **2. Operaciones de CPU y Operaciones de I/O (Entrada y Salida).**
 >
-> -   **Operaciones CPU**: Aquellas que pasan el mayor tiempo consumiendo Procesos del CPU,
+> -   **Operaciones CPU**: Aquellas que pasan el mayor tiempo consumiendo procesos del CPU,
 >     por ejemplo, la escritura de ficheros.
 > -   **Operaciones de Entrada y Salida**: Aquellas que pasan la mayor parte del tiempo esperando
 >     la respuesta de una petición o recurso, como la solicitud a una API o BD.
 >
-> **Operaciones Concurrentes y Paralelas.**
+> **3. Operaciones Concurrentes y Paralelas.**
 >
-> -   **Concurrencia**: cuando dos o más tareas progresan simultáneamente.
-> -   **Paralelismo**: cuando dos o más tareas se ejecutan, al mismo tiempo.
+> -   **Concurrencia**: Cuando dos o más tareas progresan simultáneamente.
+> -   **Paralelismo**: Cuando dos o más tareas se ejecutan, al mismo tiempo.
 >
-> **Operaciones Bloqueantes y No Bloqueantes.**
+> **4. Operaciones Bloqueantes y No Bloqueantes.**
 >
 > -   **Bloqueante**: Son operaciones que no devuelven el control a nuestra aplicación hasta que
 >     se ha completado. Por tanto el thread queda bloqueado en estado de espera.
@@ -88,12 +91,12 @@ console.log('Despues del clearInterval');
 >     los datos solicitados. En caso contrario (si la operación no ha podido ser satisfecha)
 >     podría devolver un código de error.
 >
-> **Operaciones Síncronas y Asíncronas.**
+> **5. Operaciones Síncronas y Asíncronas.**
 >
 > -   **Síncrono**: La respuesta sucede en el presente, una operación síncrona esperará el resultado.
 > -   **Asíncrono**: La respuesta sucede a futuro, una operación asíncrona no esperará el resultado.
 
-```javascript
+```Javascript
 //Código Síncrono Bloqueante
 (() => {
     console.log('Código Síncrono');
@@ -155,7 +158,7 @@ console.log('Despues del clearInterval');
 > Una función callback es aquella que es pasada como argumento a otra función para que sea "llamada de nuevo" (call back) en un momento posterior. Una función que acepta otras funciones como argumentos es llamada función de orden-superior (High-Order), y contiene la lógica para determinar cuándo se ejecuta la función callback. Es la combinación de estas dos la que nos permite ampliar nuestra funcionalidad.
 > Al ser JavaScript un lenguaje orientado a eventos, las callbacks son una buena técnica para controlar la asíncronía, sin embargo... Callback Hell 😈🤘.
 
-```javascript
+```Javascript
 function cuadradoCallback(value, callback) {
     setTimeout(() => {
         callback(value, value * value);
@@ -190,7 +193,7 @@ cuadradoCallback(0, (value, result) => {
 
 > Las promesas son un mecanismo más estructurado para manejar tareas asincrónicas. Una promesa representa un valor que puede estar pendiente, cumplido o rechazado. Esto permite manejar el resultado de una tarea de manera más clara que con callbacks.
 
-```javascript
+```Javascript
 function cuadradoPromise(value) {
     if (typeof value !== 'number') {
         return Promise.reject(
@@ -201,7 +204,7 @@ function cuadradoPromise(value) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve({
-                value,
+                value: value,
                 result: value * value,
             });
         }, 0 | (Math.random() * 1000));
