@@ -16,7 +16,7 @@
         <article>
             <h2 class="crud-title">Agregar Santo</h2>
 
-            <form action="" class="crud form">
+            <form action="" class="crud-form">
                 <input type="text" name="nombre" placeholder="nombre" required>
                 <br>
                 <input type="text" name="constelacion" placeholder="constelación" required>
@@ -120,12 +120,85 @@
                     // console.log(err);
                     $table.insertAdjacentHTML("afterend", `<p><b>${err}</b></p>`)
                 },
-                // data: null
+                data: null
             })
 
         }
 
         d.addEventListener('DOMContentLoaded', getAll)
+
+        // EVENTOS AL FORMULARIO
+        d.addEventListener("submit", e => {
+
+            if (e.target === $form) {
+                e.preventDefault()
+
+                const dataToSend = {
+                    nombre: e.target.nombre.value,
+                    constelacion: e.target.constelacion.value
+                };
+
+                if (!e.target.id.value) {
+                    // CREATE POST
+
+                    ajax({
+                        url: "http://localhost:5555/santos",
+                        method: "POST",
+                        success: (res) => location.reload(),
+                        error: () => $form.insertAdjacentHTML("afterend", `<p><b>${err}</b></p>`),
+                        data: dataToSend
+                    });
+
+                } else {
+                    // UPDATE PUT
+
+                    ajax({
+                        url: `http://localhost:5555/santos/${e.target.id.value}`,
+                        method: "PUT",
+                        success: (res) => location.reload(),
+                        error: () => $form.insertAdjacentHTML("afterend", `<p><b>${err}</b></p>`),
+                        data: dataToSend
+                    });
+
+                }
+
+            }
+
+        })
+
+        d.addEventListener("click", e => {
+
+            if (e.target.matches(".edit")) {
+
+                // alert("BOTON EDITAR")
+                $title.textContent = "Editar Santo";
+                $form.nombre.value = e.target.dataset.name
+                $form.constelacion.value = e.target.dataset.constellation
+                $form.id.value = e.target.dataset.id
+                
+            }
+
+            if (e.target.matches(".delete")) {
+
+                let isDelete = confirm(`¿Estás seguro de eliminar el id ${e.target.dataset.id}?`);
+                
+                if (isDelete) {
+                    
+                    // DELETE
+
+                    ajax({
+                        url: `http://localhost:5555/santos/${e.target.dataset.id}`,
+                        method: "DELETE",
+                        success: (res) => location.reload(),
+                        error: () => alert(err)
+                    });
+
+                }
+
+            }
+
+        })
+
     </script>
 
 </body>

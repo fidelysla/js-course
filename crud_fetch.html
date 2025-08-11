@@ -7,6 +7,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUD API REST FETCH</title>
+    <style>
+        body {
+            background-color: rgb(9, 95, 95);
+        }
+    </style>
+
 </head>
 <body>
     <h1>CRUD API REST FETCH</h1>
@@ -14,7 +20,7 @@
         <article>
             <h2 class="crud-title">Agregar Santo</h2>
 
-            <form action="" class="crud form">
+            <form action="" class="crud-form">
                 <input type="text" name="nombre" placeholder="nombre" required>
                 <br>
                 <input type="text" name="constelacion" placeholder="constelación" required>
@@ -43,7 +49,7 @@
     <template id="crud-template">
         <tr>
             <td class="name"></td>
-            <td class="constelacion"></td>
+            <td class="constellation"></td>
             <td>
                 <button class="edit">Editar</button>
                 <button class="delete">Eliminar</button>
@@ -59,6 +65,39 @@
             $template = d.getElementById("crud-template").content,
             $fragment = d.createDocumentFragment();
 
+        const getAll = async () => {
+
+            try {
+                
+                let res = await fetch("http://localhost:5555/santos");
+                if (!res.ok) throw { status: res.status, statusText: res.statusText };
+                let json = await res.json();
+                
+                console.log(json);
+
+                json.forEach(el => {
+                    
+                    $template.querySelector(".name").textContent = el.nombre;
+                    $template.querySelector(".constellation").textContent = el.constelacion;
+                    $template.querySelector(".edit").dataset.id = el.id;
+                    $template.querySelector(".edit").dataset.name = el.nombre;
+                    $template.querySelector(".edit").dataset.constellation = el.constelacion;
+                    $template.querySelector(".delete").dataset.id = el.id;
+
+                    let $clone = d.importNode($template, true);
+                    $fragment.appendChild($clone)
+                });
+                
+                $table.querySelector("tbody").appendChild($fragment)
+
+            } catch (err) {
+                let message = err.statusText || 'Ocurrió un error';
+
+                $table.insertAdjacentHTML("afterend", `<p><b>Error ${err.status}: ${message}</b></p>` )
+            }
+        }
+
+        d.addEventListener("DOMContentLoaded", getAll);
         
     </script>
 
