@@ -31,19 +31,29 @@
       "constelacion": "Aries"
     },
     {
-      "id": 7,
+      "id": "7",
       "nombre": "Aldebaran",
       "constelacion": "Tauro"
     },
     {
       "nombre": "Saga",
       "constelacion": "Geminis",
-      "id": "23ff"
+      "id": "8"
     },
     {
       "nombre": "Mascara de Muerte",
       "constelacion": "Cancer",
-      "id": "b191"
+      "id": "9"
+    },
+    {
+      "id": "10",
+      "nombre": "Aioria",
+      "constelacion": "Leo"
+    },
+    {
+      "nombre": "Shaka",
+      "constelacion": "Virgo",
+      "id": "11"
     }
   ],
   "dioses": [

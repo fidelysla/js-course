@@ -55,7 +55,8 @@ npm install -g json-server
 npm install json-server
 
 node node_modules/json-server/lib/bin.js --watch assets/db.json
-node node_modules/json-server/lib/bin.js -w -p 5555 assets/db.json
+
+>> node node_modules/json-server/lib/bin.js -w -p 5555 assets/db.json
 
 # -w: --watch
 # -p: --port
