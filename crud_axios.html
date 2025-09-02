@@ -7,6 +7,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUD API REST AXIOS</title>
+    <style>
+        body {
+            background-color: rgb(9, 95, 95);
+        }
+    </style>
 </head>
 <body>
     <h1>CRUD API REST AXIOS</h1>
@@ -51,6 +56,7 @@
         </tr>
     </template>
 
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
     <script>
         const d = document,
             $table = d.querySelector(".crud-table"),
@@ -59,6 +65,38 @@
             $template = d.getElementById("crud-template").content,
             $fragment = d.createDocumentFragment();
 
+        const getAll = async () => {
+            try {
+
+                let res = await axios.get("http://localhost:5555/santos")
+                if (!res.ok) throw { status: res.status, statusText: res.statusText };
+                let json = await res.json();
+                
+                console.log(json);
+
+                json.forEach(el => {
+
+                    $template.querySelector(".name").textContent = el.nombre;
+                    $template.querySelector(".constellation").textContent = el.constelacion;
+                    $template.querySelector(".edit").dataset.id = el.id;
+                    $template.querySelector(".edit").dataset.name = el.nombre;
+                    $template.querySelector(".edit").dataset.constellation = el.constelacion;
+                    $template.querySelector(".delete").dataset.id = el.id;
+
+                    let $clone = d.importNode($template, true);
+                    $fragment.appendChild($clone)
+                });
+
+                $table.querySelector("tbody").appendChild($fragment)
+                
+
+            } catch (err) {
+                let message = err.statusText || 'Ocurrió un error';
+                $table.insertAdjacentHTML("afterend", `<p><b>Error ${err.status}: ${message}</b></p>`);
+            }
+        }
+        
+        d.addEventListener("DOMContentLoaded", getAll)
         
     </script>
 
