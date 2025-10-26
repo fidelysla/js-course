@@ -64,15 +64,16 @@
             $title = d.querySelector(".crud-title"),
             $template = d.getElementById("crud-template").content,
             $fragment = d.createDocumentFragment();
-
+        
         const getAll = async () => {
             try {
 
                 let res = await axios.get("http://localhost:5555/santos")
-                if (!res.ok) throw { status: res.status, statusText: res.statusText };
-                let json = await res.json();
+                if (!res.status) throw { status: res.status, statusText: res.statusText };
+                let json = await res.data;
                 
                 console.log(json);
+                $table.querySelector("tbody").innerHTML = "";
 
                 json.forEach(el => {
 
@@ -91,8 +92,10 @@
                 
 
             } catch (err) {
-                let message = err.statusText || 'Ocurrió un error';
-                $table.insertAdjacentHTML("afterend", `<p><b>Error ${err.status}: ${message}</b></p>`);
+
+                const status = err.status || err.response?.status || "Desconocido";
+                const statusText = err.statusText || err.response?.statusText || err.message || 'Ocurrió un error';
+                $table.insertAdjacentHTML("afterend", `<p><b>Error ${status}: ${statusText}</b></p>`);
             }
         }
         

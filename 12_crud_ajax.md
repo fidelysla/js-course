@@ -51,7 +51,7 @@ Las API REST, son el nuevo CRUD del desarrollo moderno, con la ventaja de que pu
 
 ```Bash
 npm init -y
-npm install -g json-server
+# npm install -g json-server
 npm install json-server
 
 node node_modules/json-server/lib/bin.js --watch assets/db.json
