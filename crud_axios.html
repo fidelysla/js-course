@@ -100,6 +100,117 @@
         }
         
         d.addEventListener("DOMContentLoaded", getAll)
+
+        d.addEventListener("submit", async e => {
+          
+            if (e.target === $form) {
+
+                e.preventDefault();
+                
+                if (!e.target.id.value) {
+                    // CREAR POST
+
+                    try {
+                        
+                        let options = {
+                            method: "POST",
+                            headers: {
+                                'Content-type': 'application/json; charset=utf-8'
+                            },
+                            data: JSON.stringify({
+                                // id: 1,
+                                id: Date.now(),
+                                nombre: e.target.nombre.value,
+                                constelacion: e.target.constelacion.value
+                            })
+                        };
+
+                        let res = await axios("http://localhost:5555/santos", options);
+
+                        let json = await res.data;
+                        location.reload();
+
+                    } catch (err) {
+
+                        const status = err.status || err.response?.status || "Desconocido";
+                        const statusText = err.statusText || err.response?.statusText || err.message || 'Ocurrió un error';
+                        $form.insertAdjacentHTML("afterend", `<p><b>Error ${status}: ${statusText}</b></p>`);
+                    }
+
+                } else {
+                    // CRATE PUT
+                    try {
+                        
+                        let options = {
+                            method: "PUT",
+                            headers: {
+                                'Content-type': 'application/json; charset=utf-8'
+                            },
+                            data: JSON.stringify({
+                                // id: e.target.id.value,
+                                nombre: e.target.nombre.value,
+                                constelacion: e.target.constelacion.value
+                            })
+                        };
+
+                        let res = await axios(`http://localhost:5555/santos/${e.target.id.value}`, options);
+                        let json = await res.data;
+                        location.reload();
+
+                    } catch (err) {
+                        
+                        const status = err.status || err.response?.status || "Desconocido";
+                        const statusText = err.statusText || err.response?.statusText || err.message || 'Ocurrió un error';
+                        $form.insertAdjacentHTML("afterend", `<p><b>Error ${status}: ${statusText}</b></p>`);
+                    }
+                }
+                
+            }
+        })
+
+        d.addEventListener("click", async e => {
+            
+            if (e.target.matches(".edit")) {
+
+                $title.textContent = "Editar Santo";
+                $form.nombre.value = e.target.dataset.name
+                $form.constelacion.value = e.target.dataset.constellation
+                $form.id.value = e.target.dataset.id
+            }
+
+            if (e.target.matches(".delete")) {
+
+                let isDelete = confirm(`¿Estás seguro de eliminar el Santo con id ${e.target.dataset.id}?`);
+
+                if (isDelete) {
+                    // DELETE 
+                    try {
+
+                        let options = {
+                            method: "DELETE",
+                            headers: {
+                                'Content-type': 'application/json; charset=utf-8'
+                            },
+                        };
+                        
+                        let res = await axios(`http://localhost:5555/santos/${e.target.dataset.id}`, options);
+                        // if (!res.ok) throw { status: res.status, statusText: res.statusText };
+                        let json = await res.data;
+                        location.reload();
+
+                    } catch (error) {
+                        const status = err.status || err.response?.status || "Desconocido";
+                        const statusText = err.statusText || err.response?.statusText || err.message || 'Ocurrió un error';
+                        alert(`Error ${status}: ${statusText}`)
+                    }
+
+                }
+
+            }
+
+
+
+        })
         
     </script>
 
